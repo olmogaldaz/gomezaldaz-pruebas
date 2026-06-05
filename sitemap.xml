@@ -55,7 +55,7 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/demanda/" />
   </url>
 
-  <!-- SENTENCIA / JUDGMENTS (ruta /en/sentence/) -->
+  <!-- SENTENCIA / JUDGMENTS -->
   <url>
     <loc>https://gomezaldaz.com/es/sentencia/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/sentencia/" />
@@ -87,13 +87,13 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/genus-homo/" />
   </url>
-  
+
   <url>
     <loc>https://gomezaldaz.com/en/genus-homo/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/genus-homo/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
   </url>
-  
+
   <!-- LIBROS / BOOKS -->
   <url>
     <loc>https://gomezaldaz.com/es/libros/</loc>
@@ -120,6 +120,19 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/" />
   </url>
 
+  <!-- ENTREVISTA EL OBSERVATORIO Nº 9 / EL OBSERVATORIO NO. 9 INTERVIEW -->
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/el-observatorio-9-2026/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/el-observatorio-9-2026/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/el-observatorio-9-2026/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/" />
+  </url>
+
   <!-- DOSIER / MEDIA DOSSIER -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/medios/</loc>
@@ -136,6 +149,11 @@
   <!-- PDF DECLARACIÓN DE RECONOCIMIENTO Y REPARACIÓN -->
   <url>
     <loc>https://gomezaldaz.com/docs/declaracion-reconocimiento-reparacion-memoria-democratica-olmo-2026.pdf</loc>
+  </url>
+
+  <!-- PDF EL OBSERVATORIO Nº 9 -->
+  <url>
+    <loc>https://gomezaldaz.com/docs/el-observatorio-9-2026.pdf</loc>
   </url>
 
 </urlset>
