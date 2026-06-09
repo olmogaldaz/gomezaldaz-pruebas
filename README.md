@@ -1,69 +1,111 @@
 # gomezaldaz.com — Web structure
 
-Este repositorio contiene la estructura y el contenido estático de la web gomezaldaz.com.
+Este repositorio contiene la estructura y el contenido estático de la web pública gomezaldaz.com.
 
-El proyecto está organizado por idioma y por bloques conceptuales. La estructura de carpetas es interna (no visible para el usuario final) y responde a un criterio de orden, claridad y estabilidad a largo plazo.
+La web se publica mediante GitHub Pages, desde la rama main y la carpeta raíz del repositorio.
 
-La web se publica exclusivamente mediante rutas. No se utilizan subdominios.
+El proyecto está organizado por rutas, idiomas y bloques conceptuales. La estructura de carpetas responde a un criterio de orden, claridad y estabilidad a largo plazo.
+
+El sitio usa rutas dentro del dominio principal gomezaldaz.com.
 
 ---
 
 ## Estructura general del repositorio
 
 /
-├── index.html        # Home principal (idioma por defecto)
-├── en/               # Contenido completo en inglés
-├── es/               # Contenido completo en español
+├── index.html        # Home principal en español
+├── en/               # Versión inglesa
+├── es/               # Páginas interiores en español
 ├── css/              # Hojas de estilo
-├── js/               # JavaScript (menú, interacción)
+├── js/               # JavaScript: menú e interacción
 ├── img/              # Imágenes y recursos gráficos
-├── _layouts/         # Layouts (Jekyll)
-├── config.yml        # Configuración del sitio
-├── sitemap.xml
-├── robots.txt
-└── README.md
+├── docs/             # Documentos públicos y PDFs
+├── _layouts/         # Layouts de Jekyll
+├── 404.html          # Página de error
+├── CNAME             # Dominio personalizado
+├── _config.yml       # Configuración del sitio
+├── sitemap.xml       # Mapa del sitio
+├── robots.txt        # Instrucciones para rastreadores
+└── README.md         # Documentación del repositorio
 
 ---
 
-## Idioma por defecto — /
+## Publicación
 
-La raíz del sitio (`/`) actúa como punto de entrada principal y como única home oficial.
+La web está publicada mediante GitHub Pages.
 
-No duplica estructuras internas. Las estructuras completas por idioma viven exclusivamente en `/en/` y `/es/`.
+Configuración actual:
+
+- Rama de publicación: main
+- Carpeta publicada: raíz del repositorio
+- Dominio personalizado: gomezaldaz.com
+- HTTPS activado
+
+---
+
+## Portada principal — /
+
+La raíz del sitio / actúa como punto de entrada principal y como home oficial en español.
+
+Desde la portada principal se accede a los bloques principales del proyecto.
+
+Las páginas interiores en español se organizan bajo /es/...
+
+La ruta /es/ funciona como página técnica de compatibilidad hacia /.
+
+---
+
+## Español — /es/...
+
+Las páginas interiores en español están organizadas bajo /es/...
+
+Estructura actual:
+
+/es/
+├── index.html                  # Página técnica de compatibilidad hacia /
+├── autor/                      # Autor
+├── historia/                   # Historia
+├── demanda/                    # Demanda
+├── sentencia/                  # Sentencia
+├── memoria/                    # Memoria
+├── genus-homo/                 # Editorial Genus Homo
+├── libros/                     # Libros
+└── prensa/                     # Prensa
+    ├── index.html              # Índice de prensa
+    ├── el-observatorio-9-2026/ # Entrevista en El Observatorio nº 9
+    └── medios/                 # Dosier de medios
 
 ---
 
 ## Inglés — /en/
 
-Estructura completa en inglés, organizada por bloques conceptuales.
+La versión inglesa está organizada bajo /en/ y funciona como versión internacional del sitio.
 
-Estructura:
+Estructura actual:
 
 /en/
-├── index.html        # General index
-├── author/           # Author
-├── story/            # Story
-├── sentence/         # Court ruling / judgment
-├── books/            # Books
-├── press/            # Press
-│   └── media/        # Media
+├── index.html                  # English home
+├── author/                     # Author
+├── story/                      # Story
+├── claim/                      # Claim
+├── sentence/                   # Court ruling / judgment
+├── memory/                     # Memory
+├── genus-homo/                 # Genus Homo publishing imprint
+├── books/                      # Books
+└── press/                      # Press
+    ├── index.html              # Press index
+    ├── el-observatorio-9-2026/ # El Observatorio no. 9 interview
+    └── media/                  # Media dossier
 
 ---
 
-## Español — /es/
+## Documentos públicos — /docs/
 
-Traducción editorial estructural del contenido en inglés.
+La carpeta docs/ contiene documentos públicos enlazados desde la web o incluidos en el sitemap.
 
-Estructura:
+Puede incluir PDFs, revistas, entrevistas, documentos de reconocimiento o reparación y materiales complementarios del proyecto.
 
-/es/
-├── index.html        # Índice general
-├── autor/            # Autor
-├── historia/         # Historia
-├── sentencia/        # Sentencia
-├── libros/           # Libros
-├── prensa/           # Prensa
-│   └── medios/       # Medios
+Los documentos situados en docs/ forman parte del contenido público del sitio cuando están enlazados desde páginas de la web o incluidos en sitemap.xml.
 
 ---
 
@@ -71,21 +113,49 @@ Estructura:
 
 Los recursos compartidos por todos los idiomas se alojan en la raíz del proyecto:
 
-- `css/` → estilos globales
-- `js/` → lógica de navegación y comportamiento
-- `img/` → imágenes y elementos gráficos
+- css/ → estilos globales
+- js/ → lógica de navegación y comportamiento
+- img/ → imágenes y elementos gráficos
+- _layouts/ → layouts comunes de Jekyll
 
 Estas rutas son absolutas y comunes a todo el sitio.
 
 ---
 
+## Navegación
+
+La navegación principal se genera mediante JavaScript común.
+
+Archivo principal:
+
+/js/menu.js
+
+El menú utiliza rutas absolutas y adapta los enlaces según la versión lingüística de la página.
+
+El selector de idioma enlaza páginas equivalentes entre español e inglés cuando existe correspondencia.
+
+---
+
+## Indexación
+
+El archivo robots.txt permite el rastreo completo del sitio y declara el sitemap oficial:
+
+https://gomezaldaz.com/sitemap.xml
+
+El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, prensa, dosier de medios y documentos públicos seleccionados.
+
+---
+
 ## Notas importantes
 
-- La web se organiza exclusivamente por rutas, no por subdominios.
-- La estructura por idiomas es explícita y estable.
-- La raíz (`/`) es la única home oficial.
-- Los menús utilizan URLs absolutas.
-- El selector de idioma enlaza páginas equivalentes entre `/en/` y `/es/`.
-- La estructura de carpetas no debe modificarse sin una razón clara, ya que es la base de la coherencia editorial y técnica del sitio.
+- La web se organiza exclusivamente por rutas.
+- La raíz / es la home oficial en español.
+- /en/ es la home oficial en inglés.
+- /es/ es una ruta técnica de compatibilidad hacia /.
+- Las páginas interiores en español viven bajo /es/...
+- Las páginas interiores en inglés viven bajo /en/...
+- Los documentos públicos viven bajo /docs/.
+- Las rutas del sitemap corresponden a páginas o documentos existentes.
+- La estructura de carpetas sostiene la coherencia editorial y técnica del sitio.
 
 Este README documenta la arquitectura real y vigente del proyecto.
