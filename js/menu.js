@@ -20,12 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
       <a href="/">Inicio</a>
-      <a href="/es/autor/">Perfil</a>
+      <a href="/es/autor/">Olmo</a>
+      <a href="/es/memoria/">Memoria</a>
       <a href="/es/historia/">Historia</a>
       <a href="/es/demanda/">Demanda</a>
       <a href="/es/sentencia/">Sentencias</a>
-      <a href="/es/memoria/">Memoria</a>
-      <a href="/es/libros/">Libros</a>
+      <a href="/es/obra/">Obra</a>
       <a href="/es/prensa/">Prensa</a>
       <div class="small">
         <strong>ES</strong> |
@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     <button class="menu-toggle" aria-label="Menu">☰</button>
     <nav class="main-nav">
       <a href="/en/">Home</a>
-      <a href="/en/author/">Profile</a>
+      <a href="/en/author/">Olmo</a>
+      <a href="/en/memory/">Memory</a>
       <a href="/en/story/">Story</a>
       <a href="/en/claim/">Claim</a>
       <a href="/en/sentence/">Judgments</a>
-      <a href="/en/memory/">Memory</a>
-      <a href="/en/books/">Books</a>
+      <a href="/en/work/">Work</a>
       <a href="/en/press/">Press</a>
       <div class="small">
         <a href="${altHref || '/'}">ES</a> |
@@ -65,12 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.classList.toggle('open');
   });
 
-    // Mark active section in the menu
+  // Mark active section in the menu
   const normalizePath = (p) => {
     if (!p) return '/';
-    // drop query/hash just in case (pathname should not include them, but safe)
     p = p.split('?')[0].split('#')[0];
-    // ensure trailing slash
     if (!p.endsWith('/')) p += '/';
     return p;
   };
