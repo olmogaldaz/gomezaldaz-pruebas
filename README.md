@@ -63,13 +63,18 @@ Estructura actual:
 
 /es/
 ├── index.html                  # Página técnica de compatibilidad hacia /
-├── autor/                      # Autor
+├── autor/                      # Olmo
+├── memoria/                    # Memoria
 ├── historia/                   # Historia
 ├── demanda/                    # Demanda
-├── sentencia/                  # Sentencia
-├── memoria/                    # Memoria
+├── sentencia/                  # Sentencias
 ├── genus-homo/                 # Editorial Genus Homo
-├── libros/                     # Libros
+├── obra/                       # Obra publicada, archivo crítico e investigación
+│   ├── index.html              # Índice de Obra
+│   ├── libros/                 # Libros
+│   ├── undoing-adoption/       # Undoing Adoption
+│   └── asociacion-maria-madre/ # Investigación sobre la Asociación María Madre
+├── libros/                     # Redirección técnica hacia /es/obra/libros/
 └── prensa/                     # Prensa
     ├── index.html              # Índice de prensa
     ├── el-observatorio-9-2026/ # Entrevista en El Observatorio nº 9
@@ -84,18 +89,23 @@ La versión inglesa está organizada bajo /en/ y funciona como versión internac
 Estructura actual:
 
 /en/
-├── index.html                  # English home
-├── author/                     # Author
-├── story/                      # Story
-├── claim/                      # Claim
-├── sentence/                   # Court ruling / judgment
-├── memory/                     # Memory
-├── genus-homo/                 # Genus Homo publishing imprint
-├── books/                      # Books
-└── press/                      # Press
-    ├── index.html              # Press index
-    ├── el-observatorio-9-2026/ # El Observatorio no. 9 interview
-    └── media/                  # Media dossier
+├── index.html                       # English home
+├── author/                          # Olmo
+├── memory/                          # Memory
+├── story/                           # Story
+├── claim/                           # Claim
+├── sentence/                        # Court rulings / judgments
+├── genus-homo/                      # Genus Homo publishing imprint
+├── work/                            # Published work, critical archive and research
+│   ├── index.html                   # Work index
+│   ├── books/                       # Books
+│   ├── undoing-adoption/            # Undoing Adoption
+│   └── maria-madre-association/     # Research on the María Madre Association
+├── books/                           # Technical redirect to /en/work/books/
+└── press/                           # Press
+    ├── index.html                   # Press index
+    ├── el-observatorio-9-2026/      # El Observatorio no. 9 interview
+    └── media/                       # Media dossier
 
 ---
 
@@ -157,5 +167,6 @@ El archivo sitemap.xml recoge las URLs públicas principales del sitio: home esp
 - Los documentos públicos viven bajo /docs/.
 - Las rutas del sitemap corresponden a páginas o documentos existentes.
 - La estructura de carpetas sostiene la coherencia editorial y técnica del sitio.
+- /es/libros/ y /en/books/ se conservan solo como redirecciones técnicas hacia las nuevas rutas de Obra / Work.
 
 Este README documenta la arquitectura real y vigente del proyecto.
