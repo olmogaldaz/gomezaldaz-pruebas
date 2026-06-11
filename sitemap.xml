@@ -94,17 +94,56 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
   </url>
 
-  <!-- LIBROS / BOOKS -->
+  <!-- OBRA / WORK -->
   <url>
-    <loc>https://gomezaldaz.com/es/libros/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/libros/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/books/" />
+    <loc>https://gomezaldaz.com/es/obra/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/" />
   </url>
 
   <url>
-    <loc>https://gomezaldaz.com/en/books/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/books/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/libros/" />
+    <loc>https://gomezaldaz.com/en/work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/" />
+  </url>
+
+  <!-- OBRA > LIBROS / WORK > BOOKS -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/libros/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/libros/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/books/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/books/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/books/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/libros/" />
+  </url>
+
+  <!-- OBRA > UNDOING ADOPTION -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/undoing-adoption/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/undoing-adoption/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/undoing-adoption/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/undoing-adoption/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/undoing-adoption/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/undoing-adoption/" />
+  </url>
+
+  <!-- OBRA > ASOCIACIÓN MARÍA MADRE / MARÍA MADRE ASSOCIATION -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/asociacion-maria-madre/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/asociacion-maria-madre/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/maria-madre-association/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/maria-madre-association/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/maria-madre-association/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/asociacion-maria-madre/" />
   </url>
 
   <!-- PRENSA / PRESS -->
