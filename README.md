@@ -72,8 +72,8 @@ Estructura actual:
 ├── obra/                       # Obra publicada, archivo crítico e investigación
 │   ├── index.html              # Índice de Obra
 │   ├── libros/                 # Libros
-│   ├── undoing-adoption/       # Undoing Adoption
-│   └── asociacion-maria-madre/ # Investigación sobre la Asociación María Madre
+│   ├── adopcion/               # Adopción
+│   └── bebes-robados/          # Investigación sobre bebés robados
 ├── libros/                     # Redirección técnica hacia /es/obra/libros/
 └── prensa/                     # Prensa
     ├── index.html              # Índice de prensa
@@ -99,8 +99,8 @@ Estructura actual:
 ├── work/                            # Published work, critical archive and research
 │   ├── index.html                   # Work index
 │   ├── books/                       # Books
-│   ├── undoing-adoption/            # Undoing Adoption
-│   └── maria-madre-association/     # Research on the María Madre Association
+│   ├── adoption/                    # Adoption
+│   └── stolen-babies/               # Research on stolen babies
 ├── books/                           # Technical redirect to /en/work/books/
 └── press/                           # Press
     ├── index.html                   # Press index
@@ -168,5 +168,7 @@ El archivo sitemap.xml recoge las URLs públicas principales del sitio: home esp
 - Las rutas del sitemap corresponden a páginas o documentos existentes.
 - La estructura de carpetas sostiene la coherencia editorial y técnica del sitio.
 - /es/libros/ y /en/books/ se conservan solo como redirecciones técnicas hacia las nuevas rutas de Obra / Work.
+- /es/obra/undoing-adoption/ y /en/work/undoing-adoption/ se conservan solo como redirecciones técnicas hacia /es/obra/adopcion/ y /en/work/adoption/.
+- /es/obra/asociacion-maria-madre/ y /en/work/maria-madre-association/ se conservan solo como redirecciones técnicas hacia /es/obra/bebes-robados/ y /en/work/stolen-babies/.
 
 Este README documenta la arquitectura real y vigente del proyecto.
