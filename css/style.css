@@ -384,6 +384,69 @@ form textarea {
   text-decoration:underline;
 }
 
+/* =========================
+   PÁGINAS DOCUMENTALES LARGAS
+   ========================= */
+
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:16px 0 0 0;
+}
+
+.cta-row .cta{
+  margin:0;
+}
+
+.toc{
+  padding-left:1.2rem;
+  margin:0;
+}
+
+.toc li{
+  margin:0 0 6px 0;
+}
+
+.back-top{
+  margin-top:12px;
+  margin-bottom:0;
+  font-size:.9rem;
+  color:var(--muted);
+}
+
+.back-top a{
+  text-decoration:none;
+}
+
+.back-top a:hover{
+  text-decoration:underline;
+}
+
+.doc-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.doc-meta h3{
+  margin-top:0;
+}
+
+@media (max-width:768px){
+  .cta-row{
+    flex-direction:column;
+  }
+
+  .cta-row .cta{
+    width:100%;
+  }
+
+  .doc-meta{
+    grid-template-columns:1fr;
+  }
+}
+
 
 
 
