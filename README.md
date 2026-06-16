@@ -74,6 +74,9 @@ Estructura actual:
 │   ├── libros/                 # Libros
 │   ├── adopcion/               # Adopción
 │   └── bebes-robados/          # Investigación sobre bebés robados
+│       ├── index.html          # Índice de investigación sobre bebés robados
+│       ├── informe-asociacion-maria-madre-bilbao/ # Informe IAMM
+│       └── informe-adoptados-bilbao/              # Informe AdoptadosBilbao
 ├── libros/                     # Redirección técnica hacia /es/obra/libros/
 └── prensa/                     # Prensa
     ├── index.html              # Índice de prensa
@@ -101,6 +104,9 @@ Estructura actual:
 │   ├── books/                       # Books
 │   ├── adoption/                    # Adoption
 │   └── stolen-babies/               # Research on stolen babies
+│       ├── index.html               # Research on stolen babies index
+│       ├── maria-madre-association-report/ # IAMM report
+│       └── adoptados-bilbao-report/        # AdoptadosBilbao report
 ├── books/                           # Technical redirect to /en/work/books/
 └── press/                           # Press
     ├── index.html                   # Press index
@@ -152,7 +158,7 @@ El archivo robots.txt permite el rastreo completo del sitio y declara el sitemap
 
 https://gomezaldaz.com/sitemap.xml
 
-El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, prensa, dosier de medios y documentos públicos seleccionados.
+El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, secciones de Obra / Work, investigación sobre bebés robados, informes documentales, prensa, dosier de medios y documentos públicos seleccionados.
 
 ---
 
