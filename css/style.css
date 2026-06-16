@@ -199,6 +199,12 @@ p{
   font-size:1.8rem;
 }
 
+.card.hero h1{
+  font-size:1.8rem;
+  line-height:1.25;
+  margin:0 0 10px 0;
+}
+
 .card.minor{
   opacity:.85;
   margin-top:24px;
