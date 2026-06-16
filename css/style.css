@@ -397,6 +397,8 @@ form textarea {
 
 .cta-row .cta{
   margin:0;
+  min-width:210px;
+  text-align:center;
 }
 
 .toc{
