@@ -146,6 +146,31 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/" />
   </url>
 
+    <!-- INFORMES BEBÉS ROBADOS / STOLEN BABIES REPORTS -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/stolen-babies/maria-madre-association-report/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/stolen-babies/maria-madre-association-report/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/stolen-babies/maria-madre-association-report/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/stolen-babies/adoptados-bilbao-report/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/stolen-babies/adoptados-bilbao-report/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/stolen-babies/adoptados-bilbao-report/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/" />
+  </url>
+
   <!-- PRENSA / PRESS -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/</loc>
