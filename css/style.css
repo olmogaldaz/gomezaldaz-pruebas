@@ -191,6 +191,10 @@ p{
   margin-bottom:14; 
 }
 
+.card.hero .card-cta{
+  text-align:center;
+}
+
 .card.hero{
   padding:40px;
 }
