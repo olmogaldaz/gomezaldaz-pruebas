@@ -72,7 +72,13 @@ Estructura actual:
 ├── obra/                       # Obra publicada, archivo crítico e investigación
 │   ├── index.html              # Índice de Obra
 │   ├── libros/                 # Libros
-│   ├── adopcion/               # Adopción
+│   ├── adopcion/               # Textos críticos sobre adopción / Undoing Adoption
+│   │   ├── index.html
+│   │   ├── identicidio/
+│   │   ├── abolicion-del-identicidio/
+│   │   ├── abolifobia/
+│   │   ├── adopcion-genocidio-identicida-colonial/
+│   │   └── estigma-registral-adopcion/
 │   └── bebes-robados/          # Investigación sobre bebés robados
 │       ├── index.html          # Índice de investigación sobre bebés robados
 │       ├── informe-asociacion-maria-madre-bilbao/ # Informe IAMM
@@ -102,7 +108,13 @@ Estructura actual:
 ├── work/                            # Published work, critical archive and research
 │   ├── index.html                   # Work index
 │   ├── books/                       # Books
-│   ├── adoption/                    # Adoption
+│   ├── adoption/                    # Critical texts on adoption / Undoing Adoption
+│   │   ├── index.html
+│   │   ├── identicide/
+│   │   ├── abolition-of-identicide/
+│   │   ├── aboliphobia/
+│   │   ├── adoption-as-colonial-identicide-genocide/
+│   │   └── registry-stigma-of-adoption/
 │   └── stolen-babies/               # Research on stolen babies
 │       ├── index.html               # Research on stolen babies index
 │       ├── maria-madre-association-report/ # IAMM report
@@ -175,6 +187,5 @@ El archivo sitemap.xml recoge las URLs públicas principales del sitio: home esp
 - La estructura de carpetas sostiene la coherencia editorial y técnica del sitio.
 - /es/libros/ y /en/books/ se conservan solo como redirecciones técnicas hacia las nuevas rutas de Obra / Work.
 - /es/obra/undoing-adoption/ y /en/work/undoing-adoption/ se conservan solo como redirecciones técnicas hacia /es/obra/adopcion/ y /en/work/adoption/.
-- /es/obra/asociacion-maria-madre/ y /en/work/maria-madre-association/ se conservan solo como redirecciones técnicas hacia /es/obra/bebes-robados/ y /en/work/stolen-babies/.
 
 Este README documenta la arquitectura real y vigente del proyecto.
