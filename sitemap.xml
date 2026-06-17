@@ -133,6 +133,71 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/" />
   </url>
 
+  <!-- ADOPCIÓN > IDENTICIDIO / ADOPTION > IDENTICIDE -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/adopcion/identicidio/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/identicidio/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/identicide/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/adoption/identicide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/identicide/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/identicidio/" />
+  </url>
+
+  <!-- ADOPCIÓN > ABOLICIÓN DEL IDENTICIDIO / ADOPTION > ABOLITION OF IDENTICIDE -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/" />
+  </url>
+
+  <!-- ADOPCIÓN > ABOLIFOBIA / ADOPTION > ABOLIPHOBIA -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/adopcion/abolifobia/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolifobia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/aboliphobia/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/adoption/aboliphobia/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/aboliphobia/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolifobia/" />
+  </url>
+
+  <!-- ADOPCIÓN > GENOCIDIO IDENTICIDA COLONIAL / ADOPTION > COLONIAL IDENTICIDE GENOCIDE -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/adopcion/adopcion-genocidio-identicida-colonial/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/adopcion-genocidio-identicida-colonial/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/adoption-as-colonial-identicide-genocide/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/adoption/adoption-as-colonial-identicide-genocide/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/adoption-as-colonial-identicide-genocide/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/adopcion-genocidio-identicida-colonial/" />
+  </url>
+
+  <!-- ADOPCIÓN > ESTIGMA REGISTRAL / ADOPTION > REGISTRY STIGMA -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/adopcion/estigma-registral-adopcion/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/estigma-registral-adopcion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/registry-stigma-of-adoption/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/adoption/registry-stigma-of-adoption/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/adoption/registry-stigma-of-adoption/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/estigma-registral-adopcion/" />
+  </url>
+
   <!-- OBRA > BEBÉS ROBADOS / WORK > STOLEN BABIES -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/bebes-robados/</loc>
@@ -146,19 +211,20 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/" />
   </url>
 
-    <!-- INFORMES BEBÉS ROBADOS / STOLEN BABIES REPORTS -->
+  <!-- BEBÉS ROBADOS > INFORME ASOCIACIÓN MARÍA MADRE / STOLEN BABIES > MARÍA MADRE ASSOCIATION REPORT -->
   <url>
-    <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/" />
+    <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/stolen-babies/maria-madre-association-report/" />
   </url>
 
   <url>
     <loc>https://gomezaldaz.com/en/work/stolen-babies/maria-madre-association-report/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/stolen-babies/maria-madre-association-report/" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre/" />
   </url>
 
+  <!-- BEBÉS ROBADOS > INFORME ADOPTADOS BILBAO / STOLEN BABIES > ADOPTADOS BILBAO REPORT -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/" />
