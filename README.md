@@ -26,6 +26,11 @@ El sitio usa rutas dentro del dominio principal gomezaldaz.com.
 ├── _config.yml       # Configuración del sitio
 ├── sitemap.xml       # Mapa del sitio
 ├── robots.txt        # Instrucciones para rastreadores
+├── favicon.ico       # Icono principal del sitio
+├── favicon-32x32.png # Icono del sitio en formato PNG
+├── apple-touch-icon.png         # Icono para dispositivos Apple
+├── android-chrome-192x192.png   # Icono para Android / Chrome
+├── yandex_21845d3da951913c.html # Verificación de Yandex Webmaster
 └── README.md         # Documentación del repositorio
 
 ---
@@ -72,6 +77,9 @@ Estructura actual:
 ├── obra/                       # Obra publicada, archivo crítico e investigación
 │   ├── index.html              # Índice de Obra
 │   ├── libros/                 # Libros
+│   ├── testimonios/            # Textos testimoniales e intervenciones públicas
+│   │   ├── index.html          # Índice de testimonios
+│   │   └── voy-a-hablar-de-resiliencia/ # Testimonio sobre resiliencia frente a la adopción
 │   ├── adopcion/               # Textos críticos sobre adopción / Undoing Adoption
 │   │   ├── index.html
 │   │   ├── identicidio/
@@ -108,6 +116,9 @@ Estructura actual:
 ├── work/                            # Published work, critical archive and research
 │   ├── index.html                   # Work index
 │   ├── books/                       # Books
+│   ├── testimonies/                 # Testimonial texts and public interventions
+│   │   ├── index.html               # Testimonies index
+│   │   └── i-am-going-to-speak-about-resilience/ # Testimony on resilience against adoption
 │   ├── adoption/                    # Critical texts on adoption / Undoing Adoption
 │   │   ├── index.html
 │   │   ├── identicide/
@@ -124,6 +135,50 @@ Estructura actual:
     ├── index.html                   # Press index
     ├── el-observatorio-9-2026/      # El Observatorio no. 9 interview
     └── media/                       # Media dossier
+
+---
+
+## Obra / Work
+
+La sección Obra / Work organiza cuatro líneas principales:
+
+- Libros / Books
+- Testimonios / Testimonies
+- Adopción / Adoption
+- Bebés robados / Stolen babies
+
+La estructura busca separar la obra publicada, la línea testimonial, los textos críticos sobre adopción y la investigación documental sobre bebés robados.
+
+Las páginas índice correspondientes son:
+
+- /es/obra/
+- /en/work/
+- /es/obra/libros/
+- /en/work/books/
+- /es/obra/testimonios/
+- /en/work/testimonies/
+- /es/obra/adopcion/
+- /en/work/adoption/
+- /es/obra/bebes-robados/
+- /en/work/stolen-babies/
+
+---
+
+## Testimonios / Testimonies
+
+La sección Testimonios / Testimonies reúne textos testimoniales e intervenciones públicas de Olmo Gómez Aldaz.
+
+Rutas principales:
+
+- /es/obra/testimonios/
+- /en/work/testimonies/
+
+Primer testimonio publicado dentro de esta sección:
+
+- /es/obra/testimonios/voy-a-hablar-de-resiliencia/
+- /en/work/testimonies/i-am-going-to-speak-about-resilience/
+
+El texto corresponde a “Voy a hablar de resiliencia: Resiliencia frente a la adopción”, preparado para el panel abierto “Diferentes voces”, dentro de las jornadas “Caminos de Resiliencia”, XV Aniversario de La Voz de los Adoptados.
 
 ---
 
@@ -145,6 +200,8 @@ Los recursos compartidos por todos los idiomas se alojan en la raíz del proyect
 - js/ → lógica de navegación y comportamiento
 - img/ → imágenes y elementos gráficos
 - _layouts/ → layouts comunes de Jekyll
+- favicon.ico, favicon-32x32.png, apple-touch-icon.png y android-chrome-192x192.png → iconos del sitio
+- yandex_21845d3da951913c.html → archivo de verificación de Yandex Webmaster
 
 Estas rutas son absolutas y comunes a todo el sitio.
 
@@ -170,7 +227,7 @@ El archivo robots.txt permite el rastreo completo del sitio y declara el sitemap
 
 https://gomezaldaz.com/sitemap.xml
 
-El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, secciones de Obra / Work, investigación sobre bebés robados, informes documentales, prensa, dosier de medios y documentos públicos seleccionados.
+El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, secciones de Obra / Work, testimonios, investigación sobre bebés robados, informes documentales, prensa, dosier de medios y documentos públicos seleccionados.
 
 ---
 
@@ -186,6 +243,5 @@ El archivo sitemap.xml recoge las URLs públicas principales del sitio: home esp
 - Las rutas del sitemap corresponden a páginas o documentos existentes.
 - La estructura de carpetas sostiene la coherencia editorial y técnica del sitio.
 - /es/libros/ y /en/books/ se conservan solo como redirecciones técnicas hacia las nuevas rutas de Obra / Work.
-- /es/obra/undoing-adoption/ y /en/work/undoing-adoption/ se conservan solo como redirecciones técnicas hacia /es/obra/adopcion/ y /en/work/adoption/.
 
-Este README documenta la arquitectura real y vigente del proyecto.
+Este README documenta la arquitectura principal y vigente del proyecto.
