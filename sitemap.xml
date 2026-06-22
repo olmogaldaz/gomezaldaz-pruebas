@@ -120,6 +120,32 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/libros/" />
   </url>
 
+  <!-- OBRA > TESTIMONIOS / WORK > TESTIMONIES -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/testimonios/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/testimonies/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/testimonies/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/testimonies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/" />
+  </url>
+
+  <!-- TESTIMONIOS > VOY A HABLAR DE RESILIENCIA / TESTIMONIES > I AM GOING TO SPEAK ABOUT RESILIENCE -->
+  <url>
+    <loc>https://gomezaldaz.com/es/obra/testimonios/voy-a-hablar-de-resiliencia/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/voy-a-hablar-de-resiliencia/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/testimonies/i-am-going-to-speak-about-resilience/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/work/testimonies/i-am-going-to-speak-about-resilience/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/work/testimonies/i-am-going-to-speak-about-resilience/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/voy-a-hablar-de-resiliencia/" />
+  </url>
+
   <!-- OBRA > ADOPCIÓN / WORK > ADOPTION -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/</loc>
