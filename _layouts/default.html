@@ -7,6 +7,9 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | escape }}">
 
+  {% assign canonical_path = page.canonical | default: page.url %}
+  <link rel="canonical" href="{{ site.url }}{{ canonical_path }}">
+
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
@@ -23,7 +26,6 @@
     <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.alt }}">
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}">
   {% endif %}
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
 
   <!-- schema -->
   <!-- schema -->
