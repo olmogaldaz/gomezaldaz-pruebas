@@ -302,9 +302,13 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/medios/" />
   </url>
 
-  <!-- PDF DECLARACIÓN DE RECONOCIMIENTO Y REPARACIÓN -->
+  <!-- PDFS DE RECONOCIMIENTO COMO VÍCTIMA -->
   <url>
     <loc>https://gomezaldaz.com/docs/declaracion-reconocimiento-reparacion-memoria-democratica-olmo-2026.pdf</loc>
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/docs/resolucion-gogora-reconocimiento-victima-franquismo-olmo-gomez-aldaz-2026.pdf</loc>
   </url>
 
   <!-- PDF EL OBSERVATORIO Nº 9 -->

@@ -1,0 +1,17 @@
+ACTUALIZACIÓN GOGORA · JULIO DE 2026
+BASE VERIFICADA: olmogaldaz.github.io-main (20260712).zip
+
+Este paquete se ha rehecho expresamente sobre la versión de la web fechada 20260712.
+Contiene únicamente los archivos nuevos o modificados. No sustituir el repositorio completo.
+
+Reemplazar:
+- /index.html
+- /en/index.html
+- /es/memoria/index.html
+- /en/memory/index.html
+- /sitemap.xml
+
+Añadir:
+- /docs/resolucion-gogora-reconocimiento-victima-franquismo-olmo-gomez-aldaz-2026.pdf
+
+El PDF incluido es una copia pública: el DNI ha sido eliminado de forma real, no solo cubierto visualmente. El original recibido de Gogora no se modifica ni se incluye en este paquete.
