@@ -72,6 +72,7 @@
   
   {% assign schema_nodes = person_node %}
 
+  
   {% comment %} --- PROFILE PAGE --- {% endcomment %}
 
   {% if page.url == "/es/autor/" or page.url == "/en/author/" %}
@@ -99,6 +100,58 @@
     {% endcapture %}
   
     {% assign schema_nodes = schema_nodes | append: profile_node %}
+  
+  {% endif %}
+
+  
+  {% comment %} --- WEBSITE AND HOME PAGE --- {% endcomment %}
+
+  {% if page.url == "/" or page.url == "/en/" %}
+  
+    {% if page.lang == "es" %}
+      {% assign homepage_name = "Olmo Gómez Aldaz: el hombre que no pudieron borrar" %}
+    {% else %}
+      {% assign homepage_name = "Olmo Gómez Aldaz: The Man They Could Not Erase" %}
+    {% endif %}
+  
+    {% capture website_node %}
+    ,
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://gomezaldaz.com/#website",
+      "url": "https://gomezaldaz.com/",
+      "name": "Olmo Gómez Aldaz",
+      "inLanguage": ["es", "en"],
+      "about": {
+        "@id": "https://gomezaldaz.com/#person"
+      }
+    }
+    {% endcapture %}
+  
+    {% assign schema_nodes = schema_nodes | append: website_node %}
+  
+  
+    {% capture homepage_node %}
+    ,
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://gomezaldaz.com{{ page.url }}#webpage",
+      "url": "https://gomezaldaz.com{{ page.url }}",
+      "name": "{{ homepage_name }}",
+      "description": {{ page.description | jsonify }},
+      "inLanguage": "{{ page.lang }}",
+      "isPartOf": {
+        "@id": "https://gomezaldaz.com/#website"
+      },
+      "mainEntity": {
+        "@id": "https://gomezaldaz.com/#person"
+      }
+    }
+    {% endcapture %}
+  
+    {% assign schema_nodes = schema_nodes | append: homepage_node %}
   
   {% endif %}
   
