@@ -34,12 +34,12 @@
   
   {% comment %} --- PERSON (siempre) --- {% endcomment %}
   
+  {% assign person_url = "https://gomezaldaz.com/" %}
+
   {% if page.lang == "es" %}
-    {% assign person_url = "https://gomezaldaz.com/" %}
     {% assign person_job = "Autor" %}
     {% assign person_desc = "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación." %}
   {% else %}
-    {% assign person_url = "https://gomezaldaz.com/en/" %}
     {% assign person_job = "Author" %}
     {% assign person_desc = "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation." %}
   {% endif %}
