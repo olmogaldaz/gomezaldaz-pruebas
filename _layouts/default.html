@@ -71,7 +71,36 @@
   {% endcapture %}
   
   {% assign schema_nodes = person_node %}
+
+  {% comment %} --- PROFILE PAGE --- {% endcomment %}
+
+  {% if page.url == "/es/autor/" or page.url == "/en/author/" %}
   
+    {% if page.lang == "es" %}
+      {% assign profile_name = "Perfil de Olmo Gómez Aldaz" %}
+    {% else %}
+      {% assign profile_name = "Profile of Olmo Gómez Aldaz" %}
+    {% endif %}
+  
+    {% capture profile_node %}
+    ,
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": "https://gomezaldaz.com{{ page.url }}#profilepage",
+      "url": "https://gomezaldaz.com{{ page.url }}",
+      "name": "{{ profile_name }}",
+      "description": {{ page.description | jsonify }},
+      "inLanguage": "{{ page.lang }}",
+      "mainEntity": {
+        "@id": "https://gomezaldaz.com/#person"
+      }
+    }
+    {% endcapture %}
+  
+    {% assign schema_nodes = schema_nodes | append: profile_node %}
+  
+  {% endif %}
   
   {% comment %} --- ORGANIZATION --- {% endcomment %}
   
