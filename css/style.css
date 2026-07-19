@@ -451,6 +451,10 @@ form textarea {
   text-decoration:underline;
 }
 
+.back-top + h2{
+  margin-top:2rem;
+}
+
 .doc-meta{
   display:grid;
   grid-template-columns:1fr 1fr;
