@@ -192,6 +192,11 @@ p{
   flex-direction:column;
 }
 
+.card-subtitle{
+  color:var(--muted);
+  font-size:.95rem;
+}
+
 .row .card {
   margin-bottom: 0;
 }
