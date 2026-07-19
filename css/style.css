@@ -455,6 +455,10 @@ form textarea {
   margin-top:2rem;
 }
 
+.card + .back-top{
+  margin-top:-.75rem;
+}
+
 .doc-meta{
   display:grid;
   grid-template-columns:1fr 1fr;
