@@ -5,17 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const isEN = location.pathname.startsWith('/en/');
   const targetLang = isEN ? 'es' : 'en';
-  
-  const altLink = document.querySelector(
-    `link[rel="alternate"][hreflang="${targetLang}"]`
-  );
+
+  const entorno = window.entornoWeb || { etiqueta: "", color: "" };
+
+  const marcaEntorno = entorno.etiqueta
+    ? `<span style="color: ${entorno.color};">${entorno.etiqueta}</span>`
+    : "";
+    
+    const altLink = document.querySelector(
+      `link[rel="alternate"][hreflang="${targetLang}"]`
+    );
   
   const altHref = altLink ? altLink.getAttribute('href') : null;
     
   const navES = `
     <div class="site-title">
       <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
-      <span>Olmo Gómez Aldaz</span>
+      <span>Olmo Gómez Aldaz${marcaEntorno}</span>
     </div>
     <button class="menu-toggle" aria-label="Menú">☰</button>
     <nav class="main-nav">
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navEN = `
     <div class="site-title">
       <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
-      <span>Olmo Gómez Aldaz</span>
+      <span>Olmo Gómez Aldaz${marcaEntorno}</span>
     </div>
     <button class="menu-toggle" aria-label="Menu">☰</button>
     <nav class="main-nav">
