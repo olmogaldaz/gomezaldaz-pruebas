@@ -155,44 +155,16 @@
   {% endif %}
 
 
-
-{% comment %} --- PUBLICATION --- {% endcomment %}
-
-{% if page.schema_type %}
-
-  {% capture publication_node %}
-  ,
-  {
-    "@context": "https://schema.org",
-    "@type": {{ page.schema_type | jsonify }},
-    "@id": "https://gomezaldaz.com{{ page.url }}#publication",
-    "url": "https://gomezaldaz.com{{ page.url }}",
-    "name": {{ page.schema_name | jsonify }},
-    "headline": {{ page.schema_name | jsonify }},
-    "description": {{ page.description | jsonify }},
-    "author": {
-      "@id": "https://gomezaldaz.com/#person"
-    },
-    "datePublished": {{ page.schema_date | jsonify }},
-    "version": {{ page.schema_version | jsonify }},
-    "inLanguage": {{ page.lang | jsonify }},
-    "identifier": {{ page.schema_doi | jsonify }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://gomezaldaz.com{{ page.url }}#webpage"
-    },
-    "encoding": {
-      "@type": "MediaObject",
-      "contentUrl": "https://gomezaldaz.com{{ page.schema_pdf }}",
-      "encodingFormat": "application/pdf"
-    }
-  }
-  {% endcapture %}
-
-  {% assign schema_nodes = schema_nodes | append: publication_node %}
-
-{% endif %}
-
+  {% comment %} --- PUBLICATION --- {% endcomment %}
+  
+  {% if page.schema_publication %}
+    {% capture publication_node %}
+    ,
+    {{ page.schema_publication | jsonify }}
+    {% endcapture %}
+  
+    {% assign schema_nodes = schema_nodes | append: publication_node %}
+  {% endif %}
 
   
   {% comment %} --- ORGANIZATION --- {% endcomment %}
