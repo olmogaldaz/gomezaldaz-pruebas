@@ -1,0 +1,80 @@
+name: Centralizar wrap temporal
+
+on:
+  push:
+    branches:
+      - centralizar-menu-wrap
+
+permissions:
+  contents: write
+
+jobs:
+  transformar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: centralizar-menu-wrap
+
+      - name: Retirar wrap y header repetidos
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          changed = []
+          for path in Path('.').rglob('*.html'):
+              if any(part.startswith('.') for part in path.parts):
+                  continue
+              text = path.read_text(encoding='utf-8')
+              if 'layout: default' not in text:
+                  continue
+              if '<header id="site-header"></header>' not in text:
+                  continue
+
+              lines = text.splitlines(keepends=True)
+              open_i = next((i for i, line in enumerate(lines)
+                             if re.search(r'<div\s+class="wrap"(?:\s+id="top")?\s*>', line)), None)
+              header_i = next((i for i, line in enumerate(lines)
+                               if '<header id="site-header"></header>' in line), None)
+              if open_i is None or header_i is None or header_i <= open_i:
+                  raise RuntimeError(f'Estructura inesperada en {path}')
+
+              depth = 0
+              close_i = None
+              for i in range(open_i, len(lines)):
+                  depth += len(re.findall(r'<div\b', lines[i]))
+                  depth -= len(re.findall(r'</div\s*>', lines[i]))
+                  if depth == 0:
+                      close_i = i
+                      break
+              if close_i is None:
+                  raise RuntimeError(f'No se encontró cierre del wrap en {path}')
+
+              for i in sorted((open_i, header_i, close_i), reverse=True):
+                  del lines[i]
+
+              new_text = ''.join(lines)
+              if '<header id="site-header"></header>' in new_text:
+                  raise RuntimeError(f'Header vacío restante en {path}')
+              if re.search(r'<div\s+class="wrap"(?:\s+id="top")?\s*>', new_text):
+                  raise RuntimeError(f'Wrap exterior restante en {path}')
+
+              path.write_text(new_text, encoding='utf-8')
+              changed.append(str(path))
+
+          if len(changed) != 47:
+              raise RuntimeError(f'Se esperaban 47 páginas y se modificaron {len(changed)}: {changed}')
+
+          workflow = Path('.github/workflows/centralizar-wrap-temporal.yml')
+          workflow.unlink()
+          print('\n'.join(changed))
+
+      - name: Confirmar transformación
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Retirar wrap y cabecera repetidos de las páginas"
+          git push origin centralizar-menu-wrap
