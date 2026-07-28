@@ -1,0 +1,106 @@
+name: Menú móvil flotante temporal
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  aplicar:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Convertir menú móvil en flotante
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('css/style.css')
+          text = path.read_text(encoding='utf-8')
+
+          old = '''  .main-nav{
+    display:none;
+    width:100%;
+    margin-top:12px;
+    flex-direction:column;
+    align-items:flex-end;
+    text-align:right;
+    gap:4px;
+
+    flex-basis:100%;    
+  }
+
+  .main-nav.open{
+    display:flex;
+  }
+'''
+
+          new = '''  .main-nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    z-index:1100;
+    width:min(18rem, calc(100vw - 36px));
+    margin-top:8px;
+    padding:12px 16px;
+    flex-direction:column;
+    align-items:flex-end;
+    text-align:right;
+    gap:4px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:0 12px 28px rgba(0,0,0,.16);
+  }
+
+  .main-nav.open{
+    display:flex;
+  }
+'''
+
+          if text.count(old) != 1:
+              raise RuntimeError(f'Se esperaba un único bloque móvil y se encontraron {text.count(old)}')
+
+          text = text.replace(old, new)
+
+          marker = '''  #site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+'''
+
+          replacement = '''  #site-header{
+    display:flex;
+    position:relative;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+'''
+
+          if text.count(marker) != 1:
+              raise RuntimeError('No se encontró el bloque móvil de #site-header')
+
+          text = text.replace(marker, replacement)
+          path.write_text(text, encoding='utf-8')
+
+          workflow = Path('.github/workflows/menu-movil-flotante-temporal.yml')
+          workflow.unlink()
+
+      - name: Confirmar cambio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Hacer flotante el menú móvil"
+          git push origin main
