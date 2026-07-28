@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = header.querySelector('.main-nav');
 
   if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      const isSpanish = document.documentElement.lang === 'es';
+    const isSpanish = document.documentElement.lang === 'es';
 
+    const setMenuState = (isOpen) => {
+      nav.classList.toggle('open', isOpen);
       toggle.textContent = isOpen ? '✕' : '☰';
       toggle.setAttribute('aria-expanded', String(isOpen));
       toggle.setAttribute(
@@ -18,6 +18,23 @@ document.addEventListener('DOMContentLoaded', () => {
           ? (isSpanish ? 'Cerrar menú' : 'Close menu')
           : (isSpanish ? 'Abrir menú' : 'Open menu')
       );
+    };
+
+    toggle.addEventListener('click', () => {
+      setMenuState(!nav.classList.contains('open'));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (nav.classList.contains('open') && !header.contains(event.target)) {
+        setMenuState(false);
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) {
+        setMenuState(false);
+        toggle.focus();
+      }
     });
   }
 
