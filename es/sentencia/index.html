@@ -6,30 +6,40 @@ title: Sentencia · Olmo Gómez Aldaz
 description: Sentencia judicial firme que reconoce la filiación biológica y establece un caso pionero de doble filiación en el ordenamiento español.
 schema_nodes:
   - "@context": "https://schema.org"
-    "@type": Article
-    "@id": "https://gomezaldaz.com/#legal-case"
-    headline: "Procedimiento judicial sobre filiación biológica y nulidad de adopción"
-    description: "Procedimiento judicial en el que se ejercitaron conjuntamente la acción de reclamación de filiación biológica y la acción de nulidad de adopción, con solicitud de la correspondiente rectificación registral."
+    "@type": WebPage
+    "@id": "https://gomezaldaz.com/es/sentencia/#webpage"
     url: "https://gomezaldaz.com/es/sentencia/"
-    author:
-      "@id": "https://gomezaldaz.com/#person"
-    about:
-      "@id": "https://gomezaldaz.com/#person"
-    mainEntityOfPage: "https://gomezaldaz.com/es/sentencia/"
+    name: "Sentencia · Olmo Gómez Aldaz"
+    description: "Sentencia judicial firme que reconoce la filiación biológica y establece un caso pionero de doble filiación en el ordenamiento español."
     inLanguage: es
-  - "@context": "https://schema.org"
-    "@type": Article
-    "@id": "https://gomezaldaz.com/#court-decision"
-    headline: "Sentencia judicial que reconoce la doble filiación a una persona adoptada"
-    description: "Resolución judicial firme que declara la filiación biológica del demandante sin anular la adopción previa, estableciendo una situación de doble filiación con plenos efectos civiles y registrales. La decisión fue posteriormente confirmada íntegramente por la Audiencia Provincial de Navarra. Por su contenido y alcance, constituye una resolución pionera a nivel mundial y abre la vía para que otras personas adoptadas puedan ejercitar acciones similares de reconocimiento de doble filiación."
-    url: "https://gomezaldaz.com/es/sentencia/"
-    author:
-      "@id": "https://gomezaldaz.com/#person"
+    isPartOf:
+      "@id": "https://gomezaldaz.com/#website"
     about:
       - "@id": "https://gomezaldaz.com/#person"
       - "@id": "https://gomezaldaz.com/#legal-case"
-    mainEntityOfPage: "https://gomezaldaz.com/es/sentencia/"
-    inLanguage: es
+    mainEntity:
+      "@id": "https://gomezaldaz.com/#court-decision"
+  - "@context": "https://schema.org"
+    "@type": Thing
+    "@id": "https://gomezaldaz.com/#legal-case"
+    name: "Procedimiento judicial de restitución de identidad y filiación de Olmo Gómez Aldaz"
+    description: "Conjunto de actuaciones judiciales relativas a la filiación de origen, la restitución de identidad y la nulidad de la adopción de Olmo Gómez Aldaz."
+    subjectOf:
+      - "@id": "https://gomezaldaz.com/es/demanda/#webpage"
+      - "@id": "https://gomezaldaz.com/en/claim/#webpage"
+      - "@id": "https://gomezaldaz.com/es/sentencia/#webpage"
+      - "@id": "https://gomezaldaz.com/en/sentence/#webpage"
+  - "@context": "https://schema.org"
+    "@type": CreativeWork
+    "@id": "https://gomezaldaz.com/#court-decision"
+    name: "Resoluciones judiciales sobre la doble filiación de Olmo Gómez Aldaz"
+    description: "Resoluciones judiciales firmes que reconocen la filiación de origen de Olmo Gómez Aldaz sin anular la filiación adoptiva previa, estableciendo una situación de doble filiación con plenos efectos civiles y registrales y constituyendo una resolución pionera a nivel mundial."
+    about:
+      - "@id": "https://gomezaldaz.com/#person"
+      - "@id": "https://gomezaldaz.com/#legal-case"
+    subjectOf:
+      - "@id": "https://gomezaldaz.com/es/sentencia/#webpage"
+      - "@id": "https://gomezaldaz.com/en/sentence/#webpage"
 ---
 
 
@@ -195,4 +205,3 @@ schema_nodes:
     </div>
 
   </main>
-
