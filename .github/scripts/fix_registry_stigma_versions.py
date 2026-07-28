@@ -41,13 +41,15 @@ es_text = replace_once(es_text,
 'La publicación está disponible en Zenodo en español y en inglés.',
 'Spanish access paragraph')
 
-es_text = replace_once(es_text,
-'''        <a class="cta" href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">Publicación en Zenodo</a>
-        <a class="cta" href="/docs/el-estigma-registral-de-la-adopcion-v1.pdf" target="_blank" rel="noopener noreferrer">PDF local</a>''',
-'''        <a class="cta" href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">Publicación española en Zenodo</a>
+old_es_buttons = '''        <a class="cta" href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">Publicación en Zenodo</a>
+        <a class="cta" href="/docs/el-estigma-registral-de-la-adopcion-v1.pdf" target="_blank" rel="noopener noreferrer">PDF local</a>'''
+new_es_buttons = '''        <a class="cta" href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">Publicación española en Zenodo</a>
         <a class="cta" href="/docs/el-estigma-registral-de-la-adopcion-v1.pdf" target="_blank" rel="noopener noreferrer">PDF español</a>
         <a class="cta" href="https://doi.org/10.5281/zenodo.20820051" target="_blank" rel="noopener noreferrer">Publicación inglesa en Zenodo</a>
-        <a class="cta" href="/docs/the-registry-stigma-of-adoption-v1.pdf" target="_blank" rel="noopener noreferrer">PDF inglés</a>''', 'Spanish final access buttons')
+        <a class="cta" href="/docs/the-registry-stigma-of-adoption-v1.pdf" target="_blank" rel="noopener noreferrer">PDF inglés</a>'''
+if es_text.count(old_es_buttons) != 2:
+    raise AssertionError(f'Spanish buttons: expected 2 occurrences, found {es_text.count(old_es_buttons)}')
+es_text = es_text.replace(old_es_buttons, new_es_buttons)
 
 en_text = en_text.replace('https://doi.org/10.5281/zenodo.20159685', 'https://doi.org/10.5281/zenodo.20820051')
 en_text = en_text.replace('/docs/el-estigma-registral-de-la-adopcion-v1.pdf', '/docs/the-registry-stigma-of-adoption-v1.pdf')
