@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && nav.classList.contains('open')) {
         setMenuState(false);
+        toggle.blur();
       }
     });
   }
