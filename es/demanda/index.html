@@ -6,17 +6,28 @@ title: La demanda · Caso Olmo Gómez Aldaz
 description: Demanda judicial presentada en el proceso de restitución de la identidad de Olmo Gómez Aldaz.
 schema_nodes:
   - "@context": "https://schema.org"
-    "@type": Article
-    "@id": "https://gomezaldaz.com/#legal-case"
-    headline: "Procedimiento judicial sobre filiación biológica y nulidad de adopción"
-    description: "Procedimiento judicial en el que se ejercitaron conjuntamente la acción de reclamación de filiación biológica y la acción de nulidad de adopción, con solicitud de la correspondiente rectificación registral."
+    "@type": WebPage
+    "@id": "https://gomezaldaz.com/es/demanda/#webpage"
     url: "https://gomezaldaz.com/es/demanda/"
-    author:
-      "@id": "https://gomezaldaz.com/#person"
-    about:
-      "@id": "https://gomezaldaz.com/#person"
-    mainEntityOfPage: "https://gomezaldaz.com/es/demanda/"
+    name: "La demanda · Caso Olmo Gómez Aldaz"
+    description: "Demanda judicial presentada en el proceso de restitución de la identidad de Olmo Gómez Aldaz."
     inLanguage: es
+    isPartOf:
+      "@id": "https://gomezaldaz.com/#website"
+    about:
+      "@id": "https://gomezaldaz.com/#legal-case"
+    mainEntity:
+      "@id": "https://gomezaldaz.com/#legal-case"
+  - "@context": "https://schema.org"
+    "@type": Thing
+    "@id": "https://gomezaldaz.com/#legal-case"
+    name: "Procedimiento judicial de restitución de identidad y filiación de Olmo Gómez Aldaz"
+    description: "Conjunto de actuaciones judiciales relativas a la filiación de origen, la restitución de identidad y la nulidad de la adopción de Olmo Gómez Aldaz."
+    subjectOf:
+      - "@id": "https://gomezaldaz.com/es/demanda/#webpage"
+      - "@id": "https://gomezaldaz.com/en/claim/#webpage"
+      - "@id": "https://gomezaldaz.com/es/sentencia/#webpage"
+      - "@id": "https://gomezaldaz.com/en/sentence/#webpage"
 ---
 
 
@@ -99,4 +110,3 @@ schema_nodes:
   </div>
 
   </main>
-
