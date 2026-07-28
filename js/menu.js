@@ -7,7 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
+      const isOpen = nav.classList.toggle('open');
+      const isSpanish = document.documentElement.lang === 'es';
+
+      toggle.textContent = isOpen ? '✕' : '☰';
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute(
+        'aria-label',
+        isOpen
+          ? (isSpanish ? 'Cerrar menú' : 'Close menu')
+          : (isSpanish ? 'Abrir menú' : 'Open menu')
+      );
     });
   }
 
