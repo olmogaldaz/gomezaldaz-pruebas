@@ -1,2 +1,260 @@
 url: https://pruebas.gomezaldaz.com
 markdown: kramdown
+
+defaults:
+  - scope:
+      path: "es/obra/adopcion/abolicion-del-identicidio/index.html"
+    values:
+      schema_publication:
+        "@context": "https://schema.org"
+        "@type": ScholarlyArticle
+        "@id": "https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/#publication"
+        url: "https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/"
+        name: "Abolición del Identicidio (Adopción): un neologismo para nombrar el marco abolicionista frente al borrado de la identidad"
+        headline: "Abolición del Identicidio (Adopción): un neologismo para nombrar el marco abolicionista frente al borrado de la identidad"
+        description: "Página documental sobre Abolición del Identicidio, texto de Olmo Gómez Aldaz que formula el marco abolicionista frente al borrado institucional de identidad en la adopción."
+        abstract: >-
+          La abolición del identicidio designa la respuesta ética y política ante la
+          destrucción institucional de la identidad natal. El texto sostiene que una
+          institución fundada en la sustitución de filiación, el borrado del origen y la
+          fabricación de una identidad jurídica no puede reformarse, sino que debe cesar,
+          restituyendo la verdad, la genealogía, el nombre y la memoria.
+        author:
+          "@id": "https://gomezaldaz.com/#person"
+        datePublished: "2025-10"
+        version: "1.0"
+        inLanguage: es
+        identifier: "https://doi.org/10.5281/zenodo.17457819"
+        keywords:
+          - abolición del identicidio
+          - identicidio
+          - adopción
+          - abolicionismo
+          - identidad natal
+          - filiación
+          - restitución
+          - verdad del origen
+          - violencia estructural
+          - borrado identitario
+        mainEntityOfPage:
+          "@type": WebPage
+          "@id": "https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/#webpage"
+        encoding:
+          "@type": MediaObject
+          contentUrl: "https://gomezaldaz.com/docs/abolicion-identicidio-adopcion-v1-es.pdf"
+          encodingFormat: "application/pdf"
+        workTranslation:
+          "@id": "https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/#publication"
+
+  - scope:
+      path: "en/work/adoption/abolition-of-identicide/index.html"
+    values:
+      schema_publication:
+        "@context": "https://schema.org"
+        "@type": ScholarlyArticle
+        "@id": "https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/#publication"
+        url: "https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/"
+        name: "Abolition of Identicide (Adoption): a neologism to name the abolitionist framework against the erasure of identity"
+        headline: "Abolition of Identicide (Adoption): a neologism to name the abolitionist framework against the erasure of identity"
+        description: "Documentary page on Abolition of Identicide, a text by Olmo Gómez Aldaz that formulates the abolitionist framework against the institutional erasure of identity in adoption."
+        abstract: >-
+          The abolition of identicide names the ethical and political response to the
+          institutional destruction of natal identity. The text argues that an institution
+          founded on the substitution of filiation, the erasure of origin and the fabrication
+          of a legal identity cannot be reformed but must cease, restoring truth, genealogy,
+          name and memory.
+        author:
+          "@id": "https://gomezaldaz.com/#person"
+        datePublished: "2025-10"
+        version: "1.0"
+        inLanguage: en
+        identifier: "https://doi.org/10.5281/zenodo.17458107"
+        keywords:
+          - abolition of identicide
+          - identicide
+          - adoption
+          - abolitionism
+          - natal identity
+          - filiation
+          - restitution
+          - truth of origin
+          - structural violence
+          - identity erasure
+        mainEntityOfPage:
+          "@type": WebPage
+          "@id": "https://gomezaldaz.com/en/work/adoption/abolition-of-identicide/#webpage"
+        encoding:
+          "@type": MediaObject
+          contentUrl: "https://gomezaldaz.com/docs/abolition-identicide-adoption-v1-en.pdf"
+          encodingFormat: "application/pdf"
+        translationOfWork:
+          "@id": "https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/#publication"
+
+  - scope:
+      path: "es/obra/adopcion/abolifobia/index.html"
+    values:
+      schema_publication:
+        "@context": "https://schema.org"
+        "@type": ScholarlyArticle
+        "@id": "https://gomezaldaz.com/es/obra/adopcion/abolifobia/#publication"
+        url: "https://gomezaldaz.com/es/obra/adopcion/abolifobia/"
+        name: "Abolifobia: un neologismo para nombrar la violencia simbólica contra el pensamiento abolicionista de la adopción"
+        headline: "Abolifobia: un neologismo para nombrar la violencia simbólica contra el pensamiento abolicionista de la adopción"
+        description: "Página documental sobre Abolifobia, texto de Olmo Gómez Aldaz que propone un neologismo para nombrar la violencia simbólica contra el pensamiento abolicionista de la adopción."
+        abstract: >-
+          El término abolifobia, acuñado por Olmo Gómez Aldaz en 2025, nombra una forma
+          específica de violencia simbólica dirigida contra quienes sostienen posiciones
+          abolicionistas respecto a la adopción. Describe mecanismos de negación,
+          ridiculización, patologización y exclusión que protegen el imaginario adoptivo y
+          desacreditan el pensamiento crítico sobre la adopción.
+        author:
+          "@id": "https://gomezaldaz.com/#person"
+        datePublished: "2025-10-25"
+        version: "1.0"
+        inLanguage: es
+        identifier: "https://doi.org/10.5281/zenodo.17443569"
+        keywords:
+          - abolifobia
+          - adopción
+          - abolicionismo
+          - violencia simbólica
+          - trauma
+          - identidad
+          - descolonización
+          - teoría crítica
+          - resistencia social
+          - discurso institucional
+        mainEntityOfPage:
+          "@type": WebPage
+          "@id": "https://gomezaldaz.com/es/obra/adopcion/abolifobia/#webpage"
+        encoding:
+          "@type": MediaObject
+          contentUrl: "https://gomezaldaz.com/docs/abolifobia-v1.1-es.pdf"
+          encodingFormat: "application/pdf"
+        workTranslation:
+          "@id": "https://gomezaldaz.com/en/work/adoption/aboliphobia/#publication"
+
+  - scope:
+      path: "en/work/adoption/aboliphobia/index.html"
+    values:
+      schema_publication:
+        "@context": "https://schema.org"
+        "@type": ScholarlyArticle
+        "@id": "https://gomezaldaz.com/en/work/adoption/aboliphobia/#publication"
+        url: "https://gomezaldaz.com/en/work/adoption/aboliphobia/"
+        name: "Aboliphobia: a neologism to name the symbolic violence against abolitionist thought on adoption"
+        headline: "Aboliphobia: a neologism to name the symbolic violence against abolitionist thought on adoption"
+        description: "Documentary page on Aboliphobia, a text by Olmo Gómez Aldaz proposing a neologism to name the symbolic violence directed against abolitionist thought on adoption."
+        abstract: >-
+          The term aboliphobia, coined by Olmo Gómez Aldaz in 2025, names a specific form
+          of symbolic violence directed against people who hold abolitionist positions on
+          adoption. It describes mechanisms of denial, ridicule, pathologisation and exclusion
+          that protect the adoptive imaginary and discredit critical thought on adoption.
+        author:
+          "@id": "https://gomezaldaz.com/#person"
+        datePublished: "2025-10"
+        version: "1.1"
+        inLanguage: en
+        identifier: "https://doi.org/10.5281/zenodo.17443405"
+        keywords:
+          - aboliphobia
+          - adoption
+          - abolitionism
+          - symbolic violence
+          - trauma
+          - identity
+          - decolonisation
+          - critical theory
+          - social resistance
+          - institutional discourse
+        mainEntityOfPage:
+          "@type": WebPage
+          "@id": "https://gomezaldaz.com/en/work/adoption/aboliphobia/#webpage"
+        encoding:
+          "@type": MediaObject
+          contentUrl: "https://gomezaldaz.com/docs/aboliphobia-v1.1-en.pdf"
+          encodingFormat: "application/pdf"
+        translationOfWork:
+          "@id": "https://gomezaldaz.com/es/obra/adopcion/abolifobia/#publication"
+
+  - scope:
+      path: "es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/index.html"
+    values:
+      schema_publication:
+        "@context": "https://schema.org"
+        "@type": Report
+        "@id": "https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/#publication"
+        url: "https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/"
+        name: "IAMM – Informe sobre la Asociación María Madre de Bilbao"
+        headline: "IAMM – Informe sobre la Asociación María Madre de Bilbao"
+        description: "Informe documental sobre la Asociación María Madre de Bilbao, entidad vinculada a Cáritas, al Obispado de Bilbao y al Estado franquista, dentro de las tramas de bebés robados, adopciones irregulares, ocultación de filiaciones y sustitución de identidad en España."
+        abstract: >-
+          Informe documental e histórico sobre la Asociación María Madre de Bilbao,
+          fundada en 1969 bajo cobertura eclesiástica y autorización del Estado franquista.
+          Reconstruye su estructura, funcionamiento y vinculación con adopciones irregulares,
+          bebés robados, ocultación de filiaciones y sustitución de identidad en España.
+        author:
+          "@id": "https://gomezaldaz.com/#person"
+        datePublished: "2025-10-18"
+        version: "1.1"
+        inLanguage: es
+        identifier: "https://doi.org/10.5281/zenodo.17386489"
+        keywords:
+          - Asociación María Madre de Bilbao
+          - bebés robados
+          - adopciones irregulares
+          - franquismo
+          - filiación
+          - sustitución de identidad
+          - Cáritas
+          - Obispado de Bilbao
+          - memoria democrática
+          - identicidio
+        mainEntityOfPage:
+          "@type": WebPage
+          "@id": "https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/#webpage"
+        encoding:
+          "@type": MediaObject
+          contentUrl: "https://gomezaldaz.com/docs/iamm-informe-asociacion-maria-madre-v1.1.pdf"
+          encodingFormat: "application/pdf"
+
+  - scope:
+      path: "es/obra/bebes-robados/informe-adoptados-bilbao/index.html"
+    values:
+      schema_publication:
+        "@context": "https://schema.org"
+        "@type": Report
+        "@id": "https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/#publication"
+        url: "https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/"
+        name: "INFORME DEL BLOG AdoptadosBilbao.Blogspot.com"
+        headline: "INFORME DEL BLOG AdoptadosBilbao.Blogspot.com"
+        description: "Informe documental sobre AdoptadosBilbao.Blogspot.com, blog histórico de víctimas y familiares vinculado a la Asociación María Madre de Bilbao, Mercedes Herrán de Gras, adopciones ilegales, bebés robados, búsqueda de orígenes y memoria democrática en Bizkaia y España."
+        abstract: >-
+          Informe documental sobre AdoptadosBilbao.Blogspot.com, uno de los primeros
+          espacios digitales en España dedicados a denunciar adopciones ilegales, bebés
+          robados, ocultación de filiaciones y búsqueda de orígenes. Reconstruye su valor
+          testimonial, documental y simbólico en la memoria pública de las víctimas.
+        author:
+          "@id": "https://gomezaldaz.com/#person"
+        datePublished: "2025-10-18"
+        version: "1.1"
+        inLanguage: es
+        identifier: "https://doi.org/10.5281/zenodo.17387724"
+        keywords:
+          - AdoptadosBilbao
+          - bebés robados
+          - adopciones ilegales
+          - búsqueda de orígenes
+          - filiación
+          - memoria digital
+          - memoria democrática
+          - Asociación María Madre de Bilbao
+          - Bizkaia
+          - víctimas
+        mainEntityOfPage:
+          "@type": WebPage
+          "@id": "https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/#webpage"
+        encoding:
+          "@type": MediaObject
+          contentUrl: "https://gomezaldaz.com/docs/informe-adoptadosbilbao-blogspot-2025-v1.1.pdf"
+          encodingFormat: "application/pdf"
