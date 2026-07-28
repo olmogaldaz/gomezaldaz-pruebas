@@ -1,0 +1,119 @@
+name: One-time registry stigma correction
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/fix-registry-stigma-versions.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Correct Spanish and English publication pages
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          es = Path('es/obra/adopcion/estigma-registral-adopcion/index.html')
+          en = Path('en/work/adoption/registry-stigma-of-adoption/index.html')
+
+          es_text = es.read_text(encoding='utf-8')
+          en_text = en.read_text(encoding='utf-8')
+
+          def replace_once(text, old, new, label):
+              count = text.count(old)
+              if count != 1:
+                  raise AssertionError(f'{label}: expected 1 occurrence, found {count}')
+              return text.replace(old, new, 1)
+
+          es_text = replace_once(
+              es_text,
+              '''          <p>\n            <strong>Estado:</strong> traducción pendiente.\n          </p>''',
+              '''          <p>\n            <strong>Título:</strong> <em>The Registry Stigma of Adoption. When Supposed Protection Becomes Discrimination</em><br>\n            <strong>Autor:</strong> Olmo Gómez Aldaz<br>\n            <strong>Fecha:</strong> 23 de junio de 2026<br>\n            <strong>Versión:</strong> 1.0<br>\n            <strong>Licencia:</strong> CC BY 4.0\n          </p>\n\n          <p>\n            <strong>Zenodo · DOI general:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20820051" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20820051</a><br>\n            <strong>Zenodo · DOI versión v1.0:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20820052" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20820052</a><br>\n            <a href="/en/work/adoption/registry-stigma-of-adoption/">Ver página inglesa</a>\n          </p>''',
+              'Spanish English-version block'
+          )
+
+          es_text = replace_once(
+              es_text,
+              'La publicación está disponible en Zenodo en su versión española. La traducción inglesa está pendiente.',
+              'La publicación está disponible en Zenodo en español y en inglés.',
+              'Spanish access paragraph'
+          )
+
+          es_text = replace_once(
+              es_text,
+              '''        <a class="cta" href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">Publicación en Zenodo</a>\n        <a class="cta" href="/docs/el-estigma-registral-de-la-adopcion-v1.pdf" target="_blank" rel="noopener noreferrer">PDF local</a>''',
+              '''        <a class="cta" href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">Publicación española en Zenodo</a>\n        <a class="cta" href="/docs/el-estigma-registral-de-la-adopcion-v1.pdf" target="_blank" rel="noopener noreferrer">PDF español</a>\n        <a class="cta" href="https://doi.org/10.5281/zenodo.20820051" target="_blank" rel="noopener noreferrer">Publicación inglesa en Zenodo</a>\n        <a class="cta" href="/docs/the-registry-stigma-of-adoption-v1.pdf" target="_blank" rel="noopener noreferrer">PDF inglés</a>''',
+              'Spanish final access buttons'
+          )
+
+          en_text = en_text.replace('https://doi.org/10.5281/zenodo.20159685', 'https://doi.org/10.5281/zenodo.20820051')
+          en_text = en_text.replace('/docs/el-estigma-registral-de-la-adopcion-v1.pdf', '/docs/the-registry-stigma-of-adoption-v1.pdf')
+          en_text = en_text.replace('Local PDF (Spanish)', 'Local PDF')
+
+          en_text = replace_once(
+              en_text,
+              '''          <h3>Spanish version</h3>\n\n          <p>\n            <strong>Title:</strong> <em>El estigma registral de la adopción. Cuando la supuesta protección se convierte en discriminación</em><br>\n            <strong>Author:</strong> Olmo Gómez Aldaz<br>\n            <strong>Project:</strong> Undoing Adoption Project<br>\n            <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-3362-6763" target="_blank" rel="noopener noreferrer">0009-0003-3362-6763</a><br>\n            <strong>Date:</strong> 13 May 2026<br>\n            <strong>Licence:</strong> CC BY 4.0\n          </p>\n\n          <p>\n            <strong>Zenodo · General DOI:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20820051" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20159685</a><br>\n            <strong>Zenodo · DOI version v1.0:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20159686" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20159686</a>\n          </p>''',
+              '''          <h3>English version</h3>\n\n          <p>\n            <strong>Title:</strong> <em>The Registry Stigma of Adoption. When Supposed Protection Becomes Discrimination</em><br>\n            <strong>Author:</strong> Olmo Gómez Aldaz<br>\n            <strong>Project:</strong> Undoing Adoption Project<br>\n            <strong>ORCID:</strong> <a href="https://orcid.org/0009-0003-3362-6763" target="_blank" rel="noopener noreferrer">0009-0003-3362-6763</a><br>\n            <strong>Date:</strong> 23 June 2026<br>\n            <strong>Version:</strong> 1.0<br>\n            <strong>Licence:</strong> CC BY 4.0\n          </p>\n\n          <p>\n            <strong>Zenodo · General DOI:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20820051" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20820051</a><br>\n            <strong>Zenodo · DOI version v1.0:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20820052" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20820052</a>\n          </p>''',
+              'English primary-version block'
+          )
+
+          en_text = replace_once(
+              en_text,
+              '''          <h3>English version</h3>\n\n          <p>\n            <strong>Status:</strong> translation pending.\n          </p>''',
+              '''          <h3>Spanish version</h3>\n\n          <p>\n            <strong>Title:</strong> <em>El estigma registral de la adopción. Cuando la supuesta protección se convierte en discriminación</em><br>\n            <strong>Date:</strong> 13 May 2026<br>\n            <strong>Version:</strong> 1.0\n          </p>\n\n          <p>\n            <strong>Zenodo · General DOI:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20159685" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20159685</a><br>\n            <strong>Zenodo · DOI version v1.0:</strong>\n            <a href="https://doi.org/10.5281/zenodo.20159686" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20159686</a><br>\n            <a href="/es/obra/adopcion/estigma-registral-adopcion/">View Spanish page</a>\n          </p>''',
+              'English Spanish-version block'
+          )
+
+          en_text = replace_once(
+              en_text,
+              'The publication is available on Zenodo in its Spanish version. The full English translation is pending.',
+              'The publication is available on Zenodo in English and Spanish.',
+              'English access paragraph'
+          )
+
+          en_text = replace_once(
+              en_text,
+              '''Gómez Aldaz, Olmo. <em>El estigma registral de la adopción. Cuando la supuesta protección se convierte en discriminación</em>. 13 May 2026. Zenodo. DOI:\n        <a href="https://doi.org/10.5281/zenodo.20159686" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20159686</a>.''',
+              '''Gómez Aldaz, Olmo. <em>The Registry Stigma of Adoption. When Supposed Protection Becomes Discrimination</em>. 23 June 2026. Zenodo. DOI:\n        <a href="https://doi.org/10.5281/zenodo.20820052" target="_blank" rel="noopener noreferrer">10.5281/zenodo.20820052</a>.''',
+              'English recommended citation'
+          )
+
+          for label, text in [('Spanish', es_text), ('English', en_text)]:
+              forbidden = ['traducción pendiente', 'translation pending', 'translation is pending']
+              for phrase in forbidden:
+                  if phrase in text:
+                      raise AssertionError(f'{label}: pending-translation text remains: {phrase}')
+
+          required_es = ['10.5281/zenodo.20820051', '10.5281/zenodo.20820052', '/docs/the-registry-stigma-of-adoption-v1.pdf']
+          required_en = ['10.5281/zenodo.20820051', '10.5281/zenodo.20820052', '/docs/the-registry-stigma-of-adoption-v1.pdf', '10.5281/zenodo.20159685']
+          for item in required_es:
+              if item not in es_text:
+                  raise AssertionError(f'Spanish missing {item}')
+          for item in required_en:
+              if item not in en_text:
+                  raise AssertionError(f'English missing {item}')
+
+          es.write_text(es_text, encoding='utf-8')
+          en.write_text(en_text, encoding='utf-8')
+
+          Path('.github/workflows/fix-registry-stigma-versions.yml').unlink()
+          PY
+
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add es/obra/adopcion/estigma-registral-adopcion/index.html \
+                  en/work/adoption/registry-stigma-of-adoption/index.html \
+                  .github/workflows/fix-registry-stigma-versions.yml
+          git commit -m "Correct registry stigma Spanish and English editions"
+          git push
