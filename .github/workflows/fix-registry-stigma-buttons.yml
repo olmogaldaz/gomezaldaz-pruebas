@@ -90,3 +90,5 @@ jobs:
           git diff --cached --check
           git commit -m "Normalize registry stigma bilingual buttons"
           git push
+
+# trigger rerun
