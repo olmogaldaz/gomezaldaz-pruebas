@@ -352,9 +352,13 @@ nav a.active:hover{
 
 .back-top{
   margin-top:12px;
-  margin-bottom:1.5rem;
+  margin-bottom:0;
   color:var(--muted);
   font-size:.9rem;
+}
+
+.el-correo-page .back-top{
+  margin-bottom:1.5rem;
 }
 
 .back-top a{
