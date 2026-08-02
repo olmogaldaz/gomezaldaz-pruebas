@@ -1,5 +1,6 @@
 name: Link scope sources
 
+# One-time workflow for the test repository.
 on:
   push:
     paths:
