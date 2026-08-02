@@ -95,6 +95,7 @@ Estructura actual:
 └── prensa/                     # Prensa
     ├── index.html              # Índice de prensa
     ├── el-observatorio-9-2026/ # Entrevista en El Observatorio nº 9
+    ├── el-correo-primer-bebe-robado-victima-franquismo/ # Página documental sobre el primer reconocimiento publicado por El Correo
     └── medios/                 # Dosier de medios
 
 ---
@@ -134,6 +135,7 @@ Estructura actual:
 └── press/                           # Press
     ├── index.html                   # Press index
     ├── el-observatorio-9-2026/      # El Observatorio no. 9 interview
+    ├── el-correo-first-stolen-baby-recognised-francoism-victim/ # English documentary page on El Correo's first-recognition report
     └── media/                       # Media dossier
 
 ---
