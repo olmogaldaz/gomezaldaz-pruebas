@@ -1,0 +1,59 @@
+name: Link recognition headings
+
+on:
+  push:
+    paths:
+      - '.github/workflows/link-recognition-headings.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link recognition headings in Spanish and English
+        shell: python
+        run: |
+          from pathlib import Path
+
+          replacements = {
+              Path('es/prensa/el-correo-primer-bebe-robado-victima-franquismo/index.html'): {
+                  '<h2>El reconocimiento de Gogora</h2>': '<h2><a class="card-title-link" href="/es/memoria/#gogora">El reconocimiento de Gogora</a></h2>',
+                  '<h2>El reconocimiento del Gobierno de España</h2>': '<h2><a class="card-title-link" href="/es/memoria/#estado">El reconocimiento del Gobierno de España</a></h2>',
+              },
+              Path('en/press/el-correo-first-stolen-baby-recognised-francoism-victim/index.html'): {
+                  '<h2>Recognition by Gogora</h2>': '<h2><a class="card-title-link" href="/en/memory/#gogora">Recognition by Gogora</a></h2>',
+                  '<h2>Recognition by the Government of Spain</h2>': '<h2><a class="card-title-link" href="/en/memory/#state">Recognition by the Government of Spain</a></h2>',
+              },
+          }
+
+          changed = []
+          for path, pairs in replacements.items():
+              text = path.read_text(encoding='utf-8')
+              original = text
+              for old, new in pairs.items():
+                  if new in text:
+                      continue
+                  if old not in text:
+                      raise SystemExit(f'Expected heading not found in {path}: {old}')
+                  text = text.replace(old, new, 1)
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(str(path))
+
+          print('Changed:', ', '.join(changed) if changed else 'none')
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add es/prensa/el-correo-primer-bebe-robado-victima-franquismo/index.html en/press/el-correo-first-stolen-baby-recognised-francoism-victim/index.html
+          git commit -m "Enlazar títulos de los reconocimientos con Memoria"
+          git push
