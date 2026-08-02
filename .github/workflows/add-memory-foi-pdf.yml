@@ -1,5 +1,6 @@
 name: Add 28 July PDF to Memory pages
 
+# One-time workflow for the test repository.
 on:
   push:
     paths:
