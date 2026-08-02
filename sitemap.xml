@@ -289,6 +289,19 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/" />
   </url>
 
+  <!-- EL CORREO: PRIMER RECONOCIMIENTO / EL CORREO: FIRST RECOGNITION -->
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/" />
+  </url>
+
   <!-- DOSIER / MEDIA DOSSIER -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/medios/</loc>
