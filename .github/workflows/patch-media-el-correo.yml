@@ -1,0 +1,129 @@
+name: Patch El Correo media entries
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-media-el-correo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update Spanish and English media dossiers
+        shell: python
+        run: |
+          from pathlib import Path
+
+          replacements = {
+              Path('es/prensa/medios/index.html'): (
+                  '''    <div class="card">
+      <div class="meta">El Correo · Sociedad · 15/07/2026 · Alba Cárcamo</div>
+      <h3><a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer" class="card-title-link">
+        Euskadi reconoce por primera vez a un 'bebé robado' como víctima del franquismo
+      </a></h3>
+      <p class="card-subtitle">
+        Tanto el Gobierno vasco como el central le conceden a Olmo Gómez esa condición en sendas resoluciones fechadas este año.
+      </p>
+      <p>
+        <a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer">
+          Leer artículo
+        </a>
+      </p>
+      <p>
+        <a href="/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/">
+          Ver página documental
+        </a>
+      </p>
+    </div>''',
+                  '''    <div class="card">
+      <div class="meta">El Correo · Sociedad · edición digital 14/07/2026 · edición impresa 15/07/2026 · Alba Cárcamo</div>
+      <h3><a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer" class="card-title-link">
+        Un bebé robado en Bilbao, reconocido víctima del franquismo
+      </a></h3>
+      <p class="card-subtitle">
+        La edición digital se publicó el 14 de julio con este titular. La edición impresa del día 15 se tituló «Euskadi reconoce por primera vez a un ‘bebé robado’ como víctima del franquismo» y situó en primer plano el carácter pionero del reconocimiento de Gogora.
+      </p>
+      <p>
+        <a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer">
+          Leer edición digital
+        </a>
+      </p>
+      <p>
+        <a href="/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/">
+          Ver página documental sobre ambas ediciones
+        </a>
+      </p>
+    </div>'''
+              ),
+              Path('en/press/media/index.html'): (
+                  '''    <div class="card">
+      <div class="meta">El Correo · Society · 15/07/2026 · Alba Cárcamo</div>
+      <h3><a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer" class="card-title-link">
+        The Basque Country recognises a “stolen baby” as a victim of Francoism for the first time
+      </a></h3>
+      <p class="card-subtitle">
+        Both the Basque and Spanish governments grant Olmo Gómez that status in separate resolutions issued this year.
+      </p>
+      <p>
+        <a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer">
+          Read article
+        </a>
+      </p>
+      <p>
+        <a href="/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/">
+          View documentary page
+        </a>
+      </p>
+    </div>''',
+                  '''    <div class="card">
+      <div class="meta">El Correo · Society · digital edition 14/07/2026 · print edition 15/07/2026 · Alba Cárcamo</div>
+      <h3><a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer" class="card-title-link">
+        A stolen baby in Bilbao recognised as a victim of Francoism
+      </a></h3>
+      <p class="card-subtitle">
+        The digital edition was published on 14 July under this headline. The print edition of 15 July ran the headline “The Basque Country recognises a ‘stolen baby’ as a victim of Francoism for the first time” and placed the pioneering nature of Gogora’s recognition at the centre of the story.
+      </p>
+      <p>
+        <a href="https://www.elcorreo.com/sociedad/bebe-robado-bilbao-reconocido-victima-franquismo-20260714140743-nt.html" target="_blank" rel="noopener noreferrer">
+          Read digital edition
+        </a>
+      </p>
+      <p>
+        <a href="/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/">
+          View documentary page on both editions
+        </a>
+      </p>
+    </div>'''
+              ),
+          }
+
+          changed = []
+          for path, (old, new) in replacements.items():
+              text = path.read_text(encoding='utf-8')
+              if new in text:
+                  continue
+              if old not in text:
+                  raise SystemExit(f'Expected block not found in {path}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+              changed.append(str(path))
+
+          print('Changed:', ', '.join(changed) if changed else 'none')
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add es/prensa/medios/index.html en/press/media/index.html
+          git commit -m "Corregir ediciones de El Correo en los dosieres"
+          git push
