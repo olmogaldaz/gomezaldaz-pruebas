@@ -391,6 +391,28 @@ nav a.active:hover{
   scroll-margin-top:180px;
 }
 
+/* Notas de prensa: respiración entre fecha, título y subtítulo */
+main article > .card.hero{
+  padding:32px 40px;
+}
+
+main article > .card.hero .meta{
+  margin-bottom:12px;
+}
+
+main article > .card.hero h1{
+  margin-bottom:14px;
+}
+
+main article > .card.hero .card-subtitle{
+  margin:0;
+}
+
+main article > .card > .card-cta{
+  margin-top:28px;
+  margin-bottom:14px;
+}
+
 /* =========================
    FORMULARIOS
    ========================= */
