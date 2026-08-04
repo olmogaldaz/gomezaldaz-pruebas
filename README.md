@@ -96,7 +96,12 @@ Estructura actual:
     ├── index.html              # Índice de prensa
     ├── el-observatorio-9-2026/ # Entrevista en El Observatorio nº 9
     ├── el-correo-primer-bebe-robado-victima-franquismo/ # Página documental sobre el primer reconocimiento publicado por El Correo
-    └── medios/                 # Dosier de medios
+    ├── medios/                 # Dosier de medios
+    └── notas-de-prensa/        # Archivo de notas de prensa emitidas por Olmo Gómez Aldaz
+        ├── index.html
+        ├── sentencia-pionera-identidad-dni/
+        ├── reconocimiento-bebe-robado-nulidad-adopcion/
+        └── ley-memoria-democratica-bebes-robados/
 
 ---
 
@@ -136,7 +141,12 @@ Estructura actual:
     ├── index.html                   # Press index
     ├── el-observatorio-9-2026/      # El Observatorio no. 9 interview
     ├── el-correo-first-stolen-baby-recognised-francoism-victim/ # English documentary page on El Correo's first-recognition report
-    └── media/                       # Media dossier
+    ├── media/                       # Media dossier
+    └── press-releases/              # English archive of press releases
+        ├── index.html
+        ├── landmark-ruling-identity-restored-id-card/
+        ├── stolen-baby-recognition-adoption-annulment/
+        └── democratic-memory-law-stolen-babies/
 
 ---
 
@@ -184,6 +194,27 @@ El texto corresponde a “Voy a hablar de resiliencia: Resiliencia frente a la a
 
 ---
 
+## Notas de prensa / Press releases
+
+La sección Notas de prensa / Press releases conserva los comunicados emitidos directamente por Olmo Gómez Aldaz y los separa de la cobertura publicada por medios externos.
+
+Rutas de archivo:
+
+- /es/prensa/notas-de-prensa/
+- /en/press/press-releases/
+
+Notas incorporadas:
+
+1. 20 de enero de 2026: sentencia pionera y recuperación de la identidad en el DNI sin anular la adopción. La nota original se difundió en el cuerpo del correo y se reproduce en HTML, sin crear posteriormente un PDF artificial.
+2. 14 de julio de 2026: reconocimientos oficiales como «bebé robado» y oposición de la Diputación Foral de Bizkaia a la nulidad de la adopción. Se conserva en HTML y mediante el PDF original en español.
+3. 4 de agosto de 2026: «¿Está fracasando la Ley de Memoria Democrática con los bebés robados?». Se conserva en HTML y mediante el PDF original en español.
+
+Las páginas inglesas contienen la traducción íntegra del texto. Cuando existe PDF, enlazan el documento original en español y lo identifican expresamente como tal.
+
+Las páginas índice utilizan datos estructurados de tipo `CollectionPage`. Las páginas individuales utilizan `NewsArticle`, con fecha de publicación, titular, descripción, idioma y referencia al autor. Las páginas generales de prensa mantienen el tipo `WebPage` y relacionan el archivo de notas y el dosier de medios mediante `hasPart`.
+
+---
+
 ## Documentos públicos — /docs/
 
 La carpeta docs/ contiene documentos públicos enlazados desde la web o incluidos en el sitemap.
@@ -191,6 +222,8 @@ La carpeta docs/ contiene documentos públicos enlazados desde la web o incluido
 Puede incluir PDFs, revistas, entrevistas, documentos de reconocimiento o reparación y materiales complementarios del proyecto.
 
 Los documentos situados en docs/ forman parte del contenido público del sitio cuando están enlazados desde páginas de la web o incluidos en sitemap.xml.
+
+Entre los documentos asociados a las notas de prensa se encuentran los PDF originales de las notas difundidas en julio y agosto de 2026. La nota de enero de 2026 se conserva únicamente como texto HTML porque fue distribuida directamente en el cuerpo del correo.
 
 ---
 
@@ -229,7 +262,9 @@ El archivo robots.txt permite el rastreo completo del sitio y declara el sitemap
 
 https://gomezaldaz.com/sitemap.xml
 
-El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, secciones de Obra / Work, testimonios, investigación sobre bebés robados, informes documentales, prensa, dosier de medios y documentos públicos seleccionados.
+El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, secciones de Obra / Work, testimonios, investigación sobre bebés robados, informes documentales, prensa, dosier de medios, archivo bilingüe de notas de prensa y documentos públicos seleccionados.
+
+Las páginas nuevas de notas de prensa están emparejadas mediante `hreflang`. El sitemap incluye `lastmod` para las ocho páginas nuevas y para las dos páginas generales de prensa actualizadas el 4 de agosto de 2026.
 
 ---
 
