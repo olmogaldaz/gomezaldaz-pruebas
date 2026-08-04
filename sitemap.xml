@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- HOME -->
   <url>
     <loc>https://gomezaldaz.com/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/" />
@@ -16,7 +13,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/" />
   </url>
 
-  <!-- AUTOR / AUTHOR -->
   <url>
     <loc>https://gomezaldaz.com/es/autor/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/autor/" />
@@ -29,7 +25,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/autor/" />
   </url>
 
-  <!-- HISTORIA / STORY -->
   <url>
     <loc>https://gomezaldaz.com/es/historia/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/historia/" />
@@ -42,7 +37,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/historia/" />
   </url>
 
-  <!-- DEMANDA / CLAIM -->
   <url>
     <loc>https://gomezaldaz.com/es/demanda/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/demanda/" />
@@ -55,7 +49,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/demanda/" />
   </url>
 
-  <!-- SENTENCIA / JUDGMENTS -->
   <url>
     <loc>https://gomezaldaz.com/es/sentencia/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/sentencia/" />
@@ -68,7 +61,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/sentencia/" />
   </url>
 
-  <!-- MEMORIA / MEMORY -->
   <url>
     <loc>https://gomezaldaz.com/es/memoria/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/memoria/" />
@@ -81,7 +73,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/memoria/" />
   </url>
 
-  <!-- GENUS HOMO -->
   <url>
     <loc>https://gomezaldaz.com/es/genus-homo/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
@@ -94,7 +85,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/genus-homo/" />
   </url>
 
-  <!-- OBRA / WORK -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/" />
@@ -107,7 +97,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/" />
   </url>
 
-  <!-- OBRA > LIBROS / WORK > BOOKS -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/libros/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/libros/" />
@@ -120,7 +109,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/libros/" />
   </url>
 
-  <!-- OBRA > TESTIMONIOS / WORK > TESTIMONIES -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/testimonios/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/" />
@@ -133,7 +121,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/" />
   </url>
 
-  <!-- TESTIMONIOS > VOY A HABLAR DE RESILIENCIA / TESTIMONIES > I AM GOING TO SPEAK ABOUT RESILIENCE -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/testimonios/voy-a-hablar-de-resiliencia/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/voy-a-hablar-de-resiliencia/" />
@@ -146,7 +133,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/testimonios/voy-a-hablar-de-resiliencia/" />
   </url>
 
-  <!-- OBRA > ADOPCIÓN / WORK > ADOPTION -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/" />
@@ -159,7 +145,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/" />
   </url>
 
-  <!-- ADOPCIÓN > IDENTICIDIO / ADOPTION > IDENTICIDE -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/identicidio/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/identicidio/" />
@@ -172,7 +157,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/identicidio/" />
   </url>
 
-  <!-- ADOPCIÓN > ABOLICIÓN DEL IDENTICIDIO / ADOPTION > ABOLITION OF IDENTICIDE -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/" />
@@ -185,7 +169,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolicion-del-identicidio/" />
   </url>
 
-  <!-- ADOPCIÓN > ABOLIFOBIA / ADOPTION > ABOLIPHOBIA -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/abolifobia/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolifobia/" />
@@ -198,7 +181,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/abolifobia/" />
   </url>
 
-  <!-- ADOPCIÓN > GENOCIDIO IDENTICIDA COLONIAL / ADOPTION > COLONIAL IDENTICIDE GENOCIDE -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/adopcion-genocidio-identicida-colonial/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/adopcion-genocidio-identicida-colonial/" />
@@ -211,7 +193,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/adopcion-genocidio-identicida-colonial/" />
   </url>
 
-  <!-- ADOPCIÓN > ESTIGMA REGISTRAL / ADOPTION > REGISTRY STIGMA -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/adopcion/estigma-registral-adopcion/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/estigma-registral-adopcion/" />
@@ -224,7 +205,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/adopcion/estigma-registral-adopcion/" />
   </url>
 
-  <!-- OBRA > BEBÉS ROBADOS / WORK > STOLEN BABIES -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/bebes-robados/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/" />
@@ -237,7 +217,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/" />
   </url>
 
-  <!-- BEBÉS ROBADOS > INFORME ASOCIACIÓN MARÍA MADRE / STOLEN BABIES > MARÍA MADRE ASSOCIATION REPORT -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/" />
@@ -250,7 +229,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/" />
   </url>
 
-  <!-- BEBÉS ROBADOS > INFORME ADOPTADOS BILBAO / STOLEN BABIES > ADOPTADOS BILBAO REPORT -->
   <url>
     <loc>https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/" />
@@ -263,20 +241,20 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/" />
   </url>
 
-  <!-- PRENSA / PRESS -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/</loc>
+    <lastmod>2026-08-04</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/" />
   </url>
 
   <url>
     <loc>https://gomezaldaz.com/en/press/</loc>
+    <lastmod>2026-08-04</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/" />
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/" />
   </url>
 
-  <!-- ENTREVISTA EL OBSERVATORIO Nº 9 / EL OBSERVATORIO NO. 9 INTERVIEW -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/" />
@@ -289,7 +267,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-observatorio-9-2026/" />
   </url>
 
-  <!-- EL CORREO: PRIMER RECONOCIMIENTO / EL CORREO: FIRST RECOGNITION -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/" />
@@ -302,7 +279,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/" />
   </url>
 
-  <!-- DOSIER / MEDIA DOSSIER -->
   <url>
     <loc>https://gomezaldaz.com/es/prensa/medios/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/medios/" />
@@ -315,7 +291,62 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/medios/" />
   </url>
 
-  <!-- PDFS DE RECONOCIMIENTO COMO VÍCTIMA -->
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/notas-de-prensa/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/press-releases/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/notas-de-prensa/sentencia-pionera-identidad-dni/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/sentencia-pionera-identidad-dni/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/landmark-ruling-identity-restored-id-card/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/press-releases/landmark-ruling-identity-restored-id-card/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/landmark-ruling-identity-restored-id-card/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/sentencia-pionera-identidad-dni/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/notas-de-prensa/reconocimiento-bebe-robado-nulidad-adopcion/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/reconocimiento-bebe-robado-nulidad-adopcion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/stolen-baby-recognition-adoption-annulment/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/press-releases/stolen-baby-recognition-adoption-annulment/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/stolen-baby-recognition-adoption-annulment/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/reconocimiento-bebe-robado-nulidad-adopcion/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/es/prensa/notas-de-prensa/ley-memoria-democratica-bebes-robados/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/ley-memoria-democratica-bebes-robados/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/democratic-memory-law-stolen-babies/" />
+  </url>
+
+  <url>
+    <loc>https://gomezaldaz.com/en/press/press-releases/democratic-memory-law-stolen-babies/</loc>
+    <lastmod>2026-08-04</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://gomezaldaz.com/en/press/press-releases/democratic-memory-law-stolen-babies/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://gomezaldaz.com/es/prensa/notas-de-prensa/ley-memoria-democratica-bebes-robados/" />
+  </url>
+
   <url>
     <loc>https://gomezaldaz.com/docs/declaracion-reconocimiento-reparacion-memoria-democratica-olmo-2026.pdf</loc>
   </url>
@@ -324,12 +355,10 @@
     <loc>https://gomezaldaz.com/docs/resolucion-gogora-reconocimiento-victima-franquismo-olmo-gomez-aldaz-2026.pdf</loc>
   </url>
 
-  <!-- PDF EL OBSERVATORIO Nº 9 -->
   <url>
     <loc>https://gomezaldaz.com/docs/el-observatorio-9-2026.pdf</loc>
   </url>
 
-  <!-- PDFS DE OBRA / ZENODO -->
   <url>
     <loc>https://gomezaldaz.com/docs/iamm-informe-asociacion-maria-madre-v1.1.pdf</loc>
   </url>
