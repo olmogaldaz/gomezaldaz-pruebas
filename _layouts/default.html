@@ -7,6 +7,16 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | escape }}">
 
+  {% assign current_resource = nil %}
+  {% for resource in site.data.resources.html %}
+    {% if resource.url == page.url %}
+      {% assign current_resource = resource %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% assign resource_published = current_resource.published %}
+  {% assign resource_modified = current_resource.modified %}
+
   {% assign canonical_path = page.canonical | default: page.url %}
   <link rel="canonical" href="{{ site.url }}{{ canonical_path }}">
 
