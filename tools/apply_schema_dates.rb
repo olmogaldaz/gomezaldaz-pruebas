@@ -82,19 +82,8 @@ end
 
 layout_path = '_layouts/default.html'
 layout = File.read(layout_path)
-old = <<~'LIQUID'.rstrip
-  {% if page.schema_nodes %}
-    {% for schema_node in page.schema_nodes %}
-      {% capture custom_node %}
-      ,
-      {{ schema_node | jsonify }}
-      {% endcapture %}
-
-      {% assign schema_nodes = schema_nodes | append: custom_node %}
-    {% endfor %}
-  {% endif %}
-LIQUID
-new = <<~'LIQUID'.rstrip
+pattern = /\{% if page\.schema_nodes %\}.*?\{% for schema_node in page\.schema_nodes %\}.*?\{% capture custom_node %\}\s*,\s*\{\{ schema_node \| jsonify \}\}\s*\{% endcapture %\}.*?\{% assign schema_nodes = schema_nodes \| append: custom_node %\}.*?\{% endfor %\}.*?\{% endif %\}/m
+new_block = <<~'LIQUID'.rstrip
   {% if page.schema_nodes %}
     {% for schema_node in page.schema_nodes %}
       {% assign serialized_schema_node = schema_node | jsonify %}
@@ -113,8 +102,8 @@ new = <<~'LIQUID'.rstrip
     {% endfor %}
   {% endif %}
 LIQUID
-abort 'bloque del layout no encontrado' unless layout.include?(old)
-File.write(layout_path, layout.sub(old, new))
+abort 'bloque del layout no encontrado o no único' unless layout.scan(pattern).size == 1
+File.write(layout_path, layout.sub(pattern, new_block))
 modified << layout_path
 
 puts "PAGES_REVIEWED=#{resources.size}"
