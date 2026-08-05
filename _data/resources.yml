@@ -5,12 +5,12 @@
 html:
   - {url: "/", lang: es, alternate: "/en/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/en/", lang: en, alternate: "/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/es/autor/", lang: es, alternate: "/en/author/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/en/author/", lang: en, alternate: "/es/autor/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/es/historia/", lang: es, alternate: "/en/story/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/en/story/", lang: en, alternate: "/es/historia/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/es/demanda/", lang: es, alternate: "/en/claim/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/en/claim/", lang: en, alternate: "/es/demanda/", modified: "2026-08-05T15:30:00+02:00"}
+  - {url: "/es/autor/", lang: es, alternate: "/en/author/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/olmo-autor.jpg"}]}
+  - {url: "/en/author/", lang: en, alternate: "/es/autor/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/olmo-autor.jpg"}]}
+  - {url: "/es/historia/", lang: es, alternate: "/en/story/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/partida-nacimiento-recorte.jpg"}]}
+  - {url: "/en/story/", lang: en, alternate: "/es/historia/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/partida-nacimiento-recorte.jpg"}]}
+  - {url: "/es/demanda/", lang: es, alternate: "/en/claim/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/guillermopena4_bn.jpg"}]}
+  - {url: "/en/claim/", lang: en, alternate: "/es/demanda/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/guillermopena4_bn.jpg"}]}
   - {url: "/es/sentencia/", lang: es, alternate: "/en/sentence/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/en/sentence/", lang: en, alternate: "/es/sentencia/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/es/memoria/", lang: es, alternate: "/en/memory/", modified: "2026-08-05T15:30:00+02:00"}
@@ -47,8 +47,8 @@ html:
   - {url: "/en/press/", lang: en, alternate: "/es/prensa/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/es/prensa/el-observatorio-9-2026/", lang: es, alternate: "/en/press/el-observatorio-9-2026/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/en/press/el-observatorio-9-2026/", lang: en, alternate: "/es/prensa/el-observatorio-9-2026/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", lang: es, alternate: "/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/", modified: "2026-08-05T15:30:00+02:00"}
-  - {url: "/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/", lang: en, alternate: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", modified: "2026-08-05T15:30:00+02:00"}
+  - {url: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", lang: es, alternate: "/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/el-correo-bebe-robado-victima-franquismo-2026.jpg"}]}
+  - {url: "/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/", lang: en, alternate: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", modified: "2026-08-05T15:30:00+02:00", images: [{url: "/img/el-correo-bebe-robado-victima-franquismo-2026.jpg"}]}
   - {url: "/es/prensa/medios/", lang: es, alternate: "/en/press/media/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/en/press/media/", lang: en, alternate: "/es/prensa/medios/", modified: "2026-08-05T15:30:00+02:00"}
   - {url: "/es/prensa/notas-de-prensa/", lang: es, alternate: "/en/press/press-releases/", modified: "2026-08-05T15:30:00+02:00"}
