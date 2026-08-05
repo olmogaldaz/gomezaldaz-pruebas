@@ -1,0 +1,48 @@
+name: Audit website schema references
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-website-schema.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Count unresolved website references
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          refs = []
+          website_defs = []
+          for path in Path('.').rglob('index.html'):
+              s = str(path)
+              if s.startswith('_site/') or '/_site/' in s:
+                  continue
+              text = path.read_text(encoding='utf-8', errors='ignore')
+              if 'https://gomezaldaz.com/#website' in text:
+                  refs.append(s)
+              if re.search(r'"?@type"?\s*:\s*WebSite', text) and 'https://gomezaldaz.com/#website' in text:
+                  website_defs.append(s)
+
+          print(f'REFERENCE_FILES={len(refs)}')
+          for p in refs:
+              print(f'REF={p}')
+          print(f'WEBSITE_DEFINITION_FILES={len(website_defs)}')
+          for p in website_defs:
+              print(f'DEF={p}')
+          PY
+      - name: Remove workflow
+        run: |
+          rm .github/workflows/audit-website-schema.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/workflows/audit-website-schema.yml
+          git commit -m 'Remove temporary website schema audit'
+          git push
