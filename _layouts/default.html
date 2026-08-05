@@ -99,15 +99,22 @@
   {% comment %} --- PAGE-SPECIFIC SCHEMA NODES --- {% endcomment %}
 
   {% if page.schema_nodes %}
-    {% for schema_node in page.schema_nodes %}
-      {% capture custom_node %}
-      ,
-      {{ schema_node | jsonify }}
-      {% endcapture %}
+  {% for schema_node in page.schema_nodes %}
+    {% assign serialized_schema_node = schema_node | jsonify %}
+    {% if page.schema_date_target and schema_node['@id'] == page.schema_date_target %}
+      {% assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
+      {% assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
+      {% capture dated_schema_node %}{{ serialized_schema_node_without_closing_brace }}{% if resource_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if resource_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}{% endcapture %}
+      {% assign serialized_schema_node = dated_schema_node | strip %}
+    {% endif %}
+    {% capture custom_node %}
+    ,
+    {{ serialized_schema_node }}
+    {% endcapture %}
 
-      {% assign schema_nodes = schema_nodes | append: custom_node %}
-    {% endfor %}
-  {% endif %}
+    {% assign schema_nodes = schema_nodes | append: custom_node %}
+  {% endfor %}
+{% endif %}
 
   <script type="application/ld+json">
   [
