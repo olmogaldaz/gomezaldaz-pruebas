@@ -1,0 +1,289 @@
+name: Apply schema resource dates
+
+on:
+  push:
+    branches: [schema-fechas-resources]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: schema-fechas-resources
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - name: Install Jekyll
+        run: gem install jekyll --no-document
+      - name: Apply schema targeting and press-release split
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'json'
+
+          RESOURCES = YAML.load_file('_data/resources.yml').fetch('html')
+          AUX_TYPES = %w[Person Organization WebSite]
+          PRESS_PREFIXES = [
+            '/es/prensa/notas-de-prensa/',
+            '/en/press/press-releases/'
+          ]
+          PRESS_INDEXES = [
+            '/es/prensa/notas-de-prensa/',
+            '/en/press/press-releases/'
+          ]
+
+          def page_path(url)
+            return 'index.html' if url == '/'
+            File.join(url.sub(%r{^/}, '').sub(%r{/$}, ''), 'index.html')
+          end
+
+          def parse_page(path)
+            text = File.read(path)
+            match = text.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            raise "No front matter: #{path}" unless match
+            data = YAML.safe_load(match[1], permitted_classes: [Date, Time], aliases: true) || {}
+            body = text[match.end(0)..] || ''
+            [data, body]
+          end
+
+          def write_page(path, data, body)
+            yaml = YAML.dump(data, line_width: -1).sub(/\A---\s*\n/, '')
+            File.write(path, "---\n#{yaml}---\n\n#{body.sub(/\A\n*/, '')}")
+          end
+
+          changed = []
+          report = []
+          unresolved = []
+
+          RESOURCES.each do |resource|
+            url = resource.fetch('url')
+            path = page_path(url)
+            data, body = parse_page(path)
+            nodes = data['schema_nodes']
+            unless nodes.is_a?(Array) && !nodes.empty?
+              unresolved << [path, url, 'schema_nodes ausente o vacío']
+              next
+            end
+
+            full_url = "https://gomezaldaz.com#{url}"
+            individual_press_release = PRESS_PREFIXES.any? { |prefix| url.start_with?(prefix) } && !PRESS_INDEXES.include?(url)
+
+            if individual_press_release
+              article_candidates = nodes.select { |n| n.is_a?(Hash) && n['@type'] == 'Article' && n['url'] == full_url }
+              if article_candidates.size != 1
+                unresolved << [path, url, "se esperaba un Article único y se encontraron #{article_candidates.size}"]
+                next
+              end
+
+              article = article_candidates.first
+              historical_published = article['datePublished']
+              unless historical_published
+                unresolved << [path, url, 'Article sin fecha histórica datePublished']
+                next
+              end
+
+              article_id = "#{full_url}#article"
+              webpage_id = "#{full_url}#webpage"
+
+              article['@id'] = article_id
+              article.delete('dateModified')
+              article['mainEntityOfPage'] = { '@id' => webpage_id }
+
+              webpage = {
+                '@type' => 'WebPage',
+                '@id' => webpage_id,
+                'url' => full_url,
+                'name' => article['name'],
+                'description' => article['description'],
+                'inLanguage' => article['inLanguage'],
+                'mainEntity' => { '@id' => article_id }
+              }
+
+              idx = nodes.index(article)
+              nodes.insert(idx, webpage)
+              data['schema_date_target'] = webpage_id
+              report << [path, url, 'WebPage', webpage_id, 'separado de Article histórico']
+            else
+              candidates = nodes.select do |n|
+                n.is_a?(Hash) &&
+                  n['url'] == full_url &&
+                  !AUX_TYPES.include?(n['@type'])
+              end
+
+              if candidates.size != 1
+                unresolved << [path, url, "nodo principal no inequívoco: #{candidates.size} candidatos por URL"]
+                next
+              end
+
+              target = candidates.first
+              target.delete('datePublished')
+              target.delete('dateModified')
+              data['schema_date_target'] = target['@id']
+              report << [path, url, target['@type'], target['@id'], 'nodo principal existente']
+            end
+
+            data['schema_nodes'] = nodes
+            write_page(path, data, body)
+            changed << path
+          end
+
+          unless unresolved.empty?
+            puts 'UNRESOLVED_CASES_BEGIN'
+            unresolved.each { |row| puts row.join(' | ') }
+            puts 'UNRESOLVED_CASES_END'
+            abort "#{unresolved.size} páginas no resueltas"
+          end
+
+          layout_path = '_layouts/default.html'
+          layout = File.read(layout_path)
+          old = <<~'LIQUID'
+            {% if page.schema_nodes %}
+              {% for schema_node in page.schema_nodes %}
+                {% capture custom_node %}
+                ,
+                {{ schema_node | jsonify }}
+                {% endcapture %}
+
+                {% assign schema_nodes = schema_nodes | append: custom_node %}
+              {% endfor %}
+            {% endif %}
+          LIQUID
+
+          new = <<~'LIQUID'
+            {% if page.schema_nodes %}
+              {% for schema_node in page.schema_nodes %}
+                {% assign serialized_schema_node = schema_node | jsonify %}
+                {% if page.schema_date_target and schema_node['@id'] == page.schema_date_target %}
+                  {% assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
+                  {% assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
+                  {% capture dated_schema_node %}
+                  {{ serialized_schema_node_without_closing_brace }}{% if resource_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if resource_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}
+                  {% endcapture %}
+                  {% assign serialized_schema_node = dated_schema_node | strip %}
+                {% endif %}
+                {% capture custom_node %}
+                ,
+                {{ serialized_schema_node }}
+                {% endcapture %}
+
+                {% assign schema_nodes = schema_nodes | append: custom_node %}
+              {% endfor %}
+            {% endif %}
+          LIQUID
+
+          unless layout.include?(old)
+            abort 'No se encontró el bloque esperado en _layouts/default.html'
+          end
+          File.write(layout_path, layout.sub(old, new))
+          changed << layout_path
+
+          puts "PAGES_REVIEWED=#{RESOURCES.size}"
+          puts "PAGES_CHANGED=#{changed.count { |p| p.end_with?('index.html') }}"
+          puts "ADDITIONAL_FILES_CHANGED=#{changed.count { |p| !p.end_with?('index.html') }}"
+          puts 'TARGET_REPORT_BEGIN'
+          report.each { |row| puts row.join(' | ') }
+          puts 'TARGET_REPORT_END'
+          RUBY
+      - name: Build site
+        run: jekyll build --trace
+      - name: Validate all generated JSON-LD and date placement
+        run: |
+          ruby <<'RUBY'
+          require 'json'
+          require 'yaml'
+
+          resources = YAML.load_file('_data/resources.yml').fetch('html')
+          errors = []
+          checked = 0
+          type_patterns = Hash.new { |h,k| h[k] = [] }
+
+          resources.each do |resource|
+            url = resource.fetch('url')
+            source = url == '/' ? 'index.html' : File.join(url.sub(%r{^/}, '').sub(%r{/$}, ''), 'index.html')
+            front = File.read(source).match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            data = YAML.safe_load(front[1], aliases: true)
+            target_id = data['schema_date_target']
+
+            output = url == '/' ? '_site/index.html' : File.join('_site', url.sub(%r{^/}, ''), 'index.html')
+            html = File.read(output)
+            scripts = html.scan(/<script type="application\/ld\+json">(.*?)<\/script>/m).flatten
+            if scripts.size != 1
+              errors << "#{url}: se esperaba 1 bloque JSON-LD y hay #{scripts.size}"
+              next
+            end
+
+            begin
+              graph = JSON.parse(scripts.first)
+            rescue => e
+              errors << "#{url}: JSON inválido: #{e.message}"
+              next
+            end
+
+            nodes = graph.is_a?(Array) ? graph : [graph]
+            targets = nodes.select { |n| n.is_a?(Hash) && n['@id'] == target_id }
+            if targets.size != 1
+              errors << "#{url}: objetivo #{target_id.inspect} aparece #{targets.size} veces"
+              next
+            end
+            target = targets.first
+
+            expected_published = resource['published']
+            expected_modified = resource['modified']
+            errors << "#{url}: datePublished inesperada" if expected_published.nil? && target.key?('datePublished')
+            errors << "#{url}: datePublished ausente o distinta" if expected_published && target['datePublished'] != expected_published
+            errors << "#{url}: dateModified inesperada" if expected_modified.nil? && target.key?('dateModified')
+            errors << "#{url}: dateModified ausente o distinta" if expected_modified && target['dateModified'] != expected_modified
+
+            nodes.each do |node|
+              next unless node.is_a?(Hash)
+              next if node['@id'] == target_id
+              if %w[Person Organization WebSite].include?(node['@type']) && (node.key?('datePublished') || node.key?('dateModified'))
+                errors << "#{url}: fechas añadidas a entidad auxiliar #{node['@type']} #{node['@id']}"
+              end
+            end
+
+            signature = [target['@type'], nodes.map { |n| n.is_a?(Hash) ? n['@type'] : nil }.compact.sort]
+            type_patterns[signature] << url
+            checked += 1
+          end
+
+          puts "JSONLD_PAGES_CHECKED=#{checked}"
+          puts "JSONLD_ERRORS=#{errors.size}"
+          puts 'STRUCTURE_PATTERNS_BEGIN'
+          type_patterns.each { |signature, urls| puts "#{signature.inspect} | sample=#{urls.first} | count=#{urls.size}" }
+          puts 'STRUCTURE_PATTERNS_END'
+          errors.each { |e| puts "ERROR=#{e}" }
+          exit 1 unless errors.empty?
+          RUBY
+      - name: Check visible body content unchanged
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          resources = YAML.load_file('_data/resources.yml').fetch('html')
+          errors = []
+          resources.each do |resource|
+            url = resource.fetch('url')
+            path = url == '/' ? 'index.html' : File.join(url.sub(%r{^/}, '').sub(%r{/$}, ''), 'index.html')
+            current = File.read(path).sub(/\A---\s*\n.*?\n---\s*\n/m, '')
+            original = `git show 1d4280d001594722b26ebd5479d608cf781de6d8:#{path}`
+            original_body = original.sub(/\A---\s*\n.*?\n---\s*\n/m, '')
+            errors << path unless current == original_body
+          end
+          puts "VISIBLE_BODY_DIFFERENCES=#{errors.size}"
+          errors.each { |p| puts "BODY_CHANGED=#{p}" }
+          exit 1 unless errors.empty?
+          RUBY
+      - name: Commit final changes and remove temporary workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/apply-schema-resource-dates.yml
+          git add _layouts/default.html
+          git add -- ':(glob)**/index.html'
+          git commit -m 'Apply resource dates to page schema nodes'
+          git push origin HEAD:schema-fechas-resources
