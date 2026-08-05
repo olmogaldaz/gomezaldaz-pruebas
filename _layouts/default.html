@@ -60,7 +60,6 @@
   
   {% capture person_node %}
   {
-    "@context": "https://schema.org",
     "@type": "Person",
     "@id": "https://gomezaldaz.com/#person",
     "name": "Olmo Gómez Aldaz",
@@ -117,9 +116,12 @@
 {% endif %}
 
   <script type="application/ld+json">
-  [
-  {{ schema_nodes }}
-  ]
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {{ schema_nodes }}
+    ]
+  }
   </script>
 
 </head>
