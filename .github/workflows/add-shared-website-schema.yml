@@ -28,42 +28,46 @@ jobs:
           if '"@type": "WebSite"' in layout:
               raise SystemExit('Layout already contains a WebSite node')
 
-          replacement = '''  {% assign schema_nodes = person_node %}
-
-          {% comment %} --- WEBSITE (siempre) --- {% endcomment %}
-
-          {% capture website_node %}
-          ,
-          {
-            "@type": "WebSite",
-            "@id": "https://gomezaldaz.com/#website",
-            "url": "https://gomezaldaz.com/",
-            "name": "Olmo Gómez Aldaz",
-            "inLanguage": ["es", "en"],
-            "about": {
-              "@id": "https://gomezaldaz.com/#person"
-            }
-          }
-          {% endcapture %}
-
-          {% assign schema_nodes = schema_nodes | append: website_node %}
-'''
+          replacement = '\n'.join([
+              '  {% assign schema_nodes = person_node %}',
+              '',
+              '  {% comment %} --- WEBSITE (siempre) --- {% endcomment %}',
+              '',
+              '  {% capture website_node %}',
+              '  ,',
+              '  {',
+              '    "@type": "WebSite",',
+              '    "@id": "https://gomezaldaz.com/#website",',
+              '    "url": "https://gomezaldaz.com/",',
+              '    "name": "Olmo Gómez Aldaz",',
+              '    "inLanguage": ["es", "en"],',
+              '    "about": {',
+              '      "@id": "https://gomezaldaz.com/#person"',
+              '    }',
+              '  }',
+              '  {% endcapture %}',
+              '',
+              '  {% assign schema_nodes = schema_nodes | append: website_node %}',
+              ''
+          ])
           layout = layout.replace(needle, replacement, 1)
           layout_path.write_text(layout, encoding='utf-8')
 
           homepage_path = Path('index.html')
           homepage = homepage_path.read_text(encoding='utf-8')
-          website_block = '''- "@context": https://schema.org
-            "@type": WebSite
-            "@id": https://gomezaldaz.com/#website
-            url: https://gomezaldaz.com/
-            name: Olmo Gómez Aldaz
-            inLanguage:
-            - es
-            - en
-            about:
-              "@id": https://gomezaldaz.com/#person
-          '''
+          website_block = '\n'.join([
+              '- "@context": https://schema.org',
+              '  "@type": WebSite',
+              '  "@id": https://gomezaldaz.com/#website',
+              '  url: https://gomezaldaz.com/',
+              '  name: Olmo Gómez Aldaz',
+              '  inLanguage:',
+              '  - es',
+              '  - en',
+              '  about:',
+              '    "@id": https://gomezaldaz.com/#person',
+              ''
+          ])
           if homepage.count(website_block) != 1:
               raise SystemExit(f'Expected one homepage WebSite block, found {homepage.count(website_block)}')
           homepage = homepage.replace(website_block, '', 1)
