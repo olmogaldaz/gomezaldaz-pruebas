@@ -1,0 +1,97 @@
+name: Fix Spanish report WebPage nodes
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - run: gem install jekyll --no-document
+      - name: Fix both Spanish reports
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'date'
+
+          files = {
+            'es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/index.html' => {
+              url: 'https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/',
+              webpage: 'https://gomezaldaz.com/es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/#webpage'
+            },
+            'es/obra/bebes-robados/informe-adoptados-bilbao/index.html' => {
+              url: 'https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/',
+              webpage: 'https://gomezaldaz.com/es/obra/bebes-robados/informe-adoptados-bilbao/#webpage'
+            }
+          }
+
+          files.each do |path, cfg|
+            text = File.read(path)
+            m = text.match(/\A---\s*\n(.*?)\n---\s*\n/m) or abort "Sin front matter: #{path}"
+            data = YAML.safe_load(m[1], permitted_classes: [Date, Time], aliases: true)
+            nodes = data['schema_nodes']
+            abort "schema_nodes inválido: #{path}" unless nodes.is_a?(Array)
+            report = nodes.find { |n| n.is_a?(Hash) && n['@type'] == 'Report' }
+            abort "Report no encontrado: #{path}" unless report
+
+            webpage = {
+              '@type' => 'WebPage',
+              '@id' => cfg[:webpage],
+              'url' => cfg[:url],
+              'name' => data['title'],
+              'description' => data['description'],
+              'inLanguage' => 'es',
+              'mainEntity' => { '@id' => report['@id'] }
+            }
+
+            report.delete('@context')
+            report['mainEntityOfPage'] = { '@id' => cfg[:webpage] }
+            data['schema_nodes'] = [webpage, report]
+            data['schema_date_target'] = cfg[:webpage]
+
+            body = text[m.end(0)..] || ''
+            yaml = YAML.dump(data, line_width: -1).sub(/\A---\s*\n/, '')
+            File.write(path, "---\n#{yaml}---\n\n#{body.sub(/\A\n*/, '')}")
+          end
+          RUBY
+      - name: Verify and build
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'; require 'date'
+          paths = %w[
+            es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/index.html
+            es/obra/bebes-robados/informe-adoptados-bilbao/index.html
+          ]
+          paths.each do |path|
+            text = File.read(path)
+            fm = text.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            data = YAML.safe_load(fm[1], permitted_classes:[Date,Time], aliases:true)
+            types = data['schema_nodes'].map { |n| n['@type'] }
+            abort "Tipos incorrectos en #{path}: #{types.inspect}" unless types == ['WebPage','Report']
+            wp, report = data['schema_nodes']
+            abort "Enlaces incorrectos en #{path}" unless wp.dig('mainEntity','@id') == report['@id'] && report.dig('mainEntityOfPage','@id') == wp['@id']
+            abort "Target incorrecto en #{path}" unless data['schema_date_target'] == wp['@id']
+          end
+          RUBY
+          jekyll build --trace
+      - name: Commit and remove workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/fix-spanish-report-webpages.yml
+          git add es/obra/bebes-robados/informe-asociacion-maria-madre-bilbao/index.html
+          git add es/obra/bebes-robados/informe-adoptados-bilbao/index.html
+          git commit -m 'Add explicit WebPage nodes to Spanish reports'
+          git push origin HEAD:main
