@@ -39,11 +39,11 @@
   {% endif %}
 
   <!-- schema -->
-
+  
   {% assign schema_nodes = "" %}
-
+  
   {% comment %} --- PERSON (siempre) --- {% endcomment %}
-
+  
   {% assign person_url = "https://gomezaldaz.com/" %}
 
   {% if page.lang == "es" %}
@@ -57,7 +57,7 @@
     {% assign former_name_label = "Former registered name" %}
     {% assign footer_tagline = "Personal and documentary website against the culture of silence imposed on victims of child trafficking" %}
   {% endif %}
-
+  
   {% capture person_node %}
   {
     "@context": "https://schema.org",
@@ -93,41 +93,17 @@
     ]
   }
   {% endcapture %}
-
+  
   {% assign schema_nodes = person_node %}
 
   {% comment %} --- PAGE-SPECIFIC SCHEMA NODES --- {% endcomment %}
 
   {% if page.schema_nodes %}
     {% for schema_node in page.schema_nodes %}
-      {% assign schema_node_id = schema_node["@id"] %}
-      {% assign add_published = false %}
-      {% assign add_modified = false %}
-
-      {% if schema_node_id contains "#webpage" %}
-        {% if resource_published and schema_node.datePublished == nil %}
-          {% assign add_published = true %}
-        {% endif %}
-        {% if resource_modified and schema_node.dateModified == nil %}
-          {% assign add_modified = true %}
-        {% endif %}
-      {% endif %}
-
-      {% if add_published or add_modified %}
-        {% assign schema_node_json = schema_node | jsonify %}
-        {% assign schema_node_length = schema_node_json | size | minus: 1 %}
-        {% assign schema_node_without_end = schema_node_json | slice: 0, schema_node_length %}
-
-        {% capture custom_node %}
-        ,
-        {{ schema_node_without_end }}{% if add_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if add_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}
-        {% endcapture %}
-      {% else %}
-        {% capture custom_node %}
-        ,
-        {{ schema_node | jsonify }}
-        {% endcapture %}
-      {% endif %}
+      {% capture custom_node %}
+      ,
+      {{ schema_node | jsonify }}
+      {% endcapture %}
 
       {% assign schema_nodes = schema_nodes | append: custom_node %}
     {% endfor %}
@@ -143,7 +119,7 @@
 <body>
   <!-- Google tag (gtag.js) -->
   {% include google-analytics.html %}
-
+  
   <div class="wrap" id="top">
     {% include menu.html %}
     {{ content }}
@@ -167,8 +143,8 @@
       </p>
     </div>
   </footer>
-
+  
   <script src="/js/menu.js"></script>
-
+  
 </body>
 </html>
