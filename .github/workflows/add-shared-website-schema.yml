@@ -1,0 +1,128 @@
+name: Add shared WebSite schema
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-shared-website-schema.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update layout and homepage
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          layout_path = Path('_layouts/default.html')
+          layout = layout_path.read_text(encoding='utf-8')
+
+          needle = '  {% assign schema_nodes = person_node %}\n'
+          if layout.count(needle) != 1:
+              raise SystemExit(f'Expected one schema_nodes assignment, found {layout.count(needle)}')
+          if '"@type": "WebSite"' in layout:
+              raise SystemExit('Layout already contains a WebSite node')
+
+          replacement = '''  {% assign schema_nodes = person_node %}
+
+          {% comment %} --- WEBSITE (siempre) --- {% endcomment %}
+
+          {% capture website_node %}
+          ,
+          {
+            "@type": "WebSite",
+            "@id": "https://gomezaldaz.com/#website",
+            "url": "https://gomezaldaz.com/",
+            "name": "Olmo Gómez Aldaz",
+            "inLanguage": ["es", "en"],
+            "about": {
+              "@id": "https://gomezaldaz.com/#person"
+            }
+          }
+          {% endcapture %}
+
+          {% assign schema_nodes = schema_nodes | append: website_node %}
+'''
+          layout = layout.replace(needle, replacement, 1)
+          layout_path.write_text(layout, encoding='utf-8')
+
+          homepage_path = Path('index.html')
+          homepage = homepage_path.read_text(encoding='utf-8')
+          website_block = '''- "@context": https://schema.org
+            "@type": WebSite
+            "@id": https://gomezaldaz.com/#website
+            url: https://gomezaldaz.com/
+            name: Olmo Gómez Aldaz
+            inLanguage:
+            - es
+            - en
+            about:
+              "@id": https://gomezaldaz.com/#person
+          '''
+          if homepage.count(website_block) != 1:
+              raise SystemExit(f'Expected one homepage WebSite block, found {homepage.count(website_block)}')
+          homepage = homepage.replace(website_block, '', 1)
+          homepage_path.write_text(homepage, encoding='utf-8')
+          PY
+
+      - name: Install Jekyll
+        run: gem install jekyll --no-document
+
+      - name: Build site
+        run: jekyll build --trace
+
+      - name: Validate generated schema
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          def graph(path):
+              text = Path(path).read_text(encoding='utf-8')
+              match = re.search(r'<script type="application/ld\+json">\s*(\{.*?\})\s*</script>', text, re.S)
+              if not match:
+                  raise SystemExit(f'No JSON-LD found in {path}')
+              return json.loads(match.group(1))['@graph']
+
+          website_id = 'https://gomezaldaz.com/#website'
+
+          for path in ['_site/index.html', '_site/es/obra/libros/index.html', '_site/en/work/books/index.html']:
+              nodes = graph(path)
+              websites = [n for n in nodes if n.get('@type') == 'WebSite' and n.get('@id') == website_id]
+              if len(websites) != 1:
+                  raise SystemExit(f'{path}: expected one shared WebSite node, found {len(websites)}')
+
+          books_nodes = graph('_site/es/obra/libros/index.html')
+          webpage = next((n for n in books_nodes if n.get('@id') == 'https://gomezaldaz.com/es/obra/libros/#webpage'), None)
+          if not webpage:
+              raise SystemExit('Spanish books WebPage node missing')
+          if webpage.get('isPartOf', {}).get('@id') != website_id:
+              raise SystemExit('Spanish books WebPage isPartOf reference changed or missing')
+          if not any(n.get('@type') == 'Book' for n in books_nodes):
+              raise SystemExit('Spanish Book node missing')
+
+          source_home = Path('index.html').read_text(encoding='utf-8')
+          if '"@type": WebSite' in source_home:
+              raise SystemExit('Homepage still contains its former page-specific WebSite node')
+
+          layout = Path('_layouts/default.html').read_text(encoding='utf-8')
+          if layout.count('"@type": "WebSite"') != 1:
+              raise SystemExit('Layout must contain exactly one WebSite definition')
+
+          print('Schema validation passed: one shared WebSite node per generated page, no homepage duplicate.')
+          PY
+
+      - name: Commit validated change and remove workflow
+        run: |
+          rm .github/workflows/add-shared-website-schema.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add _layouts/default.html index.html .github/workflows/add-shared-website-schema.yml
+          git commit -m 'Add shared WebSite schema to layout'
+          git push
