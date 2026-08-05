@@ -1,0 +1,343 @@
+name: Normalize page schema relationships
+
+on:
+  push:
+    paths:
+      - '.github/workflows/normalize-page-schema-relationships.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize source schema relationships
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'json'
+          require 'time'
+
+          WEBSITE_ID = 'https://gomezaldaz.com/#website'
+          PAGE_TYPES = ['WebPage', 'ProfilePage', 'CollectionPage'].freeze
+
+          def source_path(url)
+            return 'index.html' if url == '/'
+            "#{url.sub(%r{\A/}, '')}index.html"
+          end
+
+          def split_document(path)
+            text = File.read(path, encoding: 'UTF-8')
+            match = text.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            raise "No front matter in #{path}" unless match
+            [match[1] + "\n", text[match.end(0)..] || '']
+          end
+
+          def parse_front(front)
+            YAML.unsafe_load(front) || {}
+          end
+
+          def remove_inverse_links(front)
+            lines = front.lines
+            removed = 0
+            i = 0
+            while i < lines.length
+              if lines[i].strip == 'mainEntityOfPage:' && lines[i].start_with?('  ')
+                j = i + 1
+                j += 1 while j < lines.length && (lines[j].start_with?('    ') || lines[j].strip.empty?)
+                lines.slice!(i...j)
+                removed += 1
+              else
+                i += 1
+              end
+            end
+            [lines.join, removed]
+          end
+
+          def add_website_link(front, page_id)
+            lines = front.lines
+            schema_index = lines.index { |line| line.strip == 'schema_nodes:' }
+            target_index = lines.index { |line| line.start_with?('schema_date_target:') }
+            raise 'schema_nodes not found' unless schema_index
+            raise 'schema_date_target not found' unless target_index
+
+            starts = ((schema_index + 1)...target_index).select { |index| lines[index].start_with?('- ') }
+            spans = starts.each_with_index.map do |start, position|
+              finish = position + 1 < starts.length ? starts[position + 1] : target_index
+              [start, finish]
+            end
+            span = spans.find do |start, finish|
+              lines[start...finish].join.include?(%Q{"@id": #{page_id}})
+            end
+            raise "Page node #{page_id} not found in front matter" unless span
+
+            start, finish = span
+            segment = lines[start...finish].join
+            return [front, false] if segment.match?(/^  isPartOf:\s*$/)
+
+            lines.insert(finish,
+              "  isPartOf:\n",
+              "    \"@id\": #{WEBSITE_ID}\n"
+            )
+            [lines.join, true]
+          end
+
+          resources_data = YAML.unsafe_load_file('_data/resources.yml')
+          resources = resources_data.fetch('html')
+          changed_paths = []
+          wrapped_urls = []
+          linked_urls = []
+          removed_inverse_total = 0
+
+          resources.each do |resource|
+            url = resource.fetch('url')
+            path = source_path(url)
+            raise "Missing source file for #{url}: #{path}" unless File.file?(path)
+
+            front, body = split_document(path)
+            before = front
+            data = parse_front(front)
+            nodes = Array(data['schema_nodes'])
+            page_nodes = nodes.select { |node| node.is_a?(Hash) && PAGE_TYPES.include?(node['@type']) }
+
+            if page_nodes.length > 1
+              raise "Multiple page nodes in #{path}"
+            elsif page_nodes.empty?
+              unless nodes.length == 1 && ['Article', 'ScholarlyArticle'].include?(nodes.first['@type'])
+                raise "Cannot safely wrap schema in #{path}: #{nodes.map { |node| node['@type'] }.inspect}"
+              end
+
+              entity = nodes.first
+              inverse = entity['mainEntityOfPage']
+              unless inverse.is_a?(Hash) && inverse['@id']
+                raise "Missing usable mainEntityOfPage in #{path}"
+              end
+
+              page_id = inverse['@id']
+              entity_id = entity.fetch('@id')
+              page_url = entity.fetch('url')
+              title = data.fetch('title')
+              description = data.fetch('description')
+              lang = data.fetch('lang')
+
+              wrapper = [
+                '- "@type": WebPage',
+                "  \"@id\": #{page_id}",
+                "  url: #{page_url}",
+                "  name: #{JSON.generate(title)}",
+                "  description: #{JSON.generate(description)}",
+                "  inLanguage: #{lang}",
+                '  isPartOf:',
+                "    \"@id\": #{WEBSITE_ID}",
+                '  mainEntity:',
+                "    \"@id\": #{entity_id}"
+              ].join("\n") + "\n"
+
+              front = front.sub("schema_nodes:\n", "schema_nodes:\n#{wrapper}")
+              front, removed = remove_inverse_links(front)
+              raise "Expected one inverse link in #{path}, removed #{removed}" unless removed == 1
+              removed_inverse_total += removed
+              front = front.sub(/^schema_date_target:.*$/, "schema_date_target: #{page_id}")
+              wrapped_urls << url
+            else
+              page_id = page_nodes.first.fetch('@id')
+              front, removed = remove_inverse_links(front)
+              removed_inverse_total += removed
+              front, added = add_website_link(front, page_id)
+              linked_urls << url if added
+            end
+
+            if front != before
+              File.write(path, "---\n#{front}---\n#{body}", mode: 'w', encoding: 'UTF-8')
+              changed_paths << path
+            end
+          end
+
+          unless wrapped_urls.length == 10
+            raise "Expected 10 newly wrapped article pages, found #{wrapped_urls.length}"
+          end
+          unless linked_urls.length == 24
+            raise "Expected 24 existing page nodes to link, found #{linked_urls.length}"
+          end
+          unless removed_inverse_total == 26
+            raise "Expected 26 inverse links removed, found #{removed_inverse_total}"
+          end
+          unless changed_paths.length == 34
+            raise "Expected 34 structurally changed pages, found #{changed_paths.length}"
+          end
+
+          timestamp = Time.now.getlocal('+02:00').iso8601
+          resources_path = '_data/resources.yml'
+          resource_lines = File.readlines(resources_path, encoding: 'UTF-8')
+          in_html = false
+          updated_dates = 0
+          resource_lines.map! do |line|
+            in_html = true if line.strip == 'html:'
+            in_html = false if line.strip == 'pdf:'
+            if in_html && line.lstrip.start_with?('- {url:')
+              unless line.include?('modified:')
+                raise "HTML resource without modified field: #{line}"
+              end
+              line = line.sub(/modified: "[^"]+"/, "modified: \"#{timestamp}\"")
+              updated_dates += 1
+            end
+            line
+          end
+          raise "Expected 56 HTML dates, updated #{updated_dates}" unless updated_dates == 56
+          File.write(resources_path, resource_lines.join, mode: 'w', encoding: 'UTF-8')
+
+          File.write('/tmp/changed-schema-paths.txt', changed_paths.join("\n") + "\n")
+          File.write('/tmp/schema-normalization-summary.json', JSON.pretty_generate({
+            indexed_html: resources.length,
+            structurally_changed_pages: changed_paths.length,
+            newly_wrapped_articles: wrapped_urls,
+            existing_page_nodes_linked: linked_urls,
+            inverse_links_removed: removed_inverse_total,
+            modified_timestamp: timestamp
+          }))
+
+          puts "Normalized #{changed_paths.length} page files; wrapped #{wrapped_urls.length}; linked #{linked_urls.length}; removed #{removed_inverse_total} inverse links; dated #{updated_dates} HTML resources at #{timestamp}."
+          RUBY
+
+      - name: Validate normalized source front matter
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+
+          WEBSITE_ID = 'https://gomezaldaz.com/#website'
+          PAGE_TYPES = ['WebPage', 'ProfilePage', 'CollectionPage'].freeze
+
+          def source_path(url)
+            return 'index.html' if url == '/'
+            "#{url.sub(%r{\A/}, '')}index.html"
+          end
+
+          def data_for(path)
+            text = File.read(path, encoding: 'UTF-8')
+            match = text.match(/\A---\s*\n(.*?)\n---\s*\n/m)
+            raise "No front matter in #{path}" unless match
+            YAML.unsafe_load(match[1]) || {}
+          end
+
+          resources = YAML.unsafe_load_file('_data/resources.yml').fetch('html')
+          timestamps = resources.map { |resource| resource['modified'] }.uniq
+          raise "HTML modified timestamps are not uniform: #{timestamps.inspect}" unless timestamps.length == 1
+
+          resources.each do |resource|
+            path = source_path(resource.fetch('url'))
+            data = data_for(path)
+            nodes = Array(data['schema_nodes'])
+            pages = nodes.select { |node| node.is_a?(Hash) && PAGE_TYPES.include?(node['@type']) }
+            raise "#{path}: expected exactly one page node, found #{pages.length}" unless pages.length == 1
+
+            page = pages.first
+            part = page['isPartOf']
+            unless part.is_a?(Hash) && part['@id'] == WEBSITE_ID
+              raise "#{path}: page node is not linked to shared WebSite"
+            end
+            if nodes.any? { |node| node.is_a?(Hash) && node.key?('mainEntityOfPage') }
+              raise "#{path}: inverse mainEntityOfPage remains"
+            end
+            unless data['schema_date_target'] == page['@id']
+              raise "#{path}: schema_date_target does not point to page node"
+            end
+
+            non_page_nodes = nodes.reject { |node| node.is_a?(Hash) && PAGE_TYPES.include?(node['@type']) }
+            if non_page_nodes.any?
+              main = page['mainEntity']
+              unless main.is_a?(Hash) && main['@id']
+                raise "#{path}: page with entity nodes has no mainEntity"
+              end
+              known_ids = non_page_nodes.map { |node| node['@id'] }.compact + ['https://gomezaldaz.com/#person']
+              unless known_ids.include?(main['@id'])
+                raise "#{path}: mainEntity #{main['@id']} does not match a known entity"
+              end
+            end
+          end
+
+          puts "Source validation passed for #{resources.length} indexed HTML pages."
+          RUBY
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      - name: Install Jekyll
+        run: gem install jekyll --no-document
+
+      - name: Build site
+        run: jekyll build --trace
+
+      - name: Validate generated JSON-LD for all pages
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'json'
+
+          WEBSITE_ID = 'https://gomezaldaz.com/#website'
+          PAGE_TYPES = ['WebPage', 'ProfilePage', 'CollectionPage'].freeze
+
+          def generated_path(url)
+            return '_site/index.html' if url == '/'
+            "_site/#{url.sub(%r{\A/}, '')}index.html"
+          end
+
+          resources = YAML.unsafe_load_file('_data/resources.yml').fetch('html')
+          expected_modified = resources.first.fetch('modified')
+
+          resources.each do |resource|
+            url = resource.fetch('url')
+            path = generated_path(url)
+            text = File.read(path, encoding: 'UTF-8')
+            match = text.match(%r{<script type="application/ld\+json">\s*(\{.*?\})\s*</script>}m)
+            raise "#{path}: JSON-LD script missing" unless match
+            graph = JSON.parse(match[1]).fetch('@graph')
+
+            websites = graph.select { |node| node['@type'] == 'WebSite' && node['@id'] == WEBSITE_ID }
+            raise "#{path}: expected one shared WebSite, found #{websites.length}" unless websites.length == 1
+
+            pages = graph.select { |node| PAGE_TYPES.include?(node['@type']) }
+            raise "#{path}: expected one page node, found #{pages.length}" unless pages.length == 1
+            page = pages.first
+
+            part = page['isPartOf']
+            unless part.is_a?(Hash) && part['@id'] == WEBSITE_ID
+              raise "#{path}: generated page is not linked to WebSite"
+            end
+            unless page['dateModified'] == expected_modified
+              raise "#{path}: page dateModified #{page['dateModified'].inspect} differs from #{expected_modified}"
+            end
+            if graph.any? { |node| node.key?('mainEntityOfPage') }
+              raise "#{path}: generated inverse mainEntityOfPage remains"
+            end
+
+            if page['mainEntity'].is_a?(Hash) && page['mainEntity']['@id']
+              target = page['mainEntity']['@id']
+              unless graph.any? { |node| node['@id'] == target }
+                raise "#{path}: generated mainEntity target #{target} is missing"
+              end
+            end
+          end
+
+          puts "Generated JSON-LD validation passed for #{resources.length} pages."
+          RUBY
+
+      - name: Upload normalization summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-normalization-summary
+          path: /tmp/schema-normalization-summary.json
+
+      - name: Commit validated normalization and remove workflow
+        run: |
+          mapfile -t changed_paths < /tmp/changed-schema-paths.txt
+          rm .github/workflows/normalize-page-schema-relationships.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "${changed_paths[@]}" _data/resources.yml .github/workflows/normalize-page-schema-relationships.yml
+          git commit -m 'Normalize page schema relationships'
+          git push
