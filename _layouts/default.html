@@ -18,7 +18,8 @@
   {% assign resource_modified = current_resource.modified %}
 
   {% assign canonical_path = page.canonical | default: page.url %}
-  <link rel="canonical" href="{{ site.url }}{{ canonical_path }}">
+  {% assign canonical_url = site.url | append: canonical_path %}
+  <link rel="canonical" href="{{ canonical_url }}">
 
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -39,11 +40,9 @@
   {% endif %}
 
   <!-- schema -->
-  
   {% assign schema_nodes = "" %}
-  
+
   {% comment %} --- PERSON (siempre) --- {% endcomment %}
-  
   {% assign person_url = "https://gomezaldaz.com/" %}
 
   {% if page.lang == "es" %}
@@ -57,7 +56,7 @@
     {% assign former_name_label = "Former registered name" %}
     {% assign footer_tagline = "Personal and documentary website against the culture of silence imposed on victims of child trafficking" %}
   {% endif %}
-  
+
   {% capture person_node %}
   {
     "@type": "Person",
@@ -92,28 +91,61 @@
     ]
   }
   {% endcapture %}
-  
+
   {% assign schema_nodes = person_node %}
 
   {% comment %} --- PAGE-SPECIFIC SCHEMA NODES --- {% endcomment %}
-
   {% if page.schema_nodes %}
-  {% for schema_node in page.schema_nodes %}
-    {% assign serialized_schema_node = schema_node | jsonify %}
-    {% if page.schema_date_target and schema_node['@id'] == page.schema_date_target %}
-      {% assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
-      {% assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
-      {% capture dated_schema_node %}{{ serialized_schema_node_without_closing_brace }}{% if resource_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if resource_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}{% endcapture %}
-      {% assign serialized_schema_node = dated_schema_node | strip %}
-    {% endif %}
-    {% capture custom_node %}
-    ,
-    {{ serialized_schema_node }}
-    {% endcapture %}
+    {% for schema_node in page.schema_nodes %}
+      {% assign serialized_schema_node = schema_node | jsonify %}
+      {% assign is_date_target = false %}
+      {% if page.schema_date_target and schema_node['@id'] == page.schema_date_target %}
+        {% assign is_date_target = true %}
+      {% endif %}
 
-    {% assign schema_nodes = schema_nodes | append: custom_node %}
-  {% endfor %}
-{% endif %}
+      {% assign schema_type = schema_node['@type'] %}
+      {% assign needs_separate_webpage = false %}
+      {% if is_date_target and schema_type == 'Book' or is_date_target and schema_type == 'Article' or is_date_target and schema_type == 'ScholarlyArticle' or is_date_target and schema_type == 'Report' %}
+        {% assign needs_separate_webpage = true %}
+      {% endif %}
+
+      {% if needs_separate_webpage %}
+        {% assign webpage_id = canonical_url | append: '#webpage' %}
+
+        {% capture webpage_node %}
+        ,
+        {
+          "@type": "WebPage",
+          "@id": {{ webpage_id | jsonify }},
+          "url": {{ canonical_url | jsonify }},
+          "name": {{ page.title | jsonify }},
+          "description": {{ page.description | jsonify }},
+          "inLanguage": {{ page.lang | jsonify }}{% if resource_published %},
+          "datePublished": {{ resource_published | jsonify }}{% endif %}{% if resource_modified %},
+          "dateModified": {{ resource_modified | jsonify }}{% endif %},
+          "mainEntity": { "@id": {{ page.schema_date_target | jsonify }} }
+        }
+        {% endcapture %}
+        {% assign schema_nodes = schema_nodes | append: webpage_node %}
+
+        {% assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
+        {% assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
+        {% capture linked_schema_node %}{{ serialized_schema_node_without_closing_brace }},"mainEntityOfPage":{"@id":{{ webpage_id | jsonify }}}}{% endcapture %}
+        {% assign serialized_schema_node = linked_schema_node | strip %}
+      {% elsif is_date_target %}
+        {% assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
+        {% assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
+        {% capture dated_schema_node %}{{ serialized_schema_node_without_closing_brace }}{% if resource_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if resource_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}{% endcapture %}
+        {% assign serialized_schema_node = dated_schema_node | strip %}
+      {% endif %}
+
+      {% capture custom_node %}
+      ,
+      {{ serialized_schema_node }}
+      {% endcapture %}
+      {% assign schema_nodes = schema_nodes | append: custom_node %}
+    {% endfor %}
+  {% endif %}
 
   <script type="application/ld+json">
   {
@@ -128,7 +160,7 @@
 <body>
   <!-- Google tag (gtag.js) -->
   {% include google-analytics.html %}
-  
+
   <div class="wrap" id="top">
     {% include menu.html %}
     {{ content }}
@@ -152,8 +184,8 @@
       </p>
     </div>
   </footer>
-  
+
   <script src="/js/menu.js"></script>
-  
+
 </body>
 </html>
