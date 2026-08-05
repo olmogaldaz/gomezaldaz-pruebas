@@ -25,6 +25,7 @@ jobs:
           ruby <<'RUBY'
           require 'yaml'
           require 'json'
+          require 'date'
 
           RESOURCES = YAML.load_file('_data/resources.yml').fetch('html')
           AUX_TYPES = %w[Person Organization WebSite]
@@ -196,6 +197,7 @@ jobs:
           ruby <<'RUBY'
           require 'json'
           require 'yaml'
+          require 'date'
 
           resources = YAML.load_file('_data/resources.yml').fetch('html')
           errors = []
@@ -206,7 +208,7 @@ jobs:
             url = resource.fetch('url')
             source = url == '/' ? 'index.html' : File.join(url.sub(%r{^/}, '').sub(%r{/$}, ''), 'index.html')
             front = File.read(source).match(/\A---\s*\n(.*?)\n---\s*\n/m)
-            data = YAML.safe_load(front[1], aliases: true)
+            data = YAML.safe_load(front[1], permitted_classes: [Date, Time], aliases: true)
             target_id = data['schema_date_target']
 
             output = url == '/' ? '_site/index.html' : File.join('_site', url.sub(%r{^/}, ''), 'index.html')
