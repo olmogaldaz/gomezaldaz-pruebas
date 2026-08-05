@@ -1,0 +1,89 @@
+name: Schema date audit
+
+on:
+  push:
+    branches: [schema-fechas-resources]
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: schema-fechas-resources
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+      - name: Install Jekyll
+        run: gem install jekyll --no-document
+      - name: Audit resources and front matter
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          resources = YAML.load_file('_data/resources.yml')['html']
+          puts "HTML_RESOURCES=#{resources.size}"
+          puts "WITH_PUBLISHED=#{resources.count { |r| r['published'] }}"
+          puts "WITH_MODIFIED=#{resources.count { |r| r['modified'] }}"
+          missing = []
+          resources.each do |r|
+            path = r['url'] == '/' ? 'index.html' : File.join(r['url'].sub(%r{^/}, '').sub(%r{/$}, ''), 'index.html')
+            missing << path unless File.exist?(path)
+          end
+          puts "MISSING_FILES=#{missing.size}"
+          missing.each { |p| puts "MISSING=#{p}" }
+          RUBY
+      - name: Build site
+        run: jekyll build --trace
+      - name: Validate generated JSON-LD
+        run: |
+          ruby <<'RUBY'
+          require 'json'
+          require 'yaml'
+          resources = YAML.load_file('_data/resources.yml')['html']
+          checked = 0
+          errors = []
+          resources.each do |r|
+            out = r['url'] == '/' ? '_site/index.html' : File.join('_site', r['url'].sub(%r{^/}, ''), 'index.html')
+            html = File.read(out)
+            scripts = html.scan(/<script type="application\/ld\+json">(.*?)<\/script>/m).flatten
+            if scripts.empty?
+              errors << "NO_JSONLD #{r['url']}"
+              next
+            end
+            scripts.each do |json|
+              begin
+                JSON.parse(json)
+              rescue => e
+                errors << "INVALID_JSON #{r['url']} #{e.message}"
+              end
+            end
+            checked += 1
+          end
+          puts "JSONLD_PAGES_CHECKED=#{checked}"
+          puts "JSONLD_ERRORS=#{errors.size}"
+          errors.each { |e| puts e }
+          exit 1 unless errors.empty?
+          RUBY
+      - name: Record Liquid front matter limitation
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          sample = YAML.safe_load("dateModified: '{{ resource_modified }}'\n")
+          require 'json'
+          serialized = JSON.generate(sample)
+          puts "FRONT_MATTER_SERIALIZED=#{serialized}"
+          unless serialized.include?('{{ resource_modified }}')
+            abort 'Unexpected interpolation behavior'
+          end
+          puts 'LIQUID_IN_FRONT_MATTER_IS_LITERAL=true'
+          RUBY
+      - name: Remove temporary workflow and commit audit completion
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/schema-date-audit.yml
+          git commit -m 'Complete schema date audit without unsafe changes'
+          git push origin HEAD:schema-fechas-resources
