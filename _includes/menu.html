@@ -1,12 +1,12 @@
 <header id="site-header">
-  <div class="site-title">
-    <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
-    <span>
-      Olmo Gómez Aldaz{% if site.url contains "pruebas.gomezaldaz.com" %}<span style="color: #c62828;"> · PRUEBAS</span>{% endif %}
-    </span>
-  </div>
-
   {% if page.lang == "es" %}
+    <a href="/" class="site-title" aria-label="Ir al inicio">
+      <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
+      <span>
+        Olmo Gómez Aldaz{% if site.url contains "pruebas.gomezaldaz.com" %}<span style="color: #c62828;"> · PRUEBAS</span>{% endif %}
+      </span>
+    </a>
+
     <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="main-nav">
       <a href="/">Inicio</a>
@@ -23,6 +23,13 @@
       </div>
     </nav>
   {% else %}
+    <a href="/en/" class="site-title" aria-label="Go to home page">
+      <img src="/img/GA_512x512.png" alt="GA" class="logo-ga">
+      <span>
+        Olmo Gómez Aldaz{% if site.url contains "pruebas.gomezaldaz.com" %}<span style="color: #c62828;"> · PRUEBAS</span>{% endif %}
+      </span>
+    </a>
+
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
     <nav class="main-nav">
       <a href="/en/">Home</a>
