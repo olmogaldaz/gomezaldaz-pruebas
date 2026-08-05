@@ -1,28 +1,80 @@
 ---
 layout: null
 ---
+
 <?xml version="1.0" encoding="UTF-8"?>
+
 {% assign sitemap_base = "https://gomezaldaz.com" %}
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-{% for item in site.data.resources.html %}
-  <url>
-    <loc>{{ sitemap_base }}{{ item.url }}</loc>
-{% if item.modified %}    <lastmod>{{ item.modified }}</lastmod>
-{% endif %}    <xhtml:link rel="alternate" hreflang="{{ item.lang }}" href="{{ sitemap_base }}{{ item.url }}" />
-{% if item.alternate %}{% if item.lang == "es" %}{% assign alternate_lang = "en" %}{% else %}{% assign alternate_lang = "es" %}{% endif %}    <xhtml:link rel="alternate" hreflang="{{ alternate_lang }}" href="{{ sitemap_base }}{{ item.alternate }}" />
-{% endif %}{% if item.images %}{% for image_item in item.images %}    <image:image>
-      <image:loc>{{ sitemap_base }}{{ image_item.url }}</image:loc>
-{% if image_item.title %}      <image:title>{{ image_item.title | xml_escape }}</image:title>
-{% endif %}{% if image_item.caption %}      <image:caption>{{ image_item.caption | xml_escape }}</image:caption>
-{% endif %}    </image:image>
-{% endfor %}{% endif %}  </url>
-{% endfor %}
-{% for item in site.data.resources.pdf %}
-  <url>
-    <loc>{{ sitemap_base }}{{ item.url }}</loc>
-{% if item.modified %}    <lastmod>{{ item.modified }}</lastmod>
-{% endif %}  </url>
-{% endfor %}
+
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+>
+
+  {% comment %} PÁGINAS HTML {% endcomment %}
+  {% for item in site.data.resources.html %}
+
+    {% if item.lang == "es" %}
+      {% assign alternate_lang = "en" %}
+    {% else %}
+      {% assign alternate_lang = "es" %}
+    {% endif %}
+
+    <url>
+      <loc>{{ sitemap_base }}{{ item.url }}</loc>
+
+      {% if item.modified %}
+        <lastmod>{{ item.modified }}</lastmod>
+      {% endif %}
+
+      <xhtml:link
+        rel="alternate"
+        hreflang="{{ item.lang }}"
+        href="{{ sitemap_base }}{{ item.url }}"
+      />
+
+      {% if item.alternate %}
+        <xhtml:link
+          rel="alternate"
+          hreflang="{{ alternate_lang }}"
+          href="{{ sitemap_base }}{{ item.alternate }}"
+        />
+      {% endif %}
+
+      {% if item.images %}
+        {% for image_item in item.images %}
+          <image:image>
+            <image:loc>{{ sitemap_base }}{{ image_item.url }}</image:loc>
+
+            {% if image_item.title %}
+              <image:title>
+                {{ image_item.title | xml_escape }}
+              </image:title>
+            {% endif %}
+
+            {% if image_item.caption %}
+              <image:caption>
+                {{ image_item.caption | xml_escape }}
+              </image:caption>
+            {% endif %}
+          </image:image>
+        {% endfor %}
+      {% endif %}
+
+    </url>
+  {% endfor %}
+
+
+  {% comment %} DOCUMENTOS PDF {% endcomment %}
+  {% for item in site.data.resources.pdf %}
+    <url>
+      <loc>{{ sitemap_base }}{{ item.url }}</loc>
+
+      {% if item.modified %}
+        <lastmod>{{ item.modified }}</lastmod>
+      {% endif %}
+    </url>
+  {% endfor %}
+
 </urlset>
