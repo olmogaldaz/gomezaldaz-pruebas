@@ -174,7 +174,9 @@ resource_modified
 
 Su origen único es `_data/resources.yml`.
 
-Estas variables se han preparado para incorporarlas posteriormente, página por página, al nodo Schema que representa cada URL concreta. La lógica de búsqueda está centralizada en el layout y no tendrá que repetirse en cada archivo.
+El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen `published` y `modified` en `_data/resources.yml`.
+
+La búsqueda y la inyección de fechas están centralizadas en el layout y no deben repetirse manualmente en cada archivo.
 
 ---
 
@@ -281,7 +283,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Ajustes visuales del enlace del título y de su foco de teclado.
 - Centralización de la navegación estructural en `_includes/menu.html`.
 - Actualización del nodo Schema `Person`, de las etiquetas del nombre registral anterior y del texto del pie en español e inglés.
-- Incorporación en el layout de la búsqueda centralizada de `published` y `modified` para la página actual.
+- Incorporación automática de `datePublished` y `dateModified` al nodo indicado por `schema_date_target`.
 - Eliminación de notas temporales de paquetes de actualización ya integrados.
 
 ---
