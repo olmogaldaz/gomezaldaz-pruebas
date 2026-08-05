@@ -1,53 +1,49 @@
-name: Update README date documentation
+name: Update README dates
 
 on:
   push:
-    paths:
-      - '.github/workflows/update-readme-dates.yml'
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check out repository
+        uses: actions/checkout@v4
 
-      - name: Update README
+      - name: Update documentation
+        shell: bash
         run: |
-          python3 - <<'PY'
+          python3 <<'PY'
           from pathlib import Path
 
-          path = Path('README.md')
-          text = path.read_text(encoding='utf-8')
+          path = Path("README.md")
+          text = path.read_text(encoding="utf-8")
 
-          old = '''Estas variables se han preparado para incorporarlas posteriormente, página por página, al nodo Schema que representa cada URL concreta. La lógica de búsqueda está centralizada en el layout y no tendrá que repetirse en cada archivo.'''
-          new = '''El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen `published` y `modified` en `_data/resources.yml`.
-
-La búsqueda y la inyección de fechas están centralizadas en el layout y no deben repetirse manualmente en cada archivo.'''
+          old = "Estas variables se han preparado para incorporarlas posteriormente, página por página, al nodo Schema que representa cada URL concreta. La lógica de búsqueda está centralizada en el layout y no tendrá que repetirse en cada archivo."
+          new = "El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen `published` y `modified` en `_data/resources.yml`.\n\nLa búsqueda y la inyección de fechas están centralizadas en el layout y no deben repetirse manualmente en cada archivo."
 
           if old not in text:
-              raise SystemExit('No se encontró el texto antiguo del README')
-
+              raise SystemExit("No se encontró el texto antiguo")
           text = text.replace(old, new, 1)
 
-          old_item = '- Incorporación en el layout de la búsqueda centralizada de `published` y `modified` para la página actual.'
-          new_item = '- Incorporación automática de `datePublished` y `dateModified` al nodo indicado por `schema_date_target`.'
+          old_item = "- Incorporación en el layout de la búsqueda centralizada de `published` y `modified` para la página actual."
+          new_item = "- Incorporación automática de `datePublished` y `dateModified` al nodo indicado por `schema_date_target`."
           if old_item not in text:
-              raise SystemExit('No se encontró el punto antiguo del resumen técnico')
+              raise SystemExit("No se encontró el punto antiguo")
           text = text.replace(old_item, new_item, 1)
 
-          path.write_text(text, encoding='utf-8')
+          path.write_text(text, encoding="utf-8")
           PY
 
-      - name: Commit and remove workflow
+      - name: Commit changes
+        shell: bash
         run: |
           rm .github/workflows/update-readme-dates.yml
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md .github/workflows/update-readme-dates.yml
-          git commit -m 'Update README for centralized Schema dates'
+          git commit -m "Update README for centralized Schema dates"
           git push
