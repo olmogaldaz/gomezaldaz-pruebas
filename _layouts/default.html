@@ -95,6 +95,24 @@
   
   {% assign schema_nodes = person_node %}
 
+  {% comment %} --- WEBSITE (siempre) --- {% endcomment %}
+
+  {% capture website_node %}
+  ,
+  {
+    "@type": "WebSite",
+    "@id": "https://gomezaldaz.com/#website",
+    "url": "https://gomezaldaz.com/",
+    "name": "Olmo Gómez Aldaz",
+    "inLanguage": ["es", "en"],
+    "about": {
+      "@id": "https://gomezaldaz.com/#person"
+    }
+  }
+  {% endcapture %}
+
+  {% assign schema_nodes = schema_nodes | append: website_node %}
+
   {% comment %} --- PAGE-SPECIFIC SCHEMA NODES --- {% endcomment %}
 
   {% if page.schema_nodes %}
