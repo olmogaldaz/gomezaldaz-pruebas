@@ -1,0 +1,23 @@
+name: Cleanup generated site
+on:
+  push:
+    branches:
+      - schema-fechas-resources
+permissions:
+  contents: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: schema-fechas-resources
+          fetch-depth: 0
+      - name: Remove generated files and workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -r _site
+          git rm .github/workflows/cleanup-generated-site.yml
+          git commit -m 'Remove generated Jekyll output from schema branch'
+          git push origin HEAD:schema-fechas-resources
