@@ -1,152 +1,219 @@
-# gomezaldaz.com — Web structure
+# gomezaldaz.com — Estructura y mantenimiento
 
-Este repositorio contiene la estructura y el contenido estático de la web pública gomezaldaz.com.
+Este repositorio contiene la estructura, el contenido y los recursos públicos de **gomezaldaz.com**.
 
-La web se publica mediante GitHub Pages, desde la rama main y la carpeta raíz del repositorio.
-
-El proyecto está organizado por rutas, idiomas y bloques conceptuales. La estructura de carpetas responde a un criterio de orden, claridad y estabilidad a largo plazo.
-
-El sitio usa rutas dentro del dominio principal gomezaldaz.com.
-
----
-
-## Estructura general del repositorio
-
-/
-├── index.html        # Home principal en español
-├── en/               # Versión inglesa
-├── es/               # Páginas interiores en español
-├── css/              # Hojas de estilo
-├── js/               # JavaScript: menú e interacción
-├── img/              # Imágenes y recursos gráficos
-├── docs/             # Documentos públicos y PDFs
-├── _layouts/         # Layouts de Jekyll
-├── 404.html          # Página de error
-├── CNAME             # Dominio personalizado
-├── _config.yml       # Configuración del sitio
-├── sitemap.xml       # Mapa del sitio
-├── robots.txt        # Instrucciones para rastreadores
-├── favicon.ico       # Icono principal del sitio
-├── favicon-32x32.png # Icono del sitio en formato PNG
-├── apple-touch-icon.png         # Icono para dispositivos Apple
-├── android-chrome-192x192.png   # Icono para Android / Chrome
-├── yandex_21845d3da951913c.html # Verificación de Yandex Webmaster
-└── README.md         # Documentación del repositorio
+La web se publica mediante GitHub Pages desde la rama `main` y la raíz del repositorio. El sitio es bilingüe, con la portada española en `/` y la versión inglesa en `/en/`.
 
 ---
 
 ## Publicación
 
-La web está publicada mediante GitHub Pages.
-
 Configuración actual:
 
-- Rama de publicación: main
+- Rama de publicación: `main`
 - Carpeta publicada: raíz del repositorio
-- Dominio personalizado: gomezaldaz.com
+- Dominio personalizado: `gomezaldaz.com`
 - HTTPS activado
+- Generación estática mediante Jekyll
+
+Jekyll procesa Liquid, los datos YAML, los layouts y los includes durante cada compilación. GitHub Pages publica después archivos HTML, XML, CSS y JavaScript ya generados. Las peticiones de los visitantes o de los buscadores no vuelven a ejecutar Liquid.
 
 ---
 
-## Portada principal — /
+## Estructura general
 
-La raíz del sitio / actúa como punto de entrada principal y como home oficial en español.
+```text
+/
+├── index.html                  # Portada principal en español
+├── en/                         # Versión inglesa
+├── es/                         # Páginas interiores en español
+├── _data/                      # Datos estructurados comunes
+│   └── resources.yml           # Catálogo central de páginas y PDF
+├── _includes/                  # Fragmentos comunes
+│   └── menu.html               # Navegación principal
+├── _layouts/
+│   └── default.html            # Layout general, metadatos y Schema
+├── css/
+│   ├── style.css               # Estilos generales y de escritorio
+│   └── mobile.css              # Adaptación responsive y menú móvil
+├── js/
+│   └── menu.js                 # Comportamiento interactivo del menú
+├── img/                        # Imágenes y recursos gráficos
+├── docs/                       # Documentos públicos y PDF
+├── sitemap.xml                 # Plantilla Liquid del sitemap
+├── robots.txt                  # Instrucciones para rastreadores
+├── _config.yml                 # Configuración de Jekyll
+├── 404.html                    # Página de error
+├── CNAME                       # Dominio personalizado
+└── README.md                   # Documentación del repositorio
+```
 
-Desde la portada principal se accede a los bloques principales del proyecto.
-
-Las páginas interiores en español se organizan bajo /es/...
-
-La ruta /es/ funciona como página técnica de compatibilidad hacia /.
-
----
-
-## Español — /es/...
-
-Las páginas interiores en español están organizadas bajo /es/...
-
-Estructura actual:
-
-/es/
-├── index.html                  # Página técnica de compatibilidad hacia /
-├── autor/                      # Olmo
-├── memoria/                    # Memoria
-├── historia/                   # Historia
-├── demanda/                    # Demanda
-├── sentencia/                  # Sentencias
-├── genus-homo/                 # Editorial Genus Homo
-├── obra/                       # Obra publicada, archivo crítico e investigación
-│   ├── index.html              # Índice de Obra
-│   ├── libros/                 # Libros
-│   ├── testimonios/            # Textos testimoniales e intervenciones públicas
-│   │   ├── index.html          # Índice de testimonios
-│   │   └── voy-a-hablar-de-resiliencia/ # Testimonio sobre resiliencia frente a la adopción
-│   ├── adopcion/               # Textos críticos sobre adopción / Undoing Adoption
-│   │   ├── index.html
-│   │   ├── identicidio/
-│   │   ├── abolicion-del-identicidio/
-│   │   ├── abolifobia/
-│   │   ├── adopcion-genocidio-identicida-colonial/
-│   │   └── estigma-registral-adopcion/
-│   └── bebes-robados/          # Investigación sobre bebés robados
-│       ├── index.html          # Índice de investigación sobre bebés robados
-│       ├── informe-asociacion-maria-madre-bilbao/ # Informe IAMM
-│       └── informe-adoptados-bilbao/              # Informe AdoptadosBilbao
-├── libros/                     # Redirección técnica hacia /es/obra/libros/
-└── prensa/                     # Prensa
-    ├── index.html              # Índice de prensa
-    ├── el-observatorio-9-2026/ # Entrevista en El Observatorio nº 9
-    ├── el-correo-primer-bebe-robado-victima-franquismo/ # Página documental sobre el primer reconocimiento publicado por El Correo
-    ├── medios/                 # Dosier de medios
-    └── notas-de-prensa/        # Archivo de notas de prensa emitidas por Olmo Gómez Aldaz
-        ├── index.html
-        ├── sentencia-pionera-identidad-dni/
-        ├── reconocimiento-bebe-robado-nulidad-adopcion/
-        └── ley-memoria-democratica-bebes-robados/
+Los archivos antiguos o temporales de paquetes de actualización no forman parte de la arquitectura vigente y deben eliminarse una vez integrados sus cambios.
 
 ---
 
-## Inglés — /en/
+## Organización bilingüe
 
-La versión inglesa está organizada bajo /en/ y funciona como versión internacional del sitio.
+### Español
 
-Estructura actual:
+- `/` — portada oficial en español
+- `/es/` — ruta técnica de compatibilidad hacia `/`
+- `/es/autor/`
+- `/es/historia/`
+- `/es/demanda/`
+- `/es/sentencia/`
+- `/es/memoria/`
+- `/es/genus-homo/`
+- `/es/obra/`
+- `/es/prensa/`
 
-/en/
-├── index.html                       # English home
-├── author/                          # Olmo
-├── memory/                          # Memory
-├── story/                           # Story
-├── claim/                           # Claim
-├── sentence/                        # Court rulings / judgments
-├── genus-homo/                      # Genus Homo publishing imprint
-├── work/                            # Published work, critical archive and research
-│   ├── index.html                   # Work index
-│   ├── books/                       # Books
-│   ├── testimonies/                 # Testimonial texts and public interventions
-│   │   ├── index.html               # Testimonies index
-│   │   └── i-am-going-to-speak-about-resilience/ # Testimony on resilience against adoption
-│   ├── adoption/                    # Critical texts on adoption / Undoing Adoption
-│   │   ├── index.html
-│   │   ├── identicide/
-│   │   ├── abolition-of-identicide/
-│   │   ├── aboliphobia/
-│   │   ├── adoption-as-colonial-identicide-genocide/
-│   │   └── registry-stigma-of-adoption/
-│   └── stolen-babies/               # Research on stolen babies
-│       ├── index.html               # Research on stolen babies index
-│       ├── maria-madre-association-report/ # IAMM report
-│       └── adoptados-bilbao-report/        # AdoptadosBilbao report
-├── books/                           # Technical redirect to /en/work/books/
-└── press/                           # Press
-    ├── index.html                   # Press index
-    ├── el-observatorio-9-2026/      # El Observatorio no. 9 interview
-    ├── el-correo-first-stolen-baby-recognised-francoism-victim/ # English documentary page on El Correo's first-recognition report
-    ├── media/                       # Media dossier
-    └── press-releases/              # English archive of press releases
-        ├── index.html
-        ├── landmark-ruling-identity-restored-id-card/
-        ├── stolen-baby-recognition-adoption-annulment/
-        └── democratic-memory-law-stolen-babies/
+### Inglés
+
+- `/en/` — portada oficial en inglés
+- `/en/author/`
+- `/en/story/`
+- `/en/claim/`
+- `/en/sentence/`
+- `/en/memory/`
+- `/en/genus-homo/`
+- `/en/work/`
+- `/en/press/`
+
+Cada página declara su idioma, su URL equivalente y sus metadatos propios. El layout genera los enlaces `hreflang` español/inglés.
+
+---
+
+## Navegación
+
+La estructura del menú se genera en:
+
+```text
+_includes/menu.html
+```
+
+El layout lo incorpora con Liquid mediante `{% include menu.html %}`. El archivo `/js/menu.js` ya no construye el menú: se limita a gestionar su comportamiento interactivo, especialmente en móvil.
+
+El título o logotipo del menú enlaza a la portada correspondiente y conserva su apariencia visual sin subrayado ni cambios de opacidad al pasar el cursor.
+
+---
+
+## CSS
+
+Los estilos están separados en dos archivos:
+
+- `/css/style.css`: estilos generales y de escritorio.
+- `/css/mobile.css`: reglas responsive, adaptación a pantallas pequeñas y menú móvil.
+
+El antiguo archivo `css/menu-mobile.css` fue eliminado. El layout carga únicamente `style.css` y `mobile.css`.
+
+---
+
+## Layout y Schema
+
+El archivo `_layouts/default.html` centraliza:
+
+- título y descripción;
+- URL canónica;
+- iconos;
+- hojas de estilo;
+- enlaces `hreflang`;
+- nodo Schema `Person` común;
+- incorporación de los nodos Schema específicos de cada página;
+- menú, contenido, pie y JavaScript común.
+
+El nodo `Person` se genera siempre desde el layout. Los nodos específicos de cada página se declaran en su front matter mediante `schema_nodes` y el layout los serializa con `jsonify`.
+
+Una página puede contener varios nodos Schema. El nodo que representa la URL concreta puede ser `WebPage` o uno de sus subtipos, como `ProfilePage` o `CollectionPage`. Otros nodos pueden representar personas, artículos, libros, organizaciones u otras entidades.
+
+---
+
+## Catálogo central de recursos
+
+El archivo:
+
+```text
+_data/resources.yml
+```
+
+es el catálogo central de recursos indexables.
+
+Contiene dos grupos:
+
+- `html`: páginas HTML públicas;
+- `pdf`: documentos PDF públicos.
+
+Las entradas HTML pueden contener:
+
+- `url`
+- `lang`
+- `alternate`
+- `published`
+- `modified`
+- `images`
+
+Las imágenes pueden incluir:
+
+- `url`
+- `title`
+- `caption`
+
+Este catálogo evita mantener manualmente en el sitemap una segunda lista independiente de URLs.
+
+---
+
+## Fechas centralizadas
+
+El layout busca automáticamente la entrada de la página actual dentro de `site.data.resources.html` comparando `page.url` con `resource.url`.
+
+Deja disponibles estas variables Liquid:
+
+```liquid
+resource_published
+resource_modified
+```
+
+Su origen único es `_data/resources.yml`.
+
+Estas variables se han preparado para incorporarlas posteriormente, página por página, al nodo Schema que representa cada URL concreta. La lógica de búsqueda está centralizada en el layout y no tendrá que repetirse en cada archivo.
+
+---
+
+## Sitemap
+
+`sitemap.xml` es una plantilla Liquid, no una lista manual de URLs.
+
+Durante la compilación de Jekyll:
+
+```text
+_data/resources.yml + sitemap.xml
+                 ↓
+       sitemap.xml publicado
+```
+
+La plantilla genera automáticamente:
+
+- las URLs HTML;
+- `lastmod` cuando existe `modified`;
+- los enlaces alternativos `hreflang`;
+- los datos opcionales de imágenes;
+- las URLs de documentos PDF;
+- `lastmod` de los PDF cuando está definido.
+
+El sitemap publicado es un XML estático. Cuando Google lo solicita, GitHub Pages entrega el archivo ya compilado; no vuelve a leer `resources.yml` en cada petición.
+
+---
+
+## Indexación
+
+`robots.txt` permite el rastreo del sitio y declara:
+
+```text
+https://gomezaldaz.com/sitemap.xml
+```
+
+Las URLs indexables deben mantenerse en `_data/resources.yml`. Al añadir, eliminar o modificar una página o un PDF, debe revisarse su entrada en ese catálogo central.
+
+Las correspondencias bilingües se declaran mediante `alternate` y se publican en el sitemap y en el HTML mediante `hreflang`.
 
 ---
 
@@ -159,126 +226,81 @@ La sección Obra / Work organiza cuatro líneas principales:
 - Adopción / Adoption
 - Bebés robados / Stolen babies
 
-La estructura busca separar la obra publicada, la línea testimonial, los textos críticos sobre adopción y la investigación documental sobre bebés robados.
+Rutas principales:
 
-Las páginas índice correspondientes son:
-
-- /es/obra/
-- /en/work/
-- /es/obra/libros/
-- /en/work/books/
-- /es/obra/testimonios/
-- /en/work/testimonies/
-- /es/obra/adopcion/
-- /en/work/adoption/
-- /es/obra/bebes-robados/
-- /en/work/stolen-babies/
+- `/es/obra/` y `/en/work/`
+- `/es/obra/libros/` y `/en/work/books/`
+- `/es/obra/testimonios/` y `/en/work/testimonies/`
+- `/es/obra/adopcion/` y `/en/work/adoption/`
+- `/es/obra/bebes-robados/` y `/en/work/stolen-babies/`
 
 ---
 
-## Testimonios / Testimonies
+## Prensa y notas de prensa
 
-La sección Testimonios / Testimonies reúne textos testimoniales e intervenciones públicas de Olmo Gómez Aldaz.
+Las secciones de prensa distinguen entre cobertura de medios externos y notas emitidas directamente por Olmo Gómez Aldaz.
 
 Rutas principales:
 
-- /es/obra/testimonios/
-- /en/work/testimonies/
+- `/es/prensa/`
+- `/en/press/`
+- `/es/prensa/medios/`
+- `/en/press/media/`
+- `/es/prensa/notas-de-prensa/`
+- `/en/press/press-releases/`
 
-Primer testimonio publicado dentro de esta sección:
-
-- /es/obra/testimonios/voy-a-hablar-de-resiliencia/
-- /en/work/testimonies/i-am-going-to-speak-about-resilience/
-
-El texto corresponde a “Voy a hablar de resiliencia: Resiliencia frente a la adopción”, preparado para el panel abierto “Diferentes voces”, dentro de las jornadas “Caminos de Resiliencia”, XV Aniversario de La Voz de los Adoptados.
-
----
-
-## Notas de prensa / Press releases
-
-La sección Notas de prensa / Press releases conserva los comunicados emitidos directamente por Olmo Gómez Aldaz y los separa de la cobertura publicada por medios externos.
-
-Rutas de archivo:
-
-- /es/prensa/notas-de-prensa/
-- /en/press/press-releases/
-
-Notas incorporadas:
-
-1. 20 de enero de 2026: sentencia pionera y recuperación de la identidad en el DNI sin anular la adopción. La nota original se difundió en el cuerpo del correo y se reproduce en HTML, sin crear posteriormente un PDF artificial.
-2. 14 de julio de 2026: reconocimientos oficiales como «bebé robado» y oposición de la Diputación Foral de Bizkaia a la nulidad de la adopción. Se conserva en HTML y mediante el PDF original en español.
-3. 4 de agosto de 2026: «¿Está fracasando la Ley de Memoria Democrática con los bebés robados?». Se conserva en HTML y mediante el PDF original en español.
-
-Las páginas inglesas contienen la traducción íntegra del texto. Cuando existe PDF, enlazan el documento original en español y lo identifican expresamente como tal.
-
-Las páginas índice utilizan datos estructurados de tipo `CollectionPage`. Las páginas individuales utilizan `NewsArticle`, con fecha de publicación, titular, descripción, idioma y referencia al autor. Las páginas generales de prensa mantienen el tipo `WebPage` y relacionan el archivo de notas y el dosier de medios mediante `hasPart`.
+Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las notas individuales, `NewsArticle`; y las páginas generales de prensa, `WebPage`.
 
 ---
 
-## Documentos públicos — /docs/
+## Documentos públicos
 
-La carpeta docs/ contiene documentos públicos enlazados desde la web o incluidos en el sitemap.
+La carpeta `/docs/` contiene PDF y otros documentos públicos enlazados desde la web o incluidos en el catálogo de recursos.
 
-Puede incluir PDFs, revistas, entrevistas, documentos de reconocimiento o reparación y materiales complementarios del proyecto.
+Los documentos públicos pueden ser:
 
-Los documentos situados en docs/ forman parte del contenido público del sitio cuando están enlazados desde páginas de la web o incluidos en sitemap.xml.
+- resoluciones y reconocimientos;
+- notas de prensa originales;
+- entrevistas y revistas;
+- informes de investigación;
+- materiales documentales complementarios.
 
-Entre los documentos asociados a las notas de prensa se encuentran los PDF originales de las notas difundidas en julio y agosto de 2026. La nota de enero de 2026 se conserva únicamente como texto HTML porque fue distribuida directamente en el cuerpo del correo.
-
----
-
-## Recursos comunes
-
-Los recursos compartidos por todos los idiomas se alojan en la raíz del proyecto:
-
-- css/ → estilos globales
-- js/ → lógica de navegación y comportamiento
-- img/ → imágenes y elementos gráficos
-- _layouts/ → layouts comunes de Jekyll
-- favicon.ico, favicon-32x32.png, apple-touch-icon.png y android-chrome-192x192.png → iconos del sitio
-- yandex_21845d3da951913c.html → archivo de verificación de Yandex Webmaster
-
-Estas rutas son absolutas y comunes a todo el sitio.
+Los documentos anonimizados deben contener una eliminación real de los datos personales, no una simple cobertura visual.
 
 ---
 
-## Navegación
+## Cambios técnicos consolidados el 5 de agosto de 2026
 
-La navegación principal se genera mediante JavaScript común.
-
-Archivo principal:
-
-/js/menu.js
-
-El menú utiliza rutas absolutas y adapta los enlaces según la versión lingüística de la página.
-
-El selector de idioma enlaza páginas equivalentes entre español e inglés cuando existe correspondencia.
-
----
-
-## Indexación
-
-El archivo robots.txt permite el rastreo completo del sitio y declara el sitemap oficial:
-
-https://gomezaldaz.com/sitemap.xml
-
-El archivo sitemap.xml recoge las URLs públicas principales del sitio: home española, versión inglesa, páginas interiores, secciones de Obra / Work, testimonios, investigación sobre bebés robados, informes documentales, prensa, dosier de medios, archivo bilingüe de notas de prensa y documentos públicos seleccionados.
-
-Las páginas nuevas de notas de prensa están emparejadas mediante `hreflang`. El sitemap incluye `lastmod` para las ocho páginas nuevas y para las dos páginas generales de prensa actualizadas el 4 de agosto de 2026.
+- Creación de `_data/resources.yml` como catálogo central de páginas HTML y PDF.
+- Conversión de `sitemap.xml` en una plantilla generada desde ese catálogo.
+- Generación automática de `lastmod`, `hreflang` e imágenes del sitemap.
+- Separación de los estilos responsive en `css/mobile.css`.
+- Eliminación de `css/menu-mobile.css`.
+- Actualización del layout para cargar `style.css` y `mobile.css`.
+- Conversión del título o logotipo del menú en enlace a la portada.
+- Ajustes visuales del enlace del título y de su foco de teclado.
+- Centralización de la navegación estructural en `_includes/menu.html`.
+- Actualización del nodo Schema `Person`, de las etiquetas del nombre registral anterior y del texto del pie en español e inglés.
+- Incorporación en el layout de la búsqueda centralizada de `published` y `modified` para la página actual.
+- Eliminación de notas temporales de paquetes de actualización ya integrados.
 
 ---
 
-## Notas importantes
+## Reglas de mantenimiento
 
-- La web se organiza exclusivamente por rutas.
-- La raíz / es la home oficial en español.
-- /en/ es la home oficial en inglés.
-- /es/ es una ruta técnica de compatibilidad hacia /.
-- Las páginas interiores en español viven bajo /es/...
-- Las páginas interiores en inglés viven bajo /en/...
-- Los documentos públicos viven bajo /docs/.
-- Las rutas del sitemap corresponden a páginas o documentos existentes.
-- La estructura de carpetas sostiene la coherencia editorial y técnica del sitio.
-- /es/libros/ y /en/books/ se conservan solo como redirecciones técnicas hacia las nuevas rutas de Obra / Work.
+- La raíz `/` es la portada oficial en español.
+- `/en/` es la portada oficial en inglés.
+- `/es/` se conserva como ruta técnica de compatibilidad.
+- Las páginas interiores españolas viven bajo `/es/`.
+- Las páginas inglesas viven bajo `/en/`.
+- Los documentos públicos viven bajo `/docs/`.
+- Las URLs indexables y sus fechas se mantienen en `_data/resources.yml`.
+- El sitemap no debe volver a convertirse en una lista manual de URLs.
+- El menú estructural debe mantenerse en `_includes/menu.html`.
+- `menu.js` debe limitarse al comportamiento interactivo.
+- Los estilos generales y responsive deben permanecer separados.
+- Los nodos Schema específicos deben mantenerse en el front matter de cada página.
+- El nodo Schema que representa cada URL será el destinatario de las fechas centralizadas.
+- Las redirecciones técnicas antiguas solo se conservan cuando siguen siendo necesarias.
 
-Este README documenta la arquitectura principal y vigente del proyecto.
+Este README documenta la arquitectura principal y vigente del proyecto a 5 de agosto de 2026.
