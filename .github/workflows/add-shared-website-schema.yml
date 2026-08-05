@@ -74,6 +74,10 @@ jobs:
           homepage_path.write_text(homepage, encoding='utf-8')
           PY
 
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
       - name: Install Jekyll
         run: gem install jekyll --no-document
 
