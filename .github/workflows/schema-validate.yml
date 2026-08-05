@@ -1,0 +1,38 @@
+name: Validate generated Schema front matter
+on:
+  push:
+    branches: [schema-review-batch]
+    paths:
+      - .github/workflows/schema-validate.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: schema-review-batch
+      - run: python -m pip install --quiet PyYAML
+      - name: Parse resources and every HTML front matter
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          root = Path('.')
+          yaml.safe_load((root / '_data/resources.yml').read_text(encoding='utf-8'))
+          paths = [root / 'index.html', *sorted((root / 'es').rglob('index.html')), *sorted((root / 'en').rglob('index.html'))]
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              if not text.startswith('---\n'):
+                  raise SystemExit(f'{path}: sin apertura de front matter')
+              end = text.find('\n---\n', 4)
+              if end < 0:
+                  raise SystemExit(f'{path}: sin cierre de front matter')
+              data = yaml.safe_load(text[4:end])
+              if not isinstance(data, dict):
+                  raise SystemExit(f'{path}: front matter no es un mapa')
+              if 'schema_nodes' not in data or not isinstance(data['schema_nodes'], list):
+                  raise SystemExit(f'{path}: schema_nodes ausente o no es una lista')
+          print(f'Front matter YAML correcto: {len(paths)} páginas')
+          PY
