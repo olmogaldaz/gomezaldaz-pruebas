@@ -7,6 +7,10 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | escape }}">
 
+  {%- unless site.indexable %}
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  {%- endunless %}
+
   {%- assign current_resource = nil %}
   {%- for resource in site.data.resources.html %}
     {%- if resource.url == page.url %}
@@ -17,8 +21,9 @@
   {%- assign resource_published = current_resource.published %}
   {%- assign resource_modified = current_resource.modified %}
 
+  {%- assign public_url = site.public_url | default: site.url %}
   {%- assign canonical_path = page.canonical | default: page.url %}
-  <link rel="canonical" href="{{ site.url }}{{ canonical_path }}">
+  <link rel="canonical" href="{{ public_url }}{{ canonical_path }}">
 
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -31,11 +36,11 @@
 
   <!-- hreflang -->
   {%- if page.lang == "es" %}
-    <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.url }}">
-    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.alt }}">
+    <link rel="alternate" hreflang="es" href="{{ public_url }}{{ page.url }}">
+    <link rel="alternate" hreflang="en" href="{{ public_url }}{{ page.alt }}">
   {%- else %}
-    <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.alt }}">
-    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}">
+    <link rel="alternate" hreflang="es" href="{{ public_url }}{{ page.alt }}">
+    <link rel="alternate" hreflang="en" href="{{ public_url }}{{ page.url }}">
   {%- endif %}
 
   <!-- schema -->
