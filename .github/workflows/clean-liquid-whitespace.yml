@@ -35,8 +35,10 @@ jobs:
           updated = lines.map do |line|
             newline = line.end_with?("\n") ? "\n" : ""
             content = newline.empty? ? line : line[0...-1]
+            standalone_tag = content.match?(/\A\s*\{%(?!-).*%\}\s*\z/)
+            include_tag = content.match?(/\{%\s*include\b/)
 
-            if content.match?(/\A\s*\{%(?!-).*%\}\s*\z/)
+            if standalone_tag && !include_tag
               changed += 1
               content.sub('{%', '{%-') + newline
             else
@@ -46,7 +48,7 @@ jobs:
 
           raise 'No standalone Liquid tags were changed' if changed.zero?
           File.write(path, updated.join, mode: 'w', encoding: 'UTF-8')
-          puts "Added left-side whitespace control to #{changed} standalone Liquid tags."
+          puts "Added left-side whitespace control to #{changed} standalone non-include Liquid tags."
           RUBY
 
       - name: Confirm only the layout changed
@@ -91,6 +93,12 @@ jobs:
             before_nonblank = before.lines.reject { |line| line.strip.empty? }.map(&:rstrip)
             after_nonblank = after.lines.reject { |line| line.strip.empty? }.map(&:rstrip)
             unless before_nonblank == after_nonblank
+              mismatch = [before_nonblank.length, after_nonblank.length].min.times.find do |index|
+                before_nonblank[index] != after_nonblank[index]
+              end
+              warn "First mismatch at non-empty line #{mismatch || 'length'}"
+              warn "Before: #{mismatch ? before_nonblank[mismatch].inspect : before_nonblank.length}"
+              warn "After:  #{mismatch ? after_nonblank[mismatch].inspect : after_nonblank.length}"
               raise "Non-empty HTML changed for #{url}"
             end
 
