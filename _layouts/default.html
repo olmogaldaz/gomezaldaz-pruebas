@@ -7,17 +7,17 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | escape }}">
 
-  {% assign current_resource = nil %}
-  {% for resource in site.data.resources.html %}
-    {% if resource.url == page.url %}
-      {% assign current_resource = resource %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-  {% assign resource_published = current_resource.published %}
-  {% assign resource_modified = current_resource.modified %}
+  {%- assign current_resource = nil %}
+  {%- for resource in site.data.resources.html %}
+    {%- if resource.url == page.url %}
+      {%- assign current_resource = resource %}
+      {%- break %}
+    {%- endif %}
+  {%- endfor %}
+  {%- assign resource_published = current_resource.published %}
+  {%- assign resource_modified = current_resource.modified %}
 
-  {% assign canonical_path = page.canonical | default: page.url %}
+  {%- assign canonical_path = page.canonical | default: page.url %}
   <link rel="canonical" href="{{ site.url }}{{ canonical_path }}">
 
   <link rel="icon" href="/favicon.ico?v=2" sizes="any">
@@ -30,35 +30,35 @@
   <link rel="stylesheet" href="/css/mobile.css">
 
   <!-- hreflang -->
-  {% if page.lang == "es" %}
+  {%- if page.lang == "es" %}
     <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.url }}">
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.alt }}">
-  {% else %}
+  {%- else %}
     <link rel="alternate" hreflang="es" href="{{ site.url }}{{ page.alt }}">
     <link rel="alternate" hreflang="en" href="{{ site.url }}{{ page.url }}">
-  {% endif %}
+  {%- endif %}
 
   <!-- schema -->
   
-  {% assign schema_nodes = "" %}
+  {%- assign schema_nodes = "" %}
   
-  {% comment %} --- PERSON (siempre) --- {% endcomment %}
+  {%- comment %} --- PERSON (siempre) --- {% endcomment %}
   
-  {% assign person_url = "https://gomezaldaz.com/" %}
+  {%- assign person_url = "https://gomezaldaz.com/" %}
 
-  {% if page.lang == "es" %}
-    {% assign person_job = "Autor" %}
-    {% assign person_desc = "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación." %}
-    {% assign former_name_label = "Nombre registral anterior" %}
-    {% assign footer_tagline = "Web personal y documental contra la cultura del silencio sobre las víctimas del tráfico de menores" %}
-  {% else %}
-    {% assign person_job = "Author" %}
-    {% assign person_desc = "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation." %}
-    {% assign former_name_label = "Former registered name" %}
-    {% assign footer_tagline = "Personal and documentary website against the culture of silence imposed on victims of child trafficking" %}
-  {% endif %}
+  {%- if page.lang == "es" %}
+    {%- assign person_job = "Autor" %}
+    {%- assign person_desc = "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación." %}
+    {%- assign former_name_label = "Nombre registral anterior" %}
+    {%- assign footer_tagline = "Web personal y documental contra la cultura del silencio sobre las víctimas del tráfico de menores" %}
+  {%- else %}
+    {%- assign person_job = "Author" %}
+    {%- assign person_desc = "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation." %}
+    {%- assign former_name_label = "Former registered name" %}
+    {%- assign footer_tagline = "Personal and documentary website against the culture of silence imposed on victims of child trafficking" %}
+  {%- endif %}
   
-  {% capture person_node %}
+  {%- capture person_node %}
   {
     "@type": "Person",
     "@id": "https://gomezaldaz.com/#person",
@@ -91,13 +91,13 @@
       "https://www.facebook.com/olmo.gomez.aldaz/"
     ]
   }
-  {% endcapture %}
+  {%- endcapture %}
   
-  {% assign schema_nodes = person_node %}
+  {%- assign schema_nodes = person_node %}
 
-  {% comment %} --- WEBSITE (siempre) --- {% endcomment %}
+  {%- comment %} --- WEBSITE (siempre) --- {% endcomment %}
 
-  {% capture website_node %}
+  {%- capture website_node %}
   ,
   {
     "@type": "WebSite",
@@ -109,29 +109,29 @@
       "@id": "https://gomezaldaz.com/#person"
     }
   }
-  {% endcapture %}
+  {%- endcapture %}
 
-  {% assign schema_nodes = schema_nodes | append: website_node %}
+  {%- assign schema_nodes = schema_nodes | append: website_node %}
 
-  {% comment %} --- PAGE-SPECIFIC SCHEMA NODES --- {% endcomment %}
+  {%- comment %} --- PAGE-SPECIFIC SCHEMA NODES --- {% endcomment %}
 
-  {% if page.schema_nodes %}
-  {% for schema_node in page.schema_nodes %}
-    {% assign serialized_schema_node = schema_node | jsonify %}
-    {% if page.schema_date_target and schema_node['@id'] == page.schema_date_target %}
-      {% assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
-      {% assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
-      {% capture dated_schema_node %}{{ serialized_schema_node_without_closing_brace }}{% if resource_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if resource_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}{% endcapture %}
-      {% assign serialized_schema_node = dated_schema_node | strip %}
-    {% endif %}
-    {% capture custom_node %}
+  {%- if page.schema_nodes %}
+  {%- for schema_node in page.schema_nodes %}
+    {%- assign serialized_schema_node = schema_node | jsonify %}
+    {%- if page.schema_date_target and schema_node['@id'] == page.schema_date_target %}
+      {%- assign serialized_schema_node_size = serialized_schema_node | size | minus: 1 %}
+      {%- assign serialized_schema_node_without_closing_brace = serialized_schema_node | slice: 0, serialized_schema_node_size %}
+      {%- capture dated_schema_node %}{{ serialized_schema_node_without_closing_brace }}{% if resource_published %},"datePublished":{{ resource_published | jsonify }}{% endif %}{% if resource_modified %},"dateModified":{{ resource_modified | jsonify }}{% endif %}}{% endcapture %}
+      {%- assign serialized_schema_node = dated_schema_node | strip %}
+    {%- endif %}
+    {%- capture custom_node %}
     ,
     {{ serialized_schema_node }}
-    {% endcapture %}
+    {%- endcapture %}
 
-    {% assign schema_nodes = schema_nodes | append: custom_node %}
-  {% endfor %}
-{% endif %}
+    {%- assign schema_nodes = schema_nodes | append: custom_node %}
+  {%- endfor %}
+{%- endif %}
 
   <script type="application/ld+json">
   {
@@ -158,15 +158,15 @@
         © 2026 · Olmo Gómez Aldaz · {{ footer_tagline }}
       </p>
       <p class="footer-lang">
-        {% if page.lang == "es" %}
+        {%- if page.lang == "es" %}
           <strong class="active">ES</strong>
           |
           <a href="{{ page.alt }}">EN</a>
-        {% else %}
+        {%- else %}
           <a href="{{ page.alt }}">ES</a>
           |
           <strong class="active">EN</strong>
-        {% endif %}
+        {%- endif %}
       </p>
     </div>
   </footer>
