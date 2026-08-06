@@ -1,1 +1,5 @@
-<!-- Google Analytics desactivado en el entorno de pruebas -->
+{% if site.indexable %}
+  {% include google-analytics-production.html %}
+{% else %}
+  {% include google-analytics-pruebas.html %}
+{% endif %}
