@@ -1,0 +1,126 @@
+name: Clean Liquid whitespace
+
+on:
+  push:
+    paths:
+      - '.github/workflows/clean-liquid-whitespace.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  clean-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      - name: Install Jekyll
+        run: gem install jekyll --no-document
+
+      - name: Build baseline
+        run: jekyll build --trace --destination /tmp/site-before
+
+      - name: Apply selective Liquid whitespace control
+        run: |
+          ruby <<'RUBY'
+          path = '_layouts/default.html'
+          lines = File.readlines(path, encoding: 'UTF-8')
+          changed = 0
+
+          updated = lines.map do |line|
+            newline = line.end_with?("\n") ? "\n" : ""
+            content = newline.empty? ? line : line[0...-1]
+
+            if content.match?(/\A\s*\{%(?!-).*%\}\s*\z/)
+              changed += 1
+              content.sub('{%', '{%-') + newline
+            else
+              line
+            end
+          end
+
+          raise 'No standalone Liquid tags were changed' if changed.zero?
+          File.write(path, updated.join, mode: 'w', encoding: 'UTF-8')
+          puts "Added left-side whitespace control to #{changed} standalone Liquid tags."
+          RUBY
+
+      - name: Confirm only the layout changed
+        run: |
+          changed=$(git status --porcelain | awk '{print $2}')
+          test "$changed" = "_layouts/default.html"
+
+      - name: Build cleaned version
+        run: jekyll build --trace --destination /tmp/site-after
+
+      - name: Compare all generated pages
+        run: |
+          ruby <<'RUBY'
+          require 'yaml'
+          require 'json'
+
+          def generated_path(root, url)
+            return File.join(root, 'index.html') if url == '/'
+            File.join(root, url.sub(%r{\A/}, ''), 'index.html')
+          end
+
+          def json_ld(text, path)
+            match = text.match(%r{<script type="application/ld\+json">\s*(\{.*?\})\s*</script>}m)
+            raise "JSON-LD missing in #{path}" unless match
+            JSON.parse(match[1])
+          end
+
+          resources = YAML.unsafe_load_file('_data/resources.yml').fetch('html')
+          raise "Expected 56 pages, found #{resources.length}" unless resources.length == 56
+
+          blank_before_total = 0
+          blank_after_total = 0
+          reductions = {}
+
+          resources.each do |resource|
+            url = resource.fetch('url')
+            before_path = generated_path('/tmp/site-before', url)
+            after_path = generated_path('/tmp/site-after', url)
+            before = File.read(before_path, encoding: 'UTF-8')
+            after = File.read(after_path, encoding: 'UTF-8')
+
+            before_nonblank = before.lines.reject { |line| line.strip.empty? }.map(&:rstrip)
+            after_nonblank = after.lines.reject { |line| line.strip.empty? }.map(&:rstrip)
+            unless before_nonblank == after_nonblank
+              raise "Non-empty HTML changed for #{url}"
+            end
+
+            unless json_ld(before, before_path) == json_ld(after, after_path)
+              raise "JSON-LD semantics changed for #{url}"
+            end
+
+            before_blank = before.lines.count { |line| line.strip.empty? }
+            after_blank = after.lines.count { |line| line.strip.empty? }
+            raise "Blank lines increased for #{url}" if after_blank > before_blank
+
+            blank_before_total += before_blank
+            blank_after_total += after_blank
+            reductions[url] = before_blank - after_blank
+          end
+
+          unless blank_after_total < blank_before_total
+            raise 'The cleanup did not reduce blank lines'
+          end
+
+          puts "Validated #{resources.length} pages."
+          puts "Blank lines: #{blank_before_total} -> #{blank_after_total} (removed #{blank_before_total - blank_after_total})."
+          puts "Per-page reduction range: #{reductions.values.min}..#{reductions.values.max}."
+          RUBY
+
+      - name: Commit validated cleanup and remove workflow
+        run: |
+          rm .github/workflows/clean-liquid-whitespace.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add _layouts/default.html .github/workflows/clean-liquid-whitespace.yml
+          git commit -m 'Trim Liquid-generated blank lines'
+          git push
