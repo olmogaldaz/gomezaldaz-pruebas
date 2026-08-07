@@ -3,8 +3,8 @@
 # images es una lista opcional con url, title y caption.
 
 html:
-  - {url: "/", lang: es, alternate: "/en/", modified: "2026-08-06T01:48:08+02:00"}
-  - {url: "/en/", lang: en, alternate: "/", modified: "2026-08-06T01:48:08+02:00"}
+  - {url: "/", lang: es, alternate: "/en/", modified: "2026-08-07T19:47:46+02:00"}
+  - {url: "/en/", lang: en, alternate: "/", modified: "2026-08-07T19:47:46+02:00"}
   - {url: "/es/autor/", lang: es, alternate: "/en/author/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/en/author/", lang: en, alternate: "/es/autor/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/es/historia/", lang: es, alternate: "/en/story/", modified: "2026-08-06T01:48:08+02:00"}
