@@ -2,3 +2,4 @@ url: https://pruebas.gomezaldaz.com
 public_url: https://gomezaldaz.com
 indexable: false
 markdown: kramdown
+# Recompilación de Pages tras actualizar estilos de portada
