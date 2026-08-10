@@ -44,43 +44,63 @@ schema_date_target: https://gomezaldaz.com/es/prensa/medios/#webpage
     </ul>
   </div>
 
-  <h2 id="entrevista-personal">Mi entrevista más personal</h2>
-  <p class="section-note">Una entrevista muy especial para unos entrevistadores muy especiales.</p>
-  {% include media-items.html section="personal" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  {% include media-filters.html %}
 
-  <h2 id="juridico">Jurídico</h2>
-  <p class="section-note">Análisis y cobertura en medios jurídicos especializados.</p>
-  {% include media-items.html section="legal" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="entrevista-personal">Mi entrevista más personal</h2>
+    <p class="section-note">Una entrevista muy especial para unos entrevistadores muy especiales.</p>
+    {% include media-items.html section="personal" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 
-  <h2 id="television">Televisión</h2>
-  <p class="section-note">Piezas informativas emitidas en televisión autonómica y estatal.</p>
-  {% include media-items.html section="television" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="juridico">Jurídico</h2>
+    <p class="section-note">Análisis y cobertura en medios jurídicos especializados.</p>
+    {% include media-items.html section="legal" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 
-  <h2 id="radio">Radio</h2>
-  <p class="section-note">Entrevistas y espacios radiofónicos.</p>
-  {% include media-items.html section="radio" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="television">Televisión</h2>
+    <p class="section-note">Piezas informativas emitidas en televisión autonómica y estatal.</p>
+    {% include media-items.html section="television" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 
-  <h2 id="revistas">Revistas</h2>
-  <p class="section-note">Artículos de análisis y opinión en publicaciones no diarias.</p>
-  {% include media-items.html section="magazines" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="radio">Radio</h2>
+    <p class="section-note">Entrevistas y espacios radiofónicos.</p>
+    {% include media-items.html section="radio" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 
-  <h2 id="agencias">Agencias</h2>
-  <p class="section-note">Noticias de agencia y redistribución de contenidos.</p>
-  {% include media-items.html section="agencies" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="revistas">Revistas</h2>
+    <p class="section-note">Artículos de análisis y opinión en publicaciones no diarias.</p>
+    {% include media-items.html section="magazines" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 
-  <h2 id="prensa-2025">Prensa escrita · 2025</h2>
-  <p class="section-note">Primer ciclo informativo vinculado a la sentencia.</p>
-  {% include media-items.html section="press-2025" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="agencias">Agencias</h2>
+    <p class="section-note">Noticias de agencia y redistribución de contenidos.</p>
+    {% include media-items.html section="agencies" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 
-  <h2 id="prensa-2026">Prensa escrita · 2026</h2>
-  <p class="section-note">Segundo ciclo informativo tras la restitución de los apellidos en el DNI.</p>
-  {% include media-items.html section="press-2026" %}
-  <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  <section class="media-section">
+    <h2 id="prensa-2025">Prensa escrita · 2025</h2>
+    <p class="section-note">Primer ciclo informativo vinculado a la sentencia.</p>
+    {% include media-items.html section="press-2025" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
+
+  <section class="media-section">
+    <h2 id="prensa-2026">Prensa escrita · 2026</h2>
+    <p class="section-note">Segundo ciclo informativo tras la restitución de los apellidos en el DNI.</p>
+    {% include media-items.html section="press-2026" %}
+    <p class="back-top"><a href="#top">↑ Volver arriba</a></p>
+  </section>
 </main>
+
+<script src="/js/media-filters.js" defer></script>
