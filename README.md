@@ -59,21 +59,7 @@ indexable: true
 markdown: kramdown
 ```
 
-El archivo `CNAME` contiene el dominio propio de cada entorno:
-
-```text
-pruebas.gomezaldaz.com
-```
-
-o:
-
-```text
-gomezaldaz.com
-```
-
-### Archivos comunes y automáticos
-
-El resto de la arquitectura debe mantenerse idéntico en ambos repositorios.
+El archivo `CNAME` contiene el dominio propio de cada entorno.
 
 La variable `indexable` controla automáticamente:
 
@@ -82,14 +68,6 @@ La variable `indexable` controla automáticamente:
 - la inclusión o ausencia del sitemap en `robots.txt`.
 
 La variable `public_url` hace que las URL canónicas y los enlaces `hreflang` apunten siempre a la web pública, incluso cuando la página se compila en el entorno de pruebas.
-
-El sitemap utiliza como base pública:
-
-```text
-https://gomezaldaz.com
-```
-
-Por tanto, el sitemap generado en pruebas sirve para comprobar la compilación, pero no contiene URL del subdominio de pruebas.
 
 ### Google Analytics
 
@@ -101,36 +79,11 @@ _includes/google-analytics-production.html
 _includes/google-analytics-pruebas.html
 ```
 
-`google-analytics.html` es el selector automático:
-
-```liquid
-{% if site.indexable %}
-  {% include google-analytics-production.html %}
-{% else %}
-  {% include google-analytics-pruebas.html %}
-{% endif %}
-```
-
-La variante de producción contiene el código real de Analytics. La variante de pruebas no carga ningún script, para evitar que las comprobaciones contaminen las estadísticas.
+`google-analytics.html` selecciona automáticamente la variante según `site.indexable`.
 
 ### `robots.txt`
 
-El mismo archivo se utiliza en ambos repositorios:
-
-```liquid
----
-layout: null
----
-
-User-agent: *
-Allow: /
-
-{% if site.indexable %}
-Sitemap: {{ site.public_url | default: site.url }}/sitemap.xml
-{% endif %}
-```
-
-En pruebas permite el rastreo para que los buscadores puedan leer el `noindex`, pero no anuncia sitemap. En producción permite el rastreo y anuncia el sitemap público.
+El mismo archivo se utiliza en ambos repositorios. En pruebas permite el rastreo para que los buscadores puedan leer el `noindex`, pero no anuncia sitemap. En producción permite el rastreo y anuncia el sitemap público.
 
 ### Traslado de cambios entre entornos
 
@@ -157,18 +110,6 @@ Ambos repositorios contienen las dos variantes completas de los archivos de ento
 └── _config.pruebas.yml
 ```
 
-Estas copias tienen el mismo contenido en ambos repositorios.
-
-Para restaurar producción:
-
-- copiar el contenido de `_config.production.yml` al `_config.yml` de la raíz;
-- copiar el contenido de `CNAME.production` al `CNAME` de la raíz.
-
-Para restaurar pruebas:
-
-- copiar el contenido de `_config.pruebas.yml` al `_config.yml` de la raíz;
-- copiar el contenido de `CNAME.pruebas` al `CNAME` de la raíz.
-
 La carpeta `.github` se conserva en el repositorio, pero no se publica como parte de la web.
 
 ---
@@ -183,9 +124,11 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 ├── en/                                # Versión inglesa
 ├── es/                                # Páginas interiores en español
 ├── _data/
-│   └── resources.yml                  # Catálogo central de páginas y PDF
+│   ├── resources.yml                  # Catálogo central de páginas y PDF
+│   └── media.yml                      # Fuente única de apariciones en medios
 ├── _includes/
 │   ├── menu.html                      # Navegación principal
+│   ├── media-items.html               # Generación de fichas del dosier de medios
 │   ├── google-analytics.html          # Selector automático por entorno
 │   ├── google-analytics-production.html
 │   └── google-analytics-pruebas.html
@@ -205,8 +148,6 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 ├── CNAME                              # Dominio activo del entorno
 └── README.md                          # Documentación del proyecto
 ```
-
-Los archivos antiguos o temporales de paquetes de actualización no forman parte de la arquitectura vigente y deben eliminarse una vez integrados sus cambios.
 
 ---
 
@@ -243,15 +184,7 @@ Cada página declara su idioma, su URL equivalente y sus metadatos propios. El l
 
 ## Navegación
 
-La estructura del menú se genera en:
-
-```text
-_includes/menu.html
-```
-
-El layout lo incorpora mediante `{% include menu.html %}`. El archivo `/js/menu.js` no construye el menú: se limita a gestionar su comportamiento interactivo, especialmente en móvil.
-
-El título o logotipo del menú enlaza a la portada correspondiente y conserva su apariencia visual sin subrayado ni cambios de opacidad al pasar el cursor.
+La estructura del menú se genera en `_includes/menu.html`. El layout lo incorpora mediante `{% include menu.html %}`. El archivo `/js/menu.js` se limita al comportamiento interactivo, especialmente en móvil.
 
 ---
 
@@ -262,8 +195,6 @@ Los estilos están separados en dos archivos:
 - `/css/style.css`: estilos generales y de escritorio.
 - `/css/mobile.css`: reglas responsive, adaptación a pantallas pequeñas y menú móvil.
 
-El antiguo archivo `css/menu-mobile.css` fue eliminado. El layout carga únicamente `style.css` y `mobile.css`.
-
 ---
 
 ## Layout, metadatos y Schema
@@ -273,8 +204,7 @@ El archivo `_layouts/default.html` centraliza:
 - título y descripción;
 - control automático de `noindex`;
 - URL canónica basada en `public_url`;
-- iconos;
-- hojas de estilo;
+- iconos y hojas de estilo;
 - enlaces `hreflang` basados en `public_url`;
 - nodo Schema `Person` común;
 - incorporación de los nodos Schema específicos de cada página;
@@ -283,93 +213,40 @@ El archivo `_layouts/default.html` centraliza:
 
 El nodo `Person` se genera siempre desde el layout. Los nodos específicos de cada página se declaran en su front matter mediante `schema_nodes` y el layout los serializa con `jsonify`.
 
-Una página puede contener varios nodos Schema. El nodo que representa la URL concreta puede ser `WebPage` o uno de sus subtipos, como `ProfilePage` o `CollectionPage`. Otros nodos pueden representar personas, artículos, libros, organizaciones u otras entidades.
+Una página puede contener varios nodos Schema. El nodo que representa la URL concreta puede ser `WebPage` o uno de sus subtipos, como `ProfilePage` o `CollectionPage`.
 
 ---
 
 ## Catálogo central de recursos
 
-El archivo:
-
-```text
-_data/resources.yml
-```
-
-es el catálogo central de recursos públicos e indexables de producción.
-
-Contiene dos grupos:
+`_data/resources.yml` es el catálogo central de recursos públicos e indexables de producción. Contiene dos grupos:
 
 - `html`: páginas HTML públicas;
 - `pdf`: documentos PDF públicos.
 
-Las entradas HTML pueden contener:
+Las entradas HTML pueden contener `url`, `lang`, `alternate`, `published`, `modified` e `images`.
 
-- `url`
-- `lang`
-- `alternate`
-- `published`
-- `modified`
-- `images`
+El layout localiza la entrada de la página actual comparando `page.url` con `resource.url` y deja disponibles las variables `resource_published` y `resource_modified`.
 
-Las imágenes pueden incluir:
-
-- `url`
-- `title`
-- `caption`
-
-Este catálogo evita mantener manualmente en el sitemap una segunda lista independiente de URL.
-
----
-
-## Fechas centralizadas
-
-El layout busca automáticamente la entrada de la página actual dentro de `site.data.resources.html` comparando `page.url` con `resource.url`.
-
-Deja disponibles estas variables Liquid:
-
-```liquid
-resource_published
-resource_modified
-```
-
-Su origen único es `_data/resources.yml`.
-
-El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen `published` y `modified` en `_data/resources.yml`.
-
-La búsqueda y la inyección de fechas están centralizadas en el layout y no deben repetirse manualmente en cada archivo.
+El front matter de cada página indica mediante `schema_date_target` qué nodo Schema representa su URL concreta. Durante la compilación, el layout incorpora automáticamente `datePublished` y `dateModified` a ese nodo cuando existen las fechas correspondientes en `_data/resources.yml`.
 
 ---
 
 ## Sitemap
 
-`sitemap.xml` es una plantilla Liquid, no una lista manual de URL.
-
-Durante la compilación de Jekyll:
-
-```text
-_data/resources.yml + sitemap.xml
-                 ↓
-       sitemap.xml publicado
-```
-
-La plantilla genera automáticamente:
+`sitemap.xml` es una plantilla Liquid generada desde `_data/resources.yml`. Produce automáticamente:
 
 - las URL HTML;
 - `lastmod` cuando existe `modified`;
 - los enlaces alternativos `hreflang`;
 - los datos opcionales de imágenes;
-- las URL de documentos PDF;
-- `lastmod` de los PDF cuando está definido.
-
-El sitemap publicado es un XML estático. Cuando Google lo solicita, GitHub Pages entrega el archivo ya compilado; no vuelve a leer `resources.yml` en cada petición.
+- las URL de documentos PDF y su `lastmod` cuando existe.
 
 Tanto en pruebas como en producción, las URL incluidas en el sitemap apuntan a `https://gomezaldaz.com`.
 
 ---
 
 ## Indexación
-
-La indexación depende de `indexable`:
 
 ### Pruebas
 
@@ -386,8 +263,6 @@ La indexación depende de `indexable`:
 - canonical y `hreflang` apuntan a producción;
 - `robots.txt` anuncia `https://gomezaldaz.com/sitemap.xml`;
 - Google Analytics permanece activo.
-
-Las URL públicas deben mantenerse en `_data/resources.yml`. Al añadir, eliminar o modificar una página o un PDF, debe revisarse su entrada en ese catálogo central.
 
 ---
 
@@ -423,6 +298,58 @@ Rutas principales:
 - `/es/prensa/notas-de-prensa/`
 - `/en/press/press-releases/`
 
+### Dosier de medios
+
+Las apariciones en medios se mantienen en una única fuente de datos:
+
+```text
+_data/media.yml
+```
+
+Las páginas `/es/prensa/medios/` y `/en/press/media/` conservan el front matter, Schema, textos de presentación, cabeceras y organización de secciones, pero las fichas individuales ya no se escriben dos veces en HTML.
+
+Durante la compilación:
+
+```text
+_data/media.yml
+      ↓
+_includes/media-items.html
+      ↓
+/es/prensa/medios/ + /en/press/media/
+```
+
+Cada registro puede contener, según el caso:
+
+- `id`
+- `section`
+- `date`
+- `type`
+- `territory`
+- `medium`
+- `meta_es` / `meta_en`
+- `title_es` / `title_en`
+- `subtitle_es` / `subtitle_en`
+- `url` o `url_es` / `url_en`
+- `action_es` / `action_en`
+- `original_url` y `archived` para noticias retiradas
+- `title_note_es` / `title_note_en` para aclaraciones ligadas al título
+- `extra_url_es` / `extra_url_en` y acciones correspondientes cuando una ficha necesita un segundo enlace
+
+Los campos de subtítulo admiten HTML puntual cuando sea necesario conservar elementos de presentación existentes, por ejemplo cursivas o enlaces internos.
+
+Los campos `type`, `territory` y `date` están normalizados para permitir posteriormente búsqueda y filtros sin duplicar una tabla de índices independiente.
+
+### Mantenimiento del dosier
+
+Para incorporar una nueva aparición en medios:
+
+1. Añadir un único registro a `_data/media.yml`.
+2. Completar las variantes ES/EN de los textos que procedan.
+3. Asignar `section`, `type`, `territory` y `date` normalizados.
+4. Si la noticia ha desaparecido, conservar `original_url`, la URL archivada y `archived: true`.
+5. No añadir manualmente la misma ficha a las dos páginas HTML.
+6. Comprobar el resultado en pruebas antes de trasladarlo a producción.
+
 Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las notas individuales, `NewsArticle`; y las páginas generales de prensa, `WebPage`.
 
 ---
@@ -431,36 +358,32 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 
 La carpeta `/docs/` contiene PDF y otros documentos públicos enlazados desde la web o incluidos en el catálogo de recursos.
 
-Los documentos públicos pueden ser:
-
-- resoluciones y reconocimientos;
-- notas de prensa originales;
-- entrevistas y revistas;
-- informes de investigación;
-- materiales documentales complementarios.
-
 Los documentos anonimizados deben contener una eliminación real de los datos personales, no una simple cobertura visual.
 
 ---
 
-## Cambios técnicos consolidados el 5 y 6 de agosto de 2026
+## Cambios técnicos consolidados
+
+### 5 y 6 de agosto de 2026
 
 - Creación de `_data/resources.yml` como catálogo central de páginas HTML y PDF.
 - Conversión de `sitemap.xml` en una plantilla generada desde ese catálogo.
 - Generación automática de `lastmod`, `hreflang` e imágenes del sitemap.
 - Separación de los estilos responsive en `css/mobile.css`.
-- Eliminación de `css/menu-mobile.css`.
-- Actualización del layout para cargar `style.css` y `mobile.css`.
-- Conversión del título o logotipo del menú en enlace a la portada.
 - Centralización de la navegación estructural en `_includes/menu.html`.
 - Actualización del nodo Schema `Person` y del pie bilingüe.
 - Incorporación automática de `datePublished` y `dateModified` al nodo indicado por `schema_date_target`.
 - Creación de los entornos diferenciados de pruebas y producción.
-- Automatización de `noindex`, canonical y `hreflang` mediante `_config.yml`.
-- Automatización de Google Analytics según `indexable`.
-- Automatización de `robots.txt` según `indexable`.
+- Automatización de `noindex`, canonical, `hreflang`, Google Analytics y `robots.txt` según el entorno.
 - Creación de copias de emergencia de `_config.yml` y `CNAME` para ambos entornos.
-- Eliminación de notas temporales de paquetes de actualización ya integrados.
+
+### 11 de agosto de 2026
+
+- Creación de `_data/media.yml` como fuente única del dosier de medios.
+- Creación de `_includes/media-items.html` para generar las fichas bilingües.
+- Migración de `/es/prensa/medios/` y `/en/press/media/` desde fichas HTML duplicadas a datos estructurados.
+- Conservación de noticias archivadas, URLs originales, enlaces documentales adicionales y formato HTML puntual.
+- Preparación de `date`, `type` y `territory` como campos normalizados para futuras búsquedas y filtros.
 
 ---
 
@@ -473,6 +396,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Las páginas inglesas viven bajo `/en/`.
 - Los documentos públicos viven bajo `/docs/`.
 - Las URL públicas y sus fechas se mantienen en `_data/resources.yml`.
+- Las apariciones del dosier de medios se mantienen en `_data/media.yml`.
 - El sitemap no debe volver a convertirse en una lista manual de URL.
 - El menú estructural debe mantenerse en `_includes/menu.html`.
 - `menu.js` debe limitarse al comportamiento interactivo.
@@ -482,6 +406,5 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - `_config.yml` y `CNAME` no deben copiarse directamente entre entornos.
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
-- Las redirecciones técnicas antiguas solo se conservan cuando siguen siendo necesarias.
 
-Este README documenta la arquitectura principal y vigente del proyecto a **6 de agosto de 2026**.
+Este README documenta la arquitectura principal y vigente del proyecto a **11 de agosto de 2026**.
