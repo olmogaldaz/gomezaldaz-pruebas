@@ -44,43 +44,63 @@ schema_date_target: https://gomezaldaz.com/en/press/media/#webpage
     </ul>
   </div>
 
-  <h2 id="personal-interview">My most personal interview</h2>
-  <p class="section-note">A very special interview for very special interviewers.</p>
-  {% include media-items.html section="personal" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  {% include media-filters.html %}
 
-  <h2 id="legal-media">Legal media</h2>
-  <p class="section-note">Analysis and coverage in specialised legal media.</p>
-  {% include media-items.html section="legal" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="personal-interview">My most personal interview</h2>
+    <p class="section-note">A very special interview for very special interviewers.</p>
+    {% include media-items.html section="personal" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 
-  <h2 id="television">Television</h2>
-  <p class="section-note">News pieces broadcast on regional and national television.</p>
-  {% include media-items.html section="television" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="legal-media">Legal media</h2>
+    <p class="section-note">Analysis and coverage in specialised legal media.</p>
+    {% include media-items.html section="legal" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 
-  <h2 id="radio">Radio</h2>
-  <p class="section-note">Interviews and radio programmes.</p>
-  {% include media-items.html section="radio" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="television">Television</h2>
+    <p class="section-note">News pieces broadcast on regional and national television.</p>
+    {% include media-items.html section="television" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 
-  <h2 id="magazines">Magazines</h2>
-  <p class="section-note">Opinion and analysis pieces in non-daily publications.</p>
-  {% include media-items.html section="magazines" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="radio">Radio</h2>
+    <p class="section-note">Interviews and radio programmes.</p>
+    {% include media-items.html section="radio" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 
-  <h2 id="news-agencies">News agencies</h2>
-  <p class="section-note">Agency reports and content redistribution.</p>
-  {% include media-items.html section="agencies" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="magazines">Magazines</h2>
+    <p class="section-note">Opinion and analysis pieces in non-daily publications.</p>
+    {% include media-items.html section="magazines" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 
-  <h2 id="print-press-2025">Print press · 2025</h2>
-  <p class="section-note">First media cycle linked to the court ruling.</p>
-  {% include media-items.html section="press-2025" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="news-agencies">News agencies</h2>
+    <p class="section-note">Agency reports and content redistribution.</p>
+    {% include media-items.html section="agencies" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 
-  <h2 id="print-press-2026">Print press · 2026</h2>
-  <p class="section-note">Second media cycle following the restoration of the surnames on the ID card.</p>
-  {% include media-items.html section="press-2026" %}
-  <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  <section class="media-section">
+    <h2 id="print-press-2025">Print press · 2025</h2>
+    <p class="section-note">First media cycle linked to the court ruling.</p>
+    {% include media-items.html section="press-2025" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
+
+  <section class="media-section">
+    <h2 id="print-press-2026">Print press · 2026</h2>
+    <p class="section-note">Second media cycle following the restoration of the surnames on the ID card.</p>
+    {% include media-items.html section="press-2026" %}
+    <p class="back-top"><a href="#top">↑ Back to top</a></p>
+  </section>
 </main>
+
+<script src="/js/media-filters.js" defer></script>
