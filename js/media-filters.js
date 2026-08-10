@@ -164,5 +164,7 @@
   });
   clearButton.addEventListener('click', clearFilters);
 
+  filterBox.hidden = false;
+  filterBox.style.removeProperty('display');
   applyFilters();
 })();
