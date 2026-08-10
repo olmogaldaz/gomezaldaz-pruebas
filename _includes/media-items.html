@@ -1,0 +1,66 @@
+{% assign section_items = site.data.media | where: "section", include.section %}
+{% assign title_key = "title_" | append: page.lang %}
+{% assign subtitle_key = "subtitle_" | append: page.lang %}
+{% assign meta_key = "meta_" | append: page.lang %}
+{% assign action_key = "action_" | append: page.lang %}
+{% assign url_key = "url_" | append: page.lang %}
+{% assign title_note_key = "title_note_" | append: page.lang %}
+{% assign extra_url_key = "extra_url_" | append: page.lang %}
+{% assign extra_action_key = "extra_action_" | append: page.lang %}
+
+{% for item in section_items %}
+  {% assign item_url = item[url_key] | default: item.url %}
+  <article class="card media-item"
+           data-media-id="{{ item.id }}"
+           data-year="{{ item.date | date: '%Y' }}"
+           data-type="{{ item.type }}"
+           data-territory="{{ item.territory }}"
+           data-medium="{{ item.medium | escape }}">
+    <div class="meta">{{ item[meta_key] }}</div>
+
+    <h3>
+      {% if item_url %}
+        <a href="{{ item_url }}"{% if item_url contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %} class="card-title-link">{{ item[title_key] }}</a>
+      {% else %}
+        {{ item[title_key] }}
+      {% endif %}
+      {% if item[title_note_key] %}<span class="section-note">{{ item[title_note_key] }}</span>{% endif %}
+    </h3>
+
+    {% if item[subtitle_key] %}
+      <p class="card-subtitle">{{ item[subtitle_key] }}</p>
+    {% endif %}
+
+    {% if item.archived %}
+      <p class="section-note">
+        {% if page.lang == 'es' %}
+          <strong>Nota:</strong> la noticia original fue retirada por el medio o ya no está disponible en su URL pública.
+        {% else %}
+          <strong>Note:</strong> the original article was removed by the outlet or is no longer available at its public URL.
+        {% endif %}
+      </p>
+      <p>
+        <strong>{% if page.lang == 'es' %}URL original{% else %}Original URL{% endif %}:</strong>
+        <code>{{ item.original_url }}</code>
+      </p>
+    {% endif %}
+
+    {% if item_url and item[action_key] %}
+      <p>
+        <a href="{{ item_url }}"{% if item_url contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>
+          {{ item[action_key] }}
+        </a>
+      </p>
+    {% elsif item.archived and item_url %}
+      <p>
+        <a href="{{ item_url }}" target="_blank" rel="noopener noreferrer">
+          {% if page.lang == 'es' %}Consultar copia archivada en Internet Archive{% else %}View archived copy on Internet Archive{% endif %}
+        </a>
+      </p>
+    {% endif %}
+
+    {% if item[extra_url_key] %}
+      <p><a href="{{ item[extra_url_key] }}">{{ item[extra_action_key] }}</a></p>
+    {% endif %}
+  </article>
+{% endfor %}
