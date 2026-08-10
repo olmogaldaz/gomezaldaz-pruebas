@@ -136,8 +136,9 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 ├── _layouts/
 │   └── default.html                   # Layout, metadatos, indexación y Schema
 ├── css/
-│   ├── style.css                      # Estilos generales y de escritorio
-│   └── mobile.css                     # Adaptación responsive y menú móvil
+│   ├── style.css                      # Estilos globales
+│   ├── mobile.css                     # Responsive global y menú móvil
+│   └── media-filters.css              # Estilos propios de búsqueda y filtros
 ├── js/
 │   ├── menu.js                        # Comportamiento interactivo del menú
 │   └── media-filters.js               # Búsqueda, filtros y estado en URL del dosier
@@ -192,12 +193,20 @@ La estructura del menú se genera en `_includes/menu.html`. El layout lo incorpo
 
 ## CSS
 
-Los estilos están separados en dos archivos:
+Los estilos se organizan por alcance:
 
-- `/css/style.css`: estilos generales y de escritorio, incluidos los controles del dosier de medios.
-- `/css/mobile.css`: reglas responsive generales y menú móvil.
+- `/css/style.css`: estilos globales de la web.
+- `/css/mobile.css`: reglas responsive globales y menú móvil.
+- `/css/media-filters.css`: estilos exclusivos de la búsqueda y los filtros del dosier de medios, incluido su responsive.
 
-Los filtros del dosier adaptan su rejilla dentro de `style.css`: cuatro columnas en escritorio, dos en móvil y una en pantallas estrechas.
+El layout permite que una página declare hojas de estilo adicionales mediante `extra_css` en el front matter. Así, los estilos específicos no se cargan en el resto del sitio.
+
+Las páginas del dosier declaran:
+
+```yml
+extra_css:
+  - /css/media-filters.css
+```
 
 ---
 
@@ -208,7 +217,8 @@ El archivo `_layouts/default.html` centraliza:
 - título y descripción;
 - control automático de `noindex`;
 - URL canónica basada en `public_url`;
-- iconos y hojas de estilo;
+- iconos y hojas de estilo globales;
+- carga opcional de CSS específico mediante `extra_css`;
 - enlaces `hreflang` basados en `public_url`;
 - nodo Schema `Person` común;
 - incorporación de los nodos Schema específicos de cada página;
@@ -345,7 +355,7 @@ Los campos `date`, `type`, `territory` y `medium` alimentan los filtros y sus op
 
 ### Búsqueda y filtros
 
-La interfaz se genera desde `_includes/media-filters.html` y la lógica vive en `/js/media-filters.js`.
+La interfaz se genera desde `_includes/media-filters.html`, la lógica vive en `/js/media-filters.js` y su presentación en `/css/media-filters.css`.
 
 Permite combinar:
 
@@ -411,6 +421,8 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Incorporación de búsqueda libre y filtros combinables por año, tipo, territorio y medio.
 - Incorporación de contador de resultados, limpieza de filtros, ocultación de secciones vacías y estado compartible mediante query string.
 - Mejora progresiva para conservar el dosier completo cuando JavaScript no está disponible.
+- Creación de `/css/media-filters.css` y extracción de los estilos del buscador fuera de los CSS globales.
+- Incorporación de `extra_css` en el layout para cargar hojas de estilo específicas solo en las páginas que las declaran.
 
 ---
 
@@ -425,11 +437,12 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Las URL públicas y sus fechas se mantienen en `_data/resources.yml`.
 - Las apariciones del dosier de medios se mantienen en `_data/media.yml`.
 - Los filtros del dosier deben derivar sus opciones de los registros existentes, no de una lista paralela.
+- Los estilos específicos de una página deben declararse mediante `extra_css` cuando no sean globales.
 - El sitemap no debe volver a convertirse en una lista manual de URL.
 - El menú estructural debe mantenerse en `_includes/menu.html`.
 - `menu.js` debe limitarse al comportamiento interactivo del menú.
 - `media-filters.js` debe limitarse a la búsqueda y filtrado del dosier.
-- Los estilos generales y responsive deben permanecer separados.
+- Los estilos globales y responsive deben mantenerse separados de los estilos específicos de componentes o páginas cuando corresponda.
 - Los nodos Schema específicos deben mantenerse en el front matter de cada página.
 - El nodo Schema que representa cada URL será el destinatario de las fechas centralizadas.
 - `_config.yml` y `CNAME` no deben copiarse directamente entre entornos.
