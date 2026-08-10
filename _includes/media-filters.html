@@ -1,0 +1,52 @@
+<section class="card media-filters" id="media-filters" aria-labelledby="media-filters-title">
+  <h2 id="media-filters-title">{% if page.lang == 'es' %}Buscar en el dosier{% else %}Search the dossier{% endif %}</h2>
+
+  <div class="media-search-field">
+    <label for="media-search">{% if page.lang == 'es' %}Buscar texto{% else %}Search text{% endif %}</label>
+    <input
+      type="search"
+      id="media-search"
+      autocomplete="off"
+      placeholder="{% if page.lang == 'es' %}Título, medio, autor, palabras…{% else %}Title, outlet, author, keywords…{% endif %}"
+    >
+  </div>
+
+  <div class="media-filter-grid">
+    <div>
+      <label for="media-year">{% if page.lang == 'es' %}Año{% else %}Year{% endif %}</label>
+      <select id="media-year">
+        <option value="">{% if page.lang == 'es' %}Todos{% else %}All{% endif %}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="media-type">{% if page.lang == 'es' %}Tipo{% else %}Type{% endif %}</label>
+      <select id="media-type">
+        <option value="">{% if page.lang == 'es' %}Todos{% else %}All{% endif %}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="media-territory">{% if page.lang == 'es' %}Territorio{% else %}Territory{% endif %}</label>
+      <select id="media-territory">
+        <option value="">{% if page.lang == 'es' %}Todos{% else %}All{% endif %}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="media-medium">{% if page.lang == 'es' %}Medio{% else %}Outlet{% endif %}</label>
+      <select id="media-medium">
+        <option value="">{% if page.lang == 'es' %}Todos{% else %}All{% endif %}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="media-filter-status">
+    <p id="media-result-count" class="media-result-count" aria-live="polite"></p>
+    <button type="button" id="media-clear" class="cta media-clear">{% if page.lang == 'es' %}Limpiar filtros{% else %}Clear filters{% endif %}</button>
+  </div>
+
+  <p id="media-no-results" class="media-no-results" hidden>
+    {% if page.lang == 'es' %}No hay resultados para estos criterios.{% else %}No results match these criteria.{% endif %}
+  </p>
+</section>
