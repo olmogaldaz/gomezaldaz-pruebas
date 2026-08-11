@@ -167,7 +167,12 @@
   <footer class="site-footer">
     <div class="wrap footer-row">
       <p class="footer-copy">
-        © 2026 · Olmo Gómez Aldaz · {{ footer_tagline }}
+        © 2026 · Olmo Gómez Aldaz · {{ footer_tagline }} ·
+        {%- if page.lang == "es" %}
+          <a href="/es/contacto/">Contacto</a>
+        {%- else %}
+          <a href="/en/contact/">Contact</a>
+        {%- endif %}
       </p>
       <p class="footer-lang">
         {%- if page.lang == "es" %}
