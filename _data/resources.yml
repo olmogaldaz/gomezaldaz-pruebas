@@ -5,8 +5,10 @@
 html:
   - {url: "/", lang: es, alternate: "/en/", modified: "2026-08-07T19:47:46+02:00"}
   - {url: "/en/", lang: en, alternate: "/", modified: "2026-08-07T19:47:46+02:00"}
-  - {url: "/es/autor/", lang: es, alternate: "/en/author/", modified: "2026-08-06T01:48:08+02:00"}
-  - {url: "/en/author/", lang: en, alternate: "/es/autor/", modified: "2026-08-06T01:48:08+02:00"}
+  - {url: "/es/autor/", lang: es, alternate: "/en/author/", modified: "2026-08-11T02:56:00+02:00"}
+  - {url: "/en/author/", lang: en, alternate: "/es/autor/", modified: "2026-08-11T02:56:00+02:00"}
+  - {url: "/es/contacto/", lang: es, alternate: "/en/contact/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
+  - {url: "/en/contact/", lang: en, alternate: "/es/contacto/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
   - {url: "/es/historia/", lang: es, alternate: "/en/story/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/en/story/", lang: en, alternate: "/es/historia/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/es/demanda/", lang: es, alternate: "/en/claim/", modified: "2026-08-06T01:48:08+02:00"}
@@ -15,8 +17,8 @@ html:
   - {url: "/en/sentence/", lang: en, alternate: "/es/sentencia/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/es/memoria/", lang: es, alternate: "/en/memory/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/en/memory/", lang: en, alternate: "/es/memoria/", modified: "2026-08-06T01:48:08+02:00"}
-  - {url: "/es/genus-homo/", lang: es, alternate: "/en/genus-homo/", modified: "2026-08-06T01:48:08+02:00"}
-  - {url: "/en/genus-homo/", lang: en, alternate: "/es/genus-homo/", modified: "2026-08-06T01:48:08+02:00"}
+  - {url: "/es/genus-homo/", lang: es, alternate: "/en/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
+  - {url: "/en/genus-homo/", lang: en, alternate: "/es/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
   - {url: "/es/obra/", lang: es, alternate: "/en/work/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/en/work/", lang: en, alternate: "/es/obra/", modified: "2026-08-06T01:48:08+02:00"}
   - {url: "/es/obra/libros/", lang: es, alternate: "/en/work/books/", modified: "2026-08-06T01:48:08+02:00"}
