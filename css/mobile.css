@@ -103,8 +103,7 @@
     width:100%;
   }
 
-  .doc-meta,
-  .contact-form{
+  .doc-meta{
     grid-template-columns:1fr;
   }
 
