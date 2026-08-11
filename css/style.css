@@ -437,10 +437,16 @@ nav a.active:hover{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:24px;
 }
 
 .site-footer .footer-row p{
   margin-bottom:0;
+}
+
+.footer-copy{
+  flex:1 1 auto;
+  min-width:0;
 }
 
 .footer-links{
@@ -460,6 +466,11 @@ nav a.active:hover{
 
 .footer-links a:nth-child(3){
   text-align:right;
+}
+
+.footer-lang{
+  flex:0 0 auto;
+  white-space:nowrap;
 }
 
 .footer-lang a{
