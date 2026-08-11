@@ -439,9 +439,27 @@ nav a.active:hover{
   justify-content:space-between;
 }
 
-.footer-contact{
-  display:block;
-  margin-top:.45rem;
+.site-footer .footer-row p{
+  margin-bottom:0;
+}
+
+.footer-links{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:center;
+  margin-top:.6rem;
+}
+
+.footer-links a:nth-child(1){
+  text-align:left;
+}
+
+.footer-links a:nth-child(2){
+  text-align:center;
+}
+
+.footer-links a:nth-child(3){
+  text-align:right;
 }
 
 .footer-lang a{
