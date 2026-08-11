@@ -411,48 +411,6 @@ nav a.active:hover{
 }
 
 /* =========================
-   FORMULARIOS
-   ========================= */
-form{
-  margin-top:8px;
-}
-
-form label{
-  display:block;
-  margin:12px 0 6px;
-  font-weight:500;
-}
-
-form input,
-form textarea{
-  width:100%;
-  padding:8px 10px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:8px;
-  font-family:inherit;
-  font-size:.95rem;
-}
-
-form textarea,
-.contact-form textarea{
-  resize:vertical;
-}
-
-.contact-form{
-  display:grid;
-  grid-template-columns:180px 600px;
-  align-items:start;
-  row-gap:16px;
-  column-gap:16px;
-}
-
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-}
-
-/* =========================
    PIE DE PÁGINA
    ========================= */
 .site-footer{
