@@ -439,6 +439,11 @@ nav a.active:hover{
   justify-content:space-between;
 }
 
+.footer-contact{
+  display:block;
+  margin-top:.45rem;
+}
+
 .footer-lang a{
   font-weight:400;
   text-decoration:none;
