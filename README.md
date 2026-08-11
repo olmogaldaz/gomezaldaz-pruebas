@@ -17,6 +17,8 @@ Configuración común:
 
 Jekyll procesa Liquid, los datos YAML, los layouts y los includes durante cada compilación. GitHub Pages publica después archivos HTML, XML, CSS y JavaScript ya generados. Las peticiones de visitantes y buscadores no vuelven a ejecutar Liquid.
 
+La carpeta `_site/` es la salida local generada automáticamente por Jekyll durante una compilación. No forma parte del código fuente del proyecto, no debe versionarse y está excluida mediante `.gitignore`.
+
 ---
 
 ## Entornos de pruebas y producción
@@ -120,6 +122,7 @@ La carpeta `.github` se conserva en el repositorio, pero no se publica como part
 /
 ├── .github/
 │   └── environment-backups/          # Copias de emergencia de ambos entornos
+├── .gitignore                         # Exclusiones de Git; entre ellas, la salida generada _site/
 ├── index.html                         # Portada principal en español
 ├── en/                                # Versión inglesa
 ├── es/                                # Páginas interiores en español
@@ -462,6 +465,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Incorporación al pie de los accesos `Libros · Notas de prensa · Contacto` y sus equivalentes ingleses.
 - Ajuste responsive del pie para conservar la distribución de los tres accesos y mantener `ES | EN` inseparable.
 - Versionado automático de las hojas CSS globales en cada compilación para evitar caché obsoleta tras los despliegues.
+- Eliminación del `_site/` generado accidentalmente en una compilación anterior y exclusión permanente de esa salida mediante `.gitignore`.
 
 ---
 
@@ -485,6 +489,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los estilos globales y responsive deben mantenerse separados de los estilos específicos de componentes o páginas cuando corresponda.
 - Los nodos Schema específicos deben mantenerse en el front matter de cada página.
 - El nodo Schema que representa cada URL será el destinatario de las fechas centralizadas.
+- `_site/` es salida generada por Jekyll y no debe incorporarse al repositorio.
 - `_config.yml` y `CNAME` no deben copiarse directamente entre entornos.
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
