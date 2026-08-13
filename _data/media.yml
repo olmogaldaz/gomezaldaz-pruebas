@@ -220,6 +220,22 @@
   action_es: "Leer artículo en Asturias Laica"
   action_en: "Read article on Asturias Laica"
 
+- id: sos-bebes-robados-2025-09-20
+  section: press-2025
+  date: 2025-09-20
+  type: blog
+  territory: nacional
+  medium: SOS Bebés Robados
+  meta_es: "SOS Bebés Robados · Blog · 20/09/2025"
+  meta_en: "SOS Bebés Robados · Blog · 20/09/2025"
+  title_es: "El derecho a recuperar los apellidos biológicos y conservar la adopción – Jot Down Cultural Magazine"
+  title_en: "The right to recover biological surnames while preserving adoption – Jot Down Cultural Magazine"
+  subtitle_es: "Una histórica sentencia permite a un adoptado recuperar sus apellidos biológicos sin revocar la adopción."
+  subtitle_en: "A historic ruling allows an adoptee to recover his biological surnames without revoking the adoption."
+  url: "https://sosbebesrobados.es/blog/2025/09/20/el-derecho-a-recuperar-los-apellidos-biologicos-y-conservar-la-adopcion-jot-down-cultural-magazine/"
+  action_es: "Leer artículo en SOS Bebés Robados"
+  action_en: "Read article on SOS Bebés Robados"
+
 - id: diario-valladolid-2026-01-20
   section: press-2026
   date: 2026-01-20
