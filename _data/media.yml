@@ -416,7 +416,7 @@
   title_en: "The Basque Government and the central Government recognise a Tudela de Duero resident as a “stolen baby” victim of the dictatorship"
   subtitle_es: "La víctima se enteró de que había sido objeto de tráfico de personas 43 años después de los hechos."
   subtitle_en: "The victim discovered 43 years after the events that he had been subjected to human trafficking."
-  url: "https://www.abc.es/espana/castilla-leon/gobierno-vasco-ejecutivo-central-reconocen-bebe-robado-20260714114624-nt.html"
+  url: "https://www.abc.es/espana/castilla-y-leon/gobierno-vasco-ejecutivo-central-reconocen-bebe-robado-20260714114624-nt.html"
   action_es: "Leer artículo"
   action_en: "Read article"
 
@@ -547,5 +547,21 @@
   subtitle_es: "El Ministerio confirma que, desde 2022, solo ha reconocido la condición de víctima a un hijo sustraído sin el consentimiento libre y legítimo de sus progenitores."
   subtitle_en: "The Ministry confirms that, since 2022, it has recognised victim status for only one child abducted without the free and legitimate consent of their parents."
   url: "https://asturiaslaica.com/2026/08/07/esta-fracasando-la-ley-de-memoria-democratica-con-los-bebes-robados-olmo-gomez-aldaz/"
+  action_es: "Leer artículo"
+  action_en: "Read article"
+
+- id: sos-bebes-robados-2026-08-09
+  section: press-2026
+  date: 2026-08-09
+  type: prensa
+  territory: nacional
+  medium: SOS Bebés Robados
+  meta_es: "SOS Bebés Robados · Blog · 09/08/2026"
+  meta_en: "SOS Bebés Robados · Blog · 09/08/2026"
+  title_es: "El Ministerio de Política Territorial y Memoria Democrática reconoce solo a Olmo Gómez Aldaz como hijo robado y víctima desde la aprobación de la Ley de Memoria Democrática"
+  title_en: "The Ministry of Territorial Policy and Democratic Memory recognises only Olmo Gómez Aldaz as a stolen child and victim since the Democratic Memory Law was passed"
+  subtitle_es: "Además del reconocimiento estatal, Gómez Aldaz ha sido recientemente reconocido como víctima por el Gobierno Vasco, al amparo de la Ley 9/2023 de Memoria Histórica y Democrática de Euskadi."
+  subtitle_en: "In addition to the state recognition, Gómez Aldaz has recently been recognised as a victim by the Basque Government under Law 9/2023 on Historical and Democratic Memory of the Basque Country."
+  url: "https://sosbebesrobados.es/blog/2026/08/09/el-ministerio-de-politica-territorial-y-memoria-democratica-reconoce-solo-a-olmo-gomez-alda-como-hijo-robado-y-victima-desde-la-aprobacion-de-la-ley-de-memoria-democratica/"
   action_es: "Leer artículo"
   action_en: "Read article"
