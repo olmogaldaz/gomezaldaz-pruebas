@@ -10,6 +10,7 @@
 
 {% for item in section_items %}
   {% assign item_url = item[url_key] | default: item.url %}
+  {% assign action_text = item[action_key] %}
   <article class="card media-item"
            data-media-id="{{ item.id }}"
            data-year="{{ item.date | date: '%Y' }}"
@@ -45,10 +46,38 @@
       </p>
     {% endif %}
 
-    {% if item_url and item[action_key] %}
+    {% if item_url and action_text %}
       <p>
         <a href="{{ item_url }}"{% if item_url contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>
-          {{ item[action_key] }}
+          {% if page.lang == 'es' %}
+            {% if action_text == 'Leer artículo' %}
+              Leer artículo en {{ item.medium }}
+            {% elsif action_text == 'Ver vídeo' %}
+              Ver vídeo en {{ item.medium }}
+            {% elsif action_text == 'Escuchar audio' %}
+              Escuchar audio en {{ item.medium }}
+            {% elsif action_text == 'Leer (archivo)' and item_url contains '/category/' %}
+              {{ action_text }}
+            {% elsif action_text == 'Leer (archivo)' %}
+              Leer artículo en {{ item.medium }}
+            {% else %}
+              {{ action_text }}
+            {% endif %}
+          {% else %}
+            {% if action_text == 'Read article' %}
+              Read article on {{ item.medium }}
+            {% elsif action_text == 'Watch video' %}
+              Watch video on {{ item.medium }}
+            {% elsif action_text == 'Listen to audio' %}
+              Listen to audio on {{ item.medium }}
+            {% elsif action_text == 'Read (archive)' and item_url contains '/category/' %}
+              {{ action_text }}
+            {% elsif action_text == 'Read (archive)' %}
+              Read article on {{ item.medium }}
+            {% else %}
+              {{ action_text }}
+            {% endif %}
+          {% endif %}
         </a>
       </p>
     {% elsif item.archived and item_url %}
