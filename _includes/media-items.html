@@ -11,10 +11,14 @@
 {% for item in section_items %}
   {% assign item_url = item[url_key] | default: item.url %}
   {% assign action_text = item[action_key] %}
+  {% assign item_type = item.type %}
+  {% if item.medium == 'Asturias Laica' or item.medium == 'SOS Bebés Robados' %}
+    {% assign item_type = 'blog' %}
+  {% endif %}
   <article class="card media-item"
            data-media-id="{{ item.id }}"
            data-year="{{ item.date | date: '%Y' }}"
-           data-type="{{ item.type }}"
+           data-type="{{ item_type }}"
            data-territory="{{ item.territory }}"
            data-medium="{{ item.medium | escape }}">
     <div class="meta">{{ item[meta_key] }}</div>
