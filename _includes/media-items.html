@@ -10,15 +10,10 @@
 
 {% for item in section_items %}
   {% assign item_url = item[url_key] | default: item.url %}
-  {% assign action_text = item[action_key] %}
-  {% assign item_type = item.type %}
-  {% if item.medium == 'Asturias Laica' or item.medium == 'SOS Bebés Robados' %}
-    {% assign item_type = 'blog' %}
-  {% endif %}
   <article class="card media-item"
            data-media-id="{{ item.id }}"
            data-year="{{ item.date | date: '%Y' }}"
-           data-type="{{ item_type }}"
+           data-type="{{ item.type }}"
            data-territory="{{ item.territory }}"
            data-medium="{{ item.medium | escape }}">
     <div class="meta">{{ item[meta_key] }}</div>
@@ -50,38 +45,10 @@
       </p>
     {% endif %}
 
-    {% if item_url and action_text %}
+    {% if item_url and item[action_key] %}
       <p>
         <a href="{{ item_url }}"{% if item_url contains '://' %} target="_blank" rel="noopener noreferrer"{% endif %}>
-          {% if page.lang == 'es' %}
-            {% if action_text == 'Leer artículo' %}
-              Leer artículo en {{ item.medium }}
-            {% elsif action_text == 'Ver vídeo' %}
-              Ver vídeo en {{ item.medium }}
-            {% elsif action_text == 'Escuchar audio' %}
-              Escuchar audio en {{ item.medium }}
-            {% elsif action_text == 'Leer (archivo)' and item_url contains '/category/' %}
-              {{ action_text }}
-            {% elsif action_text == 'Leer (archivo)' %}
-              Leer artículo en {{ item.medium }}
-            {% else %}
-              {{ action_text }}
-            {% endif %}
-          {% else %}
-            {% if action_text == 'Read article' %}
-              Read article on {{ item.medium }}
-            {% elsif action_text == 'Watch video' %}
-              Watch video on {{ item.medium }}
-            {% elsif action_text == 'Listen to audio' %}
-              Listen to audio on {{ item.medium }}
-            {% elsif action_text == 'Read (archive)' and item_url contains '/category/' %}
-              {{ action_text }}
-            {% elsif action_text == 'Read (archive)' %}
-              Read article on {{ item.medium }}
-            {% else %}
-              {{ action_text }}
-            {% endif %}
-          {% endif %}
+          {{ item[action_key] }}
         </a>
       </p>
     {% elsif item.archived and item_url %}

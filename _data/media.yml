@@ -31,8 +31,8 @@
   subtitle_es: "Se trata de Olmo Gómez Aldaz, profesor de 54 años y vecindad vallisoletana, que ha recuperado esos apellidos de su padre y madre biológicos tras vivir hasta ahora oficialmente con la filiación de sus padres adoptivos."
   subtitle_en: "Olmo Gómez Aldaz, a 54-year-old teacher living in Valladolid, has recovered the surnames of his biological father and mother after having officially lived until now under the filiation of his adoptive parents."
   url: "https://www.lawandtrends.com/noticias/civil/una-sentencia-pionera-confirma-una-doble-filiacion-la-biologica-y-la-de-adopcion-1.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Law & Trends"
+  action_en: "Read article on Law & Trends"
 
 - id: cyltv-2026-01-23
   section: television
@@ -47,8 +47,8 @@
   subtitle_es: "Adoptado al nacer, descubrió que había sido entregado contra la voluntad de su madre y lucha ahora por la nulidad de la adopción."
   subtitle_en: "Adopted at birth, he discovered that he had been handed over against his mother’s wishes and is now seeking the annulment of the adoption."
   url: "https://www.cyltv.es/videoSH/a2147558-57f6-4c13-85ec-08ca7c891765/-Primer-caso-en-Espana-de-un-adoptado-y-al-mismo-tiempo-con-filiacion-biologicay-con-apellidos-bioligicos-Caso-unico-en-EspanaRecupera-sus-apellidos-biologicos-tras"
-  action_es: "Ver vídeo"
-  action_en: "Watch video"
+  action_es: "Ver vídeo en CyLTV"
+  action_en: "Watch video on CyLTV"
 
 - id: rtve-euskadi-2026-01-28
   section: television
@@ -63,8 +63,8 @@
   subtitle_es: "Olmo ha logrado una sentencia que reconoce su doble filiación y recupera los apellidos de origen sin perder los derechos derivados de la adopción."
   subtitle_en: "Olmo has obtained a ruling that recognises his dual filiation and restores his surnames of origin without losing the rights arising from the adoption."
   url: "https://www.rtve.es/play/videos/telenorte-pais-vasco/bebes-robados-olmo/16913821/"
-  action_es: "Ver vídeo"
-  action_en: "Watch video"
+  action_es: "Ver vídeo en RTVE"
+  action_en: "Watch video on RTVE"
 
 - id: rtve-cyl-2026-01-28
   section: television
@@ -79,8 +79,8 @@
   subtitle_es: "La pieza recoge el carácter pionero de la sentencia que permite recuperar la filiación de origen manteniendo vigente la adopción."
   subtitle_en: "The report highlights the landmark nature of the ruling, which allows him to recover his filiation of origin while the adoption remains in force."
   url: "https://www.rtve.es/play/videos/noticias-de-castilla-y-leon/noticias-castilla-leon-2/16913946/"
-  action_es: "Ver vídeo"
-  action_en: "Watch video"
+  action_es: "Ver vídeo en RTVE"
+  action_en: "Watch video on RTVE"
 
 - id: cyltv-2026-07-17
   section: television
@@ -95,8 +95,8 @@
   subtitle_es: "Tras recuperar su identidad de origen, reclama ahora la nulidad de una adopción que considera ilegal y realizada sin consentimiento."
   subtitle_en: "After recovering his identity of origin, he is now seeking the annulment of an adoption he considers unlawful and carried out without consent."
   url: "https://www.cyltv.es/videoSH/365369d8-4c1a-4365-aef5-f0729cf52d46/Olmo-Gomez-vecino-de-Tudela-de-Duero-lleva-a-los-tribunales-la-nulidad-de-su-adopcion"
-  action_es: "Ver vídeo"
-  action_en: "Watch video"
+  action_es: "Ver vídeo en CyLTV"
+  action_en: "Watch video on CyLTV"
 
 - id: cadena-ser-2026-01-20
   section: radio
@@ -111,8 +111,8 @@
   subtitle_es: "El Registro Civil inscribe su filiación y apellidos de origen manteniendo vigente la filiación derivada de la adopción."
   subtitle_en: "The Civil Registry records his filiation and surnames of origin while keeping the filiation arising from the adoption in force."
   url: "https://cadenaser.com/castillayleon/2026/01/20/un-vecino-de-tudela-valladolid-bebe-traficado-en-la-epoca-franquista-recupera-su-identidad-biologica-radio-valladolid/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en SER"
+  action_en: "Read article on SER"
 
 - id: vive-radio-2026-01-27
   section: radio
@@ -127,8 +127,8 @@
   subtitle_es: "Conocemos la historia de Olmo Gómez, que descubrió que fue un niño robado y ha recuperado su identidad de origen."
   subtitle_en: "We hear the story of Olmo Gómez, who discovered that he had been a stolen child and has recovered his identity of origin."
   url: "https://www.ivoox.com/vive-valladolid-lidia-veiga-10-00-27-01-26-audios-mp3_rf_167370358_1.html"
-  action_es: "Escuchar audio"
-  action_en: "Listen to audio"
+  action_es: "Escuchar audio en Vive Radio Valladolid"
+  action_en: "Listen to audio on Vive Radio Valladolid"
 
 - id: jot-down-2025-09-19
   section: magazines
@@ -143,8 +143,8 @@
   subtitle_es: "Una histórica sentencia permite a un adoptado recuperar sus apellidos biológicos sin revocar la adopción."
   subtitle_en: "A historic ruling allows an adoptee to recover his biological surnames without revoking the adoption."
   url: "https://www.jotdown.es/2025/09/apellidos-biologicos-conservar-la-adopcion/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Jot Down"
+  action_en: "Read article on Jot Down"
 
 - id: europa-press-2026-01-20
   section: agencies
@@ -209,7 +209,7 @@
 - id: asturias-laica-2025-07-04
   section: press-2025
   date: 2025-07-04
-  type: prensa
+  type: blog
   territory: asturias
   medium: Asturias Laica
   meta_es: "Asturias Laica · Blog · 04/07/2025"
@@ -217,8 +217,8 @@
   title_es: "Una sentencia inédita devuelve la filiación biológica a un hombre adoptado a través de una trama de bebés robados"
   title_en: "An unprecedented ruling restores biological filiation to a man adopted through a stolen-babies network"
   url: "https://asturiaslaica.com/2025/07/04/una-sentencia-inedita-devuelve-la-filiacion-biologica-a-un-hombre-adoptado-a-traves-de-una-trama-de-bebes-robados/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Asturias Laica"
+  action_en: "Read article on Asturias Laica"
 
 - id: diario-valladolid-2026-01-20
   section: press-2026
@@ -233,8 +233,8 @@
   subtitle_es: "Tras cinco años de batalla judicial, este vecino de Tudela de Duero recupera su identidad de origen como Olmo Gómez."
   subtitle_en: "After five years of legal proceedings, this resident of Tudela de Duero recovers his identity of origin as Olmo Gómez."
   url: "https://www.diariodevalladolid.es/valladolid/260120/278841/vallisoletano-bebe-traficado-dictadura-recupera-identidad-toda-vida-he-sabido-nino-adoptado_amp.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Diario de Valladolid"
+  action_en: "Read article on Diario de Valladolid"
 
 - id: abc-2026-01-20
   section: press-2026
@@ -249,8 +249,8 @@
   subtitle_es: "La sentencia permite que convivan por primera vez la filiación de origen y la adoptiva, con plenos efectos civiles."
   subtitle_en: "The ruling allows filiation of origin and adoptive filiation to coexist for the first time, with full civil effects."
   url: "https://www.abc.es/espana/castilla-leon/reconocen-primera-victima-trafico-bebes-nombre-biologico-20260120173245-nt.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en ABC"
+  action_en: "Read article on ABC"
 
 - id: el-dia-valladolid-2026-01-20
   section: press-2026
@@ -263,8 +263,8 @@
   title_es: "Un hombre 'traficado' al nacer obtiene una doble identidad"
   title_en: "A man “trafficked” at birth obtains dual identity"
   url: "https://www.eldiadevalladolid.com/noticia/z20cfd13a-1c8a-4e62-bf463b45aa03605f/202601/un-hombre-traficado-al-nacer-obtiene-una-doble-identidad"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en El Día de Valladolid"
+  action_en: "Read article on El Día de Valladolid"
 
 - id: gente-valladolid-2026-01-20
   section: press-2026
@@ -277,8 +277,8 @@
   title_es: "Un vecino de Tudela (Valladolid), bebé \"traficado\" en la época franquista, recupera su identidad biológica"
   title_en: "A resident of Tudela (Valladolid), a baby “trafficked” during the Franco era, recovers his biological identity"
   url: "http://www.gentedigital.es/valladolid/noticia/4239690/un-vecino-de-tudela-valladolid-bebe-traficado-en-la-epoca-franquista-recupera-su-identidad-biologica/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Gente en Valladolid"
+  action_en: "Read article on Gente en Valladolid"
 
 - id: diario-valladolid-2026-01-22
   section: press-2026
@@ -293,8 +293,8 @@
   subtitle_es: "Después de cinco años entre tribunales ha conseguido obtener su identidad biológica sin anular la «adopción» a pesar de las circunstancias."
   subtitle_en: "After five years in the courts, he has succeeded in recovering his biological identity without annulling the “adoption”, despite the circumstances."
   url: "https://www.diariodevalladolid.es/valladolid/provincia/260122/278892/olmo-gomez-el-bebe-robado-de-tudela-de-duero-algunas-madres-acabaron-en-el-psiquiatrico.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Diario de Valladolid"
+  action_en: "Read article on Diario de Valladolid"
 
 - id: diario-navarra-2026-01-21
   section: press-2026
@@ -309,13 +309,13 @@
   subtitle_es: "Olmo Gómez Aldaz, de padres biológicos navarros y que mantiene que fue un bebé robado de los años 70, ha logrado una doble filiación inédita en España."
   subtitle_en: "Olmo Gómez Aldaz, born to biological parents from Navarre and who maintains that he was a stolen baby in the 1970s, has achieved an unprecedented dual filiation in Spain."
   url: "https://www.diariodenavarra.es/noticias/navarra/2026/01/21/logra-navarra-le-reconozcan-apellidos-biologicos-anular-adopcion-807309-15.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Diario de Navarra"
+  action_en: "Read article on Diario de Navarra"
 
 - id: sos-bebes-robados-2026-01-21
   section: press-2026
   date: 2026-01-21
-  type: prensa
+  type: blog
   territory: nacional
   medium: SOS Bebés Robados
   meta_es: "SOS Bebés Robados · Blog · 21/01/2026"
@@ -323,8 +323,8 @@
   title_es: "Logra en Navarra que le reconozcan sus apellidos biológicos sin anular la adopción"
   title_en: "In Navarre, he succeeds in having his biological surnames recognised without annulling the adoption"
   url: "https://sosbebesrobados.es/blog/2026/01/21/logra-en-navarra-que-le-reconozcan-sus-apellidos-biologicos-sin-anular-la-adopcion/"
-  action_es: "Leer (archivo)"
-  action_en: "Read (archive)"
+  action_es: "Leer artículo en SOS Bebés Robados"
+  action_en: "Read article on SOS Bebés Robados"
 
 - id: blanquivioletas-2026-01-21
   section: press-2026
@@ -339,8 +339,8 @@
   subtitle_es: "En una sentencia pionera, el hombre, natural de Tudela de Duero y traficado durante el franquismo, consigue recuperar su identidad biológica sin perder la que recibió tras su adopción."
   subtitle_en: "In a landmark ruling, the man, from Tudela de Duero and trafficked during the Franco era, succeeds in recovering his biological identity without losing the one he received through adoption."
   url: "https://www.blanquivioletas.com/tudela-identidad-ninos-robados/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Blanquivioletas"
+  action_en: "Read article on Blanquivioletas"
 
 - id: noticias-a-diario-2026-01-21
   section: press-2026
@@ -355,8 +355,8 @@
   subtitle_es: "Tras una sentencia pionera, recupera su identidad de origen en el DNI sin anular la recibida con motivo de su adopción."
   subtitle_en: "Following a landmark ruling, his identity of origin is restored on his ID card without annulling the identity received through adoption."
   url: "https://noticiasadiario.es/un-vecino-de-tudela-bebe-traficado-en-la-epoca-franquista-recupera-su-identidad-biologica/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Noticias a Diario"
+  action_en: "Read article on Noticias a Diario"
 
 - id: el-correo-2026-01-26
   section: press-2026
@@ -371,8 +371,8 @@
   subtitle_es: "Un juzgado devuelve sus apellidos de origen a este bilbaíno nacido en 1971, que denuncia haber sido un bebé robado."
   subtitle_en: "A court restores the surnames of origin of this Bilbao-born man, born in 1971, who says he was a stolen baby."
   url: "https://www.elcorreo.com/bizkaia/lucha-olmo-recuperar-identidad-20260121001558-nt.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en El Correo"
+  action_en: "Read article on El Correo"
 
 - id: noticias-navarra-2026-02-01
   section: press-2026
@@ -417,8 +417,8 @@
   subtitle_es: "La víctima se enteró de que había sido objeto de tráfico de personas 43 años después de los hechos."
   subtitle_en: "The victim discovered 43 years after the events that he had been subjected to human trafficking."
   url: "https://www.abc.es/espana/castilla-leon/gobierno-vasco-ejecutivo-central-reconocen-bebe-robado-20260714114624-nt.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en ABC"
+  action_en: "Read article on ABC"
 
 - id: norte-castilla-2026-07-14
   section: press-2026
@@ -431,8 +431,8 @@
   title_es: "El Gobierno vasco y el Ejecutivo central reconocen como «bebé robado» en la dictadura a un vecino de Tudela (Valladolid)"
   title_en: "The Basque Government and the central Government recognise a Tudela (Valladolid) resident as a “stolen baby” victim of the dictatorship"
   url: "https://www.elnortedecastilla.es/valladolid/provincia/gobierno-vasco-central-reconocen-bebe-robado-dictadura-20260714164207-nt.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en El Norte de Castilla"
+  action_en: "Read article on El Norte de Castilla"
 
 - id: el-correo-2026-07-14
   section: press-2026
@@ -467,8 +467,8 @@
   subtitle_es: "Los gobiernos español y vasco lo reconocen como uno de los menores sustraídos a sus progenitores."
   subtitle_en: "The Spanish and Basque governments recognise him as one of the minors taken from their parents."
   url: "https://www.diariodevalladolid.es/valladolid/provincia/260715/284742/vallisoletano-olmo-gomez-ya-es-oficialmente-bebe-robado.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Diario de Valladolid"
+  action_en: "Read article on Diario de Valladolid"
 
 - id: agencia6-2026-07-15
   section: press-2026
@@ -483,13 +483,13 @@
   subtitle_es: "Un reconocimiento histórico con décadas de retraso."
   subtitle_en: "A historic recognition, decades late."
   url: "https://agencia6.com/bebes-robados-en-espana-el-caso-de-olmo-gomez-aldaz-y-la-lucha-por-el-reconocimiento-institucional/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Agencia 6 Noticias"
+  action_en: "Read article on Agencia 6 Noticias"
 
 - id: asturias-laica-2026-07-18
   section: press-2026
   date: 2026-07-18
-  type: prensa
+  type: blog
   territory: asturias
   medium: Asturias Laica
   meta_es: "Asturias Laica · 18/07/2026 · Miguel Espinoso"
@@ -499,13 +499,13 @@
   subtitle_es: "Un reconocimiento histórico con décadas de retraso."
   subtitle_en: "A historic recognition, decades late."
   url: "https://asturiaslaica.com/2026/07/18/bebes-robados-en-espana-el-caso-de-olmo-gomez-aldaz-y-la-lucha-por-el-reconocimiento-institucional/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Asturias Laica"
+  action_en: "Read article on Asturias Laica"
 
 - id: asturias-laica-libro-2026-07-27
   section: press-2026
   date: 2026-07-27
-  type: prensa
+  type: blog
   territory: asturias
   medium: Asturias Laica
   meta_es: "Asturias Laica · Libros · 27/07/2026"
@@ -515,8 +515,8 @@
   subtitle_es: 'Presentación del <a href="/es/obra/libros/" class="card-title-link">libro</a> y de su origen como declaración personal ante las instituciones de Memoria Democrática, tras el reconocimiento de su autor como víctima de sustracción y adopción sin el legítimo y libre consentimiento de sus progenitores.'
   subtitle_en: 'Presentation of the <a href="/en/work/books/" class="card-title-link">book</a> and of its origin as a personal statement submitted to Democratic Memory institutions, following the recognition of its author as a victim of abduction and adoption without the legitimate and free consent of his parents.'
   url: "https://asturiaslaica.com/2026/07/27/doga-2025-la-batalla-por-mi-identidad-olmo-gomez-aldaz/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Asturias Laica"
+  action_en: "Read article on Asturias Laica"
 
 - id: diario-red-2026-08-07
   section: press-2026
@@ -531,13 +531,13 @@
   subtitle_es: "Además del reconocimiento estatal, Gómez Aldaz ha sido recientemente reconocido como víctima por el Gobierno Vasco, al amparo de la Ley 9/2023 de Memoria Histórica y Democrática de Euskadi."
   subtitle_en: "In addition to the state recognition, Gómez Aldaz has recently been recognised as a victim by the Basque Government under Law 9/2023 on Historical and Democratic Memory of the Basque Country."
   url: "https://www.diario-red.com/articulo/memoria/ministerio-confirma-que-solo-ha-reconocido-hijo-robado-como-victima-aprobacion-ley-memoria-democratica/20260804163922073941.html"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Diario Red"
+  action_en: "Read article on Diario Red"
 
 - id: asturias-laica-nota-prensa-2026-08-07
   section: press-2026
   date: 2026-08-07
-  type: prensa
+  type: blog
   territory: asturias
   medium: Asturias Laica
   meta_es: "Asturias Laica · Nota de prensa · 07/08/2026 · Olmo Gómez Aldaz"
@@ -547,13 +547,13 @@
   subtitle_es: "El Ministerio confirma que, desde 2022, solo ha reconocido la condición de víctima a un hijo sustraído sin el consentimiento libre y legítimo de sus progenitores."
   subtitle_en: "The Ministry confirms that, since 2022, it has recognised victim status for only one child abducted without the free and legitimate consent of their parents."
   url: "https://asturiaslaica.com/2026/08/07/esta-fracasando-la-ley-de-memoria-democratica-con-los-bebes-robados-olmo-gomez-aldaz/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en Asturias Laica"
+  action_en: "Read article on Asturias Laica"
 
 - id: sos-bebes-robados-2026-08-09
   section: press-2026
   date: 2026-08-09
-  type: prensa
+  type: blog
   territory: nacional
   medium: SOS Bebés Robados
   meta_es: "SOS Bebés Robados · Blog · 09/08/2026"
@@ -563,5 +563,5 @@
   subtitle_es: "Además del reconocimiento estatal, Gómez Aldaz ha sido recientemente reconocido como víctima por el Gobierno Vasco, al amparo de la Ley 9/2023 de Memoria Histórica y Democrática de Euskadi."
   subtitle_en: "In addition to the state recognition, Gómez Aldaz has recently been recognised as a victim by the Basque Government under Law 9/2023 on Historical and Democratic Memory of the Basque Country."
   url: "https://sosbebesrobados.es/blog/2026/08/09/el-ministerio-de-politica-territorial-y-memoria-democratica-reconoce-solo-a-olmo-gomez-alda-como-hijo-robado-y-victima-desde-la-aprobacion-de-la-ley-de-memoria-democratica/"
-  action_es: "Leer artículo"
-  action_en: "Read article"
+  action_es: "Leer artículo en SOS Bebés Robados"
+  action_en: "Read article on SOS Bebés Robados"
