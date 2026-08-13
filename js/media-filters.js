@@ -30,7 +30,8 @@
         radio: 'Radio',
         revista: 'Revista',
         agencia: 'Agencia',
-        prensa: 'Prensa escrita'
+        prensa: 'Prensa',
+        blog: 'Blog'
       },
       territory: {
         nacional: 'Nacional',
@@ -48,7 +49,8 @@
         radio: 'Radio',
         revista: 'Magazine',
         agencia: 'News agency',
-        prensa: 'Print press'
+        prensa: 'Press',
+        blog: 'Blog'
       },
       territory: {
         nacional: 'National',
