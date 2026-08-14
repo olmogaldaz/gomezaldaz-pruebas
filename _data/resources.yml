@@ -63,9 +63,6 @@ html:
     en: {url: "/en/press/press-releases/stolen-baby-recognition-adoption-annulment/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/prensa/notas-de-prensa/ley-memoria-democratica-bebes-robados/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/press-releases/democratic-memory-law-stolen-babies/", modified: "2026-08-06T01:48:08+02:00"}
-  - sitemap: false
-    es: {url: "/es/libros/"}
-    en: {url: "/en/books/"}
 
 pdf:
   - {url: "/docs/declaracion-reconocimiento-reparacion-memoria-democratica-olmo-2026.pdf"}
