@@ -12,12 +12,19 @@
   {%- endunless %}
 
   {%- assign current_resource = nil %}
-  {%- for resource in site.data.resources.html %}
-    {%- if resource.url == page.url %}
-      {%- assign current_resource = resource %}
+  {%- assign alternate_resource = nil %}
+  {%- for pair in site.data.resources.html %}
+    {%- if page.lang == "es" and pair.es.url == page.url %}
+      {%- assign current_resource = pair.es %}
+      {%- assign alternate_resource = pair.en %}
+      {%- break %}
+    {%- elsif page.lang == "en" and pair.en.url == page.url %}
+      {%- assign current_resource = pair.en %}
+      {%- assign alternate_resource = pair.es %}
       {%- break %}
     {%- endif %}
   {%- endfor %}
+  {%- assign resource_alt = alternate_resource.url %}
   {%- assign resource_published = current_resource.published %}
   {%- assign resource_modified = current_resource.modified %}
 
@@ -42,20 +49,22 @@
   {%- endif %}
 
   <!-- hreflang -->
-  {%- if page.lang == "es" %}
+  {%- if resource_alt %}
+    {%- if page.lang == "es" %}
     <link rel="alternate" hreflang="es" href="{{ public_url }}{{ page.url }}">
-    <link rel="alternate" hreflang="en" href="{{ public_url }}{{ page.alt }}">
-  {%- else %}
-    <link rel="alternate" hreflang="es" href="{{ public_url }}{{ page.alt }}">
+    <link rel="alternate" hreflang="en" href="{{ public_url }}{{ resource_alt }}">
+    {%- else %}
+    <link rel="alternate" hreflang="es" href="{{ public_url }}{{ resource_alt }}">
     <link rel="alternate" hreflang="en" href="{{ public_url }}{{ page.url }}">
+    {%- endif %}
   {%- endif %}
 
   <!-- schema -->
-  
+
   {%- assign schema_nodes = "" %}
-  
+
   {%- comment %} --- PERSON (siempre) --- {% endcomment %}
-  
+
   {%- assign person_url = "https://gomezaldaz.com/" %}
 
   {%- if page.lang == "es" %}
@@ -69,7 +78,7 @@
     {%- assign former_name_label = "Former registered name" %}
     {%- assign footer_tagline = "Personal and documentary website against the culture of silence imposed on victims of child trafficking" %}
   {%- endif %}
-  
+
   {%- capture person_node %}
   {
     "@type": "Person",
@@ -104,7 +113,7 @@
     ]
   }
   {%- endcapture %}
-  
+
   {%- assign schema_nodes = person_node %}
 
   {%- comment %} --- WEBSITE (siempre) --- {% endcomment %}
@@ -158,9 +167,9 @@
 <body>
   <!-- Google tag (gtag.js) -->
   {% include google-analytics.html %}
-  
+
   <div class="wrap" id="top">
-    {% include menu.html %}
+    {% include menu.html alt=resource_alt %}
     {{ content }}
   </div>
 
@@ -174,9 +183,9 @@
           {%- if page.lang == "es" %}
             <strong class="active">ES</strong>
             |
-            <a href="{{ page.alt }}">EN</a>
+            <a href="{{ resource_alt }}">EN</a>
           {%- else %}
-            <a href="{{ page.alt }}">ES</a>
+            <a href="{{ resource_alt }}">ES</a>
             |
             <strong class="active">EN</strong>
           {%- endif %}
@@ -198,8 +207,8 @@
       {%- endif %}
     </div>
   </footer>
-  
+
   <script src="/js/menu.js"></script>
-  
+
 </body>
 </html>
