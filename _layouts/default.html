@@ -183,9 +183,9 @@
           {%- if page.lang == "es" %}
             <strong class="active">ES</strong>
             |
-            <a href="{{ resource_alt }}">EN</a>
+            <a href="{{ resource_alt | default: '/en/' }}">EN</a>
           {%- else %}
-            <a href="{{ resource_alt }}">ES</a>
+            <a href="{{ resource_alt | default: '/' }}">ES</a>
             |
             <strong class="active">EN</strong>
           {%- endif %}
