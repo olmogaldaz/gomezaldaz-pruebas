@@ -240,10 +240,19 @@ nav a.active:hover{
 }
 
 .card.hero .hero-subtitle{
-  margin:6px 0 24px;
+  margin:6px 0 8px;
   font-size:1.25rem;
   font-weight:600;
   line-height:1.4;
+}
+
+.card.hero .hero-subtitle:last-of-type{
+  margin-bottom:24px;
+}
+
+.card.hero .hero-subtitle a{
+  color:inherit;
+  text-decoration:none;
 }
 
 .card.minor{
