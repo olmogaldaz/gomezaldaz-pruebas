@@ -13,56 +13,92 @@ layout: null
 >
 
   {% comment %} PÁGINAS HTML {% endcomment %}
-  {% for item in site.data.resources.html %}
+  {% for pair in site.data.resources.html %}
+    {% unless pair.sitemap == false %}
 
-    {% if item.lang == "es" %}
-      {% assign alternate_lang = "en" %}
-    {% else %}
-      {% assign alternate_lang = "es" %}
-    {% endif %}
+      {% assign item = pair.es %}
+      {% assign alternate = pair.en %}
+      <url>
+        <loc>{{ sitemap_base }}{{ item.url }}</loc>
 
-    <url>
-      <loc>{{ sitemap_base }}{{ item.url }}</loc>
+        {% if item.modified %}
+          <lastmod>{{ item.modified }}</lastmod>
+        {% endif %}
 
-      {% if item.modified %}
-        <lastmod>{{ item.modified }}</lastmod>
-      {% endif %}
-
-      <xhtml:link
-        rel="alternate"
-        hreflang="{{ item.lang }}"
-        href="{{ sitemap_base }}{{ item.url }}"
-      />
-
-      {% if item.alternate %}
         <xhtml:link
           rel="alternate"
-          hreflang="{{ alternate_lang }}"
-          href="{{ sitemap_base }}{{ item.alternate }}"
+          hreflang="es"
+          href="{{ sitemap_base }}{{ item.url }}"
         />
-      {% endif %}
+        <xhtml:link
+          rel="alternate"
+          hreflang="en"
+          href="{{ sitemap_base }}{{ alternate.url }}"
+        />
 
-      {% if item.images %}
-        {% for image_item in item.images %}
-          <image:image>
-            <image:loc>{{ sitemap_base }}{{ image_item.url }}</image:loc>
+        {% if item.images %}
+          {% for image_item in item.images %}
+            <image:image>
+              <image:loc>{{ sitemap_base }}{{ image_item.url }}</image:loc>
 
-            {% if image_item.title %}
-              <image:title>
-                {{ image_item.title | xml_escape }}
-              </image:title>
-            {% endif %}
+              {% if image_item.title %}
+                <image:title>
+                  {{ image_item.title | xml_escape }}
+                </image:title>
+              {% endif %}
 
-            {% if image_item.caption %}
-              <image:caption>
-                {{ image_item.caption | xml_escape }}
-              </image:caption>
-            {% endif %}
-          </image:image>
-        {% endfor %}
-      {% endif %}
+              {% if image_item.caption %}
+                <image:caption>
+                  {{ image_item.caption | xml_escape }}
+                </image:caption>
+              {% endif %}
+            </image:image>
+          {% endfor %}
+        {% endif %}
+      </url>
 
-    </url>
+      {% assign item = pair.en %}
+      {% assign alternate = pair.es %}
+      <url>
+        <loc>{{ sitemap_base }}{{ item.url }}</loc>
+
+        {% if item.modified %}
+          <lastmod>{{ item.modified }}</lastmod>
+        {% endif %}
+
+        <xhtml:link
+          rel="alternate"
+          hreflang="en"
+          href="{{ sitemap_base }}{{ item.url }}"
+        />
+        <xhtml:link
+          rel="alternate"
+          hreflang="es"
+          href="{{ sitemap_base }}{{ alternate.url }}"
+        />
+
+        {% if item.images %}
+          {% for image_item in item.images %}
+            <image:image>
+              <image:loc>{{ sitemap_base }}{{ image_item.url }}</image:loc>
+
+              {% if image_item.title %}
+                <image:title>
+                  {{ image_item.title | xml_escape }}
+                </image:title>
+              {% endif %}
+
+              {% if image_item.caption %}
+                <image:caption>
+                  {{ image_item.caption | xml_escape }}
+                </image:caption>
+              {% endif %}
+            </image:image>
+          {% endfor %}
+        {% endif %}
+      </url>
+
+    {% endunless %}
   {% endfor %}
 
 
