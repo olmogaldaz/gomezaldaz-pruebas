@@ -19,7 +19,7 @@
       <a href="/es/prensa/">Prensa</a>
       <div class="small">
         <strong>ES</strong> |
-        <a href="{{ page.alt | default: '/en/' }}">EN</a>
+        <a href="{{ include.alt | default: '/en/' }}">EN</a>
       </div>
     </nav>
   {% else %}
@@ -41,7 +41,7 @@
       <a href="/en/work/">Work</a>
       <a href="/en/press/">Press</a>
       <div class="small">
-        <a href="{{ page.alt | default: '/' }}">ES</a> |
+        <a href="{{ include.alt | default: '/' }}">ES</a> |
         <strong>EN</strong>
       </div>
     </nav>
