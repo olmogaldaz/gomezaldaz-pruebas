@@ -97,7 +97,7 @@
   gap:10px;
 }
 
-.adhesion-not-signature{
+.autonomy-callout{
   display:grid;
   grid-template-columns:minmax(180px,.7fr) minmax(0,1.8fr);
   gap:24px;
@@ -107,12 +107,12 @@
   border-radius:10px;
 }
 
-.adhesion-not-signature p{
+.autonomy-callout p{
   margin:0;
   color:#fff;
 }
 
-.adhesion-not-signature-title{
+.autonomy-callout-title{
   font-size:1.2rem;
   font-weight:750;
 }
@@ -199,6 +199,16 @@
 
 .request-summary h3{
   margin:0 0 10px;
+}
+
+.request-summary p:last-child{
+  margin-bottom:0;
+}
+
+.resource-note{
+  margin:12px 0 0;
+  color:var(--muted);
+  font-size:.9rem;
 }
 
 .request-summary ul,
@@ -354,7 +364,7 @@
     font-size:1.04rem;
   }
 
-  .adhesion-not-signature{
+  .autonomy-callout{
     grid-template-columns:1fr;
     gap:6px;
   }
