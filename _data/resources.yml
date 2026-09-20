@@ -5,6 +5,8 @@
 # images es una lista opcional con url, title y caption.
 
 html:
+  - es: {url: "/es/queja-26097224/"}
+    en: {url: "/en/complaint-26097224/", published: "2026-09-20"}
   - es: {url: "/", modified: "2026-08-14T17:52:00+02:00"}
     en: {url: "/en/", modified: "2026-08-14T17:52:00+02:00"}
   - es: {url: "/es/autor/", modified: "2026-08-11T02:56:00+02:00"}
