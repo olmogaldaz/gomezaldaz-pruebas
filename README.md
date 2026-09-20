@@ -503,8 +503,18 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Registro de la pareja ES/EN y de los PDF de la guía y la queja en `_data/resources.yml`; actualización de las fechas de modificación de las páginas afectadas.
 - Incorporación del artículo de opinión de Iratxe Serrano, publicado el 19/09/2026 en Canarias Ahora / elDiario.es, al dosier automático en ambos idiomas y a las dos cronologías generales de prensa.
 - Incorporación de las etiquetas Canarias / Canary Islands al filtro territorial; sus opciones siguen derivándose de los registros.
-- Documentación del circuito de actualización de prensa y sitemap. Cambios publicados únicamente en pruebas.
+- Documentación del circuito de actualización de prensa y sitemap.
 - Corrección del Schema común: retirada de `additionalProperty` del nodo `Person`, conservando el nombre registral anterior en `alternateName`.
+
+---
+
+## Paso a producción — 20 de septiembre de 2026
+
+- Versión de pruebas utilizada: `9783b5011e20462babd29325f16af74f7439c66e`.
+- Estado anterior de producción para recuperación: `c8a5af3b915284e7778eb407cdf85b3a3ff125cf`.
+- Traslado de las páginas y banners de la queja ES/EN, la actualización de prensa, el catálogo de recursos, la corrección de Schema y la documentación.
+- Se conservan `_config.yml` y `CNAME` propios de producción: dominio `gomezaldaz.com`, indexación y Analytics activos.
+- Recuperación: crear un commit que restaure el árbol de la versión anterior de producción, conservando el historial.
 
 ---
 
@@ -533,4 +543,4 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
 
-Este README documenta la arquitectura del proyecto y los cambios del entorno de pruebas a **20 de septiembre de 2026**.
+Este README documenta la arquitectura del proyecto y los cambios trasladados de pruebas a producción a **20 de septiembre de 2026**.
