@@ -8,9 +8,9 @@
 /* Llamada de portada */
 .complaint-callout{
   display:grid;
-  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-columns:minmax(0,1fr);
   align-items:center;
-  gap:28px;
+  gap:18px;
   margin:0 0 24px;
   padding:24px 26px;
   background:linear-gradient(135deg,#f8fcff 0%,var(--campaign-soft) 100%);
@@ -35,13 +35,21 @@
 
 .complaint-callout-title{
   margin:0 0 8px;
-  font-size:1.45rem;
+  font-size:2.35rem;
   font-weight:750;
-  line-height:1.25;
+  line-height:1.15;
+}
+
+.complaint-callout-reference{
+  margin:0;
+  color:var(--campaign);
+  font-size:1rem;
+  font-weight:650;
+  line-height:1.4;
 }
 
 .complaint-callout-action{
-  min-width:250px;
+  margin:0;
 }
 
 .cta-campaign{
@@ -340,7 +348,7 @@
   }
 
   .complaint-callout-title{
-    font-size:1.3rem;
+    font-size:1.85rem;
   }
 
   .complaint-callout-action{
