@@ -12,9 +12,9 @@
   align-items:center;
   gap:18px;
   margin:0 0 24px;
-  padding:24px 26px;
-  background:linear-gradient(135deg,#f8fcff 0%,var(--campaign-soft) 100%);
-  border:2px solid var(--campaign);
+  padding:38px 40px;
+  background:linear-gradient(145deg,#fff 0%,#f2f8fc 100%);
+  border:1px solid var(--campaign-line);
   border-radius:12px;
 }
 
@@ -36,16 +36,18 @@
 .complaint-callout-title{
   margin:0 0 8px;
   font-size:2.35rem;
-  font-weight:750;
+  font-weight:700;
   line-height:1.15;
 }
 
 .complaint-callout-reference{
-  margin:0;
+  margin:0 0 18px;
   color:var(--campaign);
-  font-size:1rem;
-  font-weight:650;
-  line-height:1.4;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.06em;
+  line-height:1.35;
+  text-transform:uppercase;
 }
 
 .complaint-callout-action{
@@ -344,7 +346,7 @@
   .complaint-callout{
     grid-template-columns:1fr;
     gap:16px;
-    padding:20px;
+    padding:26px 22px;
   }
 
   .complaint-callout-title{
