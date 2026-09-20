@@ -258,6 +258,8 @@ El archivo `_layouts/default.html` centraliza:
 - Google Analytics según el entorno;
 - menú, contenido, pie y JavaScript común.
 
+El nombre registral anterior y las variantes sin tilde se conservan en `alternateName` del nodo `Person`. No se utiliza `additionalProperty`, cuyo dominio en Schema.org no incluye `Person`.
+
 El nodo `Person` se genera siempre desde el layout. Los nodos específicos de cada página se declaran en su front matter mediante `schema_nodes` y el layout los serializa con `jsonify`.
 
 Una página puede contener varios nodos Schema. El nodo que representa la URL concreta puede ser `WebPage` o uno de sus subtipos, como `ProfilePage` o `CollectionPage`.
@@ -502,6 +504,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Incorporación del artículo de opinión de Iratxe Serrano, publicado el 19/09/2026 en Canarias Ahora / elDiario.es, al dosier automático en ambos idiomas y a las dos cronologías generales de prensa.
 - Incorporación de las etiquetas Canarias / Canary Islands al filtro territorial; sus opciones siguen derivándose de los registros.
 - Documentación del circuito de actualización de prensa y sitemap. Cambios publicados únicamente en pruebas.
+- Corrección del Schema común: retirada de `additionalProperty` del nodo `Person`, conservando el nombre registral anterior en `alternateName`.
 
 ---
 

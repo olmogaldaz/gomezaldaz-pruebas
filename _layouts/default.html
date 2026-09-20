@@ -70,12 +70,10 @@
   {%- if page.lang == "es" %}
     {%- assign person_job = "Autor" %}
     {%- assign person_desc = "Autor español y activista contra el identicidio en el contexto de la adopción, protagonista de un caso judicial pionero sobre restitución de identidad y doble filiación." %}
-    {%- assign former_name_label = "Nombre registral anterior" %}
     {%- assign footer_tagline = "Web personal y documental contra la cultura del silencio sobre las víctimas del tráfico de menores" %}
   {%- else %}
     {%- assign person_job = "Author" %}
     {%- assign person_desc = "Spanish author and activist against identity erasure in the context of adoption, protagonist of a landmark judicial case on identity restitution and dual filiation." %}
-    {%- assign former_name_label = "Former registered name" %}
     {%- assign footer_tagline = "Personal and documentary website against the culture of silence imposed on victims of child trafficking" %}
   {%- endif %}
 
@@ -89,11 +87,6 @@
       "Santiago González Rueda",
       "Santiago Gonzalez Rueda"
     ],
-    "additionalProperty": {
-      "@type": "PropertyValue",
-      "name": "{{ former_name_label }}",
-      "value": "Santiago González Rueda"
-    },
     "url": "{{ person_url }}",
     "image": "https://gomezaldaz.com/img/olmo-autor.jpg",
     "jobTitle": "{{ person_job }}",
