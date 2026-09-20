@@ -38,7 +38,8 @@
         'castilla-y-leon': 'Castilla y León',
         euskadi: 'Euskadi',
         navarra: 'Navarra',
-        asturias: 'Asturias'
+        asturias: 'Asturias',
+        canarias: 'Canarias'
       }
     },
     en: {
@@ -57,7 +58,8 @@
         'castilla-y-leon': 'Castile and León',
         euskadi: 'Basque Country',
         navarra: 'Navarre',
-        asturias: 'Asturias'
+        asturias: 'Asturias',
+        canarias: 'Canary Islands'
       }
     }
   };

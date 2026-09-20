@@ -5,10 +5,10 @@
 # images es una lista opcional con url, title y caption.
 
 html:
-  - es: {url: "/es/queja-26097224/"}
-    en: {url: "/en/complaint-26097224/", published: "2026-09-20"}
-  - es: {url: "/", modified: "2026-08-14T17:52:00+02:00"}
-    en: {url: "/en/", modified: "2026-08-14T17:52:00+02:00"}
+  - es: {url: "/es/queja-26097224/", modified: "2026-09-20T01:01:24Z"}
+    en: {url: "/en/complaint-26097224/", published: "2026-09-20", modified: "2026-09-20T11:35:58Z"}
+  - es: {url: "/", modified: "2026-09-20T00:48:46Z"}
+    en: {url: "/en/", modified: "2026-09-20T11:35:58Z"}
   - es: {url: "/es/autor/", modified: "2026-08-11T02:56:00+02:00"}
     en: {url: "/en/author/", modified: "2026-08-11T02:56:00+02:00"}
   - es: {url: "/es/contacto/", published: "2026-08-11T02:56:00+02:00", modified: "2026-08-11T02:56:00+02:00"}
@@ -49,14 +49,14 @@ html:
     en: {url: "/en/work/stolen-babies/maria-madre-association-report/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/obra/bebes-robados/informe-adoptados-bilbao/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/work/stolen-babies/adoptados-bilbao-report/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/prensa/", modified: "2026-08-06T01:48:08+02:00"}
-    en: {url: "/en/press/", modified: "2026-08-06T01:48:08+02:00"}
+  - es: {url: "/es/prensa/", modified: "2026-09-20"}
+    en: {url: "/en/press/", modified: "2026-09-20"}
   - es: {url: "/es/prensa/el-observatorio-9-2026/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/el-observatorio-9-2026/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/prensa/el-correo-primer-bebe-robado-victima-franquismo/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/el-correo-first-stolen-baby-recognised-francoism-victim/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/prensa/medios/", modified: "2026-08-14T00:26:04+02:00"}
-    en: {url: "/en/press/media/", modified: "2026-08-14T00:26:04+02:00"}
+  - es: {url: "/es/prensa/medios/", modified: "2026-09-20"}
+    en: {url: "/en/press/media/", modified: "2026-09-20"}
   - es: {url: "/es/prensa/notas-de-prensa/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/press-releases/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/prensa/notas-de-prensa/sentencia-pionera-identidad-dni/", modified: "2026-08-06T01:48:08+02:00"}
@@ -67,6 +67,8 @@ html:
     en: {url: "/en/press/press-releases/democratic-memory-law-stolen-babies/", modified: "2026-08-06T01:48:08+02:00"}
 
 pdf:
+  - {url: "/docs/Guia_adhesion_queja_26097224.pdf"}
+  - {url: "/docs/01_Queja_Adhesion_Adoptados_Bebes_Robados_Filiacion_Identidad_Origen.pdf"}
   - {url: "/docs/declaracion-reconocimiento-reparacion-memoria-democratica-olmo-2026.pdf"}
   - {url: "/docs/resolucion-gogora-reconocimiento-victima-franquismo-olmo-gomez-aldaz-2026.pdf"}
   - {url: "/docs/resolucion-acceso-informacion-unica-declaracion-reconocimiento-olmo-2026.pdf"}
