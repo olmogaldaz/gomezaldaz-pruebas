@@ -107,26 +107,6 @@
   gap:10px;
 }
 
-.autonomy-callout{
-  display:grid;
-  grid-template-columns:minmax(180px,.7fr) minmax(0,1.8fr);
-  gap:24px;
-  margin:0 0 46px;
-  padding:20px 24px;
-  background:#111;
-  border-radius:10px;
-}
-
-.autonomy-callout p{
-  margin:0;
-  color:#fff;
-}
-
-.autonomy-callout-title{
-  font-size:1.2rem;
-  font-weight:750;
-}
-
 .complaint-section{
   margin:0 0 46px;
   scroll-margin-top:180px;
@@ -372,11 +352,6 @@
 
   .complaint-lead{
     font-size:1.04rem;
-  }
-
-  .autonomy-callout{
-    grid-template-columns:1fr;
-    gap:6px;
   }
 
   .resource-grid,
