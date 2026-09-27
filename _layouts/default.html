@@ -7,7 +7,7 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description | escape }}">
 
-  {%- unless site.indexable %}
+  {%- unless site.indexable and page.noindex != true %}
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   {%- endunless %}
 

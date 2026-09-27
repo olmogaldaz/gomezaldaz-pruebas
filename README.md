@@ -94,7 +94,7 @@ Al copiar cambios de pruebas a producción:
 1. No sobrescribir `_config.yml`.
 2. No sobrescribir `CNAME`.
 3. Copiar el resto de archivos sin cambiar la lógica de entorno.
-4. Comprobar que producción no genera `noindex`.
+4. Comprobar que producción genera `noindex` solo en las páginas excluidas expresamente, como los avisos de las rutas antiguas.
 5. Comprobar que Analytics está activo solo en producción.
 6. Comprobar que `robots.txt` anuncia el sitemap solo en producción.
 
@@ -310,7 +310,7 @@ Las páginas de contacto están incorporadas a `_data/resources.yml`; por tanto,
 ### Producción
 
 - `indexable: true`;
-- no se genera `noindex`;
+- solo se genera `noindex` en las páginas con `noindex: true`;
 - canonical y `hreflang` apuntan a producción;
 - `robots.txt` anuncia `https://gomezaldaz.com/sitemap.xml`;
 - Google Analytics permanece activo.
@@ -425,16 +425,22 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 
 ---
 
-## Queja n.º 26097224
+## Queja sobre personas adoptadas y bebés robados
 
-- Español: `/es/queja-26097224/`.
-- Inglés: `/en/complaint-26097224/`.
-- Las portadas `/` y `/en/` contienen un banner que enlaza con la versión correspondiente.
-- Las páginas y los banners comparten `/css/queja.css`, declarado en `extra_css`.
-- La pareja ES/EN está registrada en `_data/resources.yml`, que genera la alternancia de idioma y su inclusión en el sitemap.
-- Los documentos enlazados siguen en español: `/docs/Guia_adhesion_queja_26097224.pdf` y `/docs/01_Queja_Adhesion_Adoptados_Bebes_Robados_Filiacion_Identidad_Origen.pdf`. Ambos figuran en el catálogo PDF.
-- La adhesión se explica como la presentación de una nueva queja vinculada a la n.º 26097224, con el documento completo adjunto.
-- Las versiones ES/EN enlazan con el formulario oficial en su idioma correspondiente.
+- Identificación principal: **expediente n.º 26037767** del Defensor del Pueblo.
+- Número inicial de queja: **26097224**. Ambos corresponden al mismo asunto; el número inicial se explica como antecedente y las instrucciones de adhesión utilizan el expediente actual.
+- Español: `/es/queja-adoptados-bebes-robados/`.
+- Inglés: `/en/complaint-adoptees-stolen-babies/`.
+- Las portadas enlazan directamente con estas rutas descriptivas. Las páginas y los banners comparten `/css/queja.css`.
+- Las rutas antiguas `/es/queja-26097224/` y `/en/complaint-26097224/` muestran un aviso explicativo con un botón hacia la nueva página. No tienen redirección automática.
+- La pareja antigua permanece en el catálogo para el selector de idioma, con `sitemap: false`. Cada aviso declara `noindex: true` y canonical hacia la nueva página de su idioma; el layout admite esta exclusión por página.
+- PDF actuales en español: `/docs/guia-adhesion-adoptados-bebes-robados.pdf` y `/docs/queja-adhesion-adoptados-bebes-robados.pdf`. El catálogo incluye sus rutas nuevas y las fechas de modificación.
+- Los dos PDF anteriores, `/docs/Guia_adhesion_queja_26097224.pdf` y `/docs/01_Queja_Adhesion_Adoptados_Bebes_Robados_Filiacion_Identidad_Origen.pdf`, sirven copias de los PDF actualizados para conservar enlaces compartidos. No se duplican en el sitemap.
+- Se parte de los dos Word aportados por Olmo el 27/09/2026, cotejados con los PDF publicados. Se conserva la última página «Documentación de referencia del caso ilustrativo» y las referencias bibliográficas corregidas. No utilizar como base la V1.1 anterior generada a partir de un Word incompleto.
+- La guía conserva el texto de adhesión en la página 4 y las variantes en la 5; el documento de adhesión conserva sus 24 páginas.
+- En pruebas, el enlace al documento dentro del Word y PDF de la guía apunta a `https://pruebas.gomezaldaz.com/docs/queja-adhesion-adoptados-bebes-robados.pdf`, para permitir revisar el recorrido completo antes de publicar.
+- **Antes de pasar a producción:** cambiar ese destino (texto y vínculo) en la guía a `https://gomezaldaz.com/docs/queja-adhesion-adoptados-bebes-robados.pdf`, regenerar y revisar el PDF, y publicar también su copia en la ruta antigua. Conservar el dominio y la configuración propios de cada entorno.
+- La adhesión consiste en presentar una nueva queja vinculada al expediente 26037767, con el documento de adhesión adjunto. ES/EN enlazan con el formulario oficial en el idioma correspondiente.
 
 ### Actualización de prensa y sitemap
 
@@ -544,3 +550,10 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
 
 Este README documenta la arquitectura del proyecto y los cambios trasladados de pruebas a producción a **20 de septiembre de 2026**.
+
+### Actualización preparada en pruebas — 27 de septiembre de 2026
+
+- Migración a rutas descriptivas sin números administrativos y avisos en las dos rutas antiguas.
+- Expediente 26037767 como referencia principal, con explicación del número inicial 26097224.
+- Actualización coordinada de Word, PDF, portadas, páginas ES/EN, fichas editoriales de prensa, Schema y catálogo del sitemap.
+- Enlaces de la guía adaptados al entorno de pruebas; traslado a producción pendiente de aprobación.
