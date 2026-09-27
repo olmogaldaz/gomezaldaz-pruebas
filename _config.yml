@@ -2,3 +2,5 @@ url: https://pruebas.gomezaldaz.com
 public_url: https://gomezaldaz.com
 indexable: false
 markdown: kramdown
+
+build_revision: 20260927-1345
