@@ -425,7 +425,7 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 
 ---
 
-## Queja n.º 26097224
+## Expediente n.º 26037767
 
 - Español: `/es/queja-26097224/`.
 - Inglés: `/en/complaint-26097224/`.
@@ -433,7 +433,7 @@ Las páginas índice de notas de prensa pueden utilizar `CollectionPage`; las no
 - Las páginas y los banners comparten `/css/queja.css`, declarado en `extra_css`.
 - La pareja ES/EN está registrada en `_data/resources.yml`, que genera la alternancia de idioma y su inclusión en el sitemap.
 - Los documentos enlazados siguen en español: `/docs/Guia_adhesion_queja_26097224.pdf` y `/docs/01_Queja_Adhesion_Adoptados_Bebes_Robados_Filiacion_Identidad_Origen.pdf`. Ambos figuran en el catálogo PDF.
-- La adhesión se explica como la presentación de una nueva queja vinculada a la n.º 26097224, con el documento completo adjunto.
+- La adhesión se explica como la presentación de una nueva queja vinculada al expediente n.º 26037767, con el documento completo adjunto.
 - Las versiones ES/EN enlazan con el formulario oficial en su idioma correspondiente.
 
 ### Actualización de prensa y sitemap
@@ -499,7 +499,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 
 ### 20 de septiembre de 2026
 
-- Incorporación en pruebas de la página de la queja n.º 26097224 en inglés y del banner en la portada inglesa.
+- Incorporación en pruebas de la página inglesa del expediente n.º 26037767 y del banner en la portada inglesa.
 - Registro de la pareja ES/EN y de los PDF de la guía y la queja en `_data/resources.yml`; actualización de las fechas de modificación de las páginas afectadas.
 - Incorporación del artículo de opinión de Iratxe Serrano, publicado el 19/09/2026 en elDiario.es, al dosier automático en ambos idiomas y a las dos cronologías generales de prensa.
 - Incorporación de las etiquetas Canarias / Canary Islands al filtro territorial; sus opciones siguen derivándose de los registros.
@@ -512,7 +512,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 
 - Versión de pruebas utilizada: `9783b5011e20462babd29325f16af74f7439c66e`.
 - Estado anterior de producción para recuperación: `c8a5af3b915284e7778eb407cdf85b3a3ff125cf`.
-- Traslado de las páginas y banners de la queja ES/EN, la actualización de prensa, el catálogo de recursos, la corrección de Schema y la documentación.
+- Traslado de las páginas y banners del expediente ES/EN, la actualización de prensa, el catálogo de recursos, la corrección de Schema y la documentación.
 - Se conservan `_config.yml` y `CNAME` propios de producción: dominio `gomezaldaz.com`, indexación y Analytics activos.
 - Recuperación: crear un commit que restaure el árbol de la versión anterior de producción, conservando el historial.
 
@@ -543,4 +543,4 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 - Los archivos comunes deben mantenerse iguales en ambos repositorios.
 - Tras cada despliegue debe comprobarse el estado de indexación, Analytics, canonical, `hreflang`, `robots.txt` y sitemap.
 
-Este README documenta la arquitectura del proyecto y los cambios trasladados de pruebas a producción a **20 de septiembre de 2026**.
+Este README documenta la arquitectura del proyecto y los cambios del entorno de pruebas a **27 de septiembre de 2026**.
