@@ -501,7 +501,7 @@ Los documentos anonimizados deben contener una eliminación real de los datos pe
 
 - Incorporación en pruebas de la página de la queja n.º 26097224 en inglés y del banner en la portada inglesa.
 - Registro de la pareja ES/EN y de los PDF de la guía y la queja en `_data/resources.yml`; actualización de las fechas de modificación de las páginas afectadas.
-- Incorporación del artículo de opinión de Iratxe Serrano, publicado el 19/09/2026 en Canarias Ahora / elDiario.es, al dosier automático en ambos idiomas y a las dos cronologías generales de prensa.
+- Incorporación del artículo de opinión de Iratxe Serrano, publicado el 19/09/2026 en elDiario.es, al dosier automático en ambos idiomas y a las dos cronologías generales de prensa.
 - Incorporación de las etiquetas Canarias / Canary Islands al filtro territorial; sus opciones siguen derivándose de los registros.
 - Documentación del circuito de actualización de prensa y sitemap.
 - Corrección del Schema común: retirada de `additionalProperty` del nodo `Person`, conservando el nombre registral anterior en `alternateName`.
