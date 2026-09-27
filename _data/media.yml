@@ -236,22 +236,6 @@
   action_es: "Leer artículo en SOS Bebés Robados"
   action_en: "Read article on SOS Bebés Robados"
 
-- id: eldiario-iratxe-serrano-2026-09-19
-  section: press-2026
-  date: 2026-09-19
-  type: prensa
-  territory: canarias
-  medium: "Canarias Ahora / elDiario.es"
-  meta_es: "Canarias Ahora / elDiario.es · Opinión · 19/09/2026 · Iratxe Serrano"
-  meta_en: "Canarias Ahora / elDiario.es · Opinion · 19 September 2026 · Iratxe Serrano"
-  title_es: "Adopción, memoria y derechos: la urgencia de ser dueñas de nuestra propia historia"
-  title_en: "Adoption, memory and rights: the urgency of taking ownership of our own history"
-  subtitle_es: "Iratxe Serrano aborda el caso de Olmo Gómez Aldaz, la autonomía de las personas adoptadas y la queja n.º 26097224 ante el Defensor del Pueblo."
-  subtitle_en: "Iratxe Serrano discusses Olmo Gómez Aldaz’s case, the autonomy of adopted people and complaint no. 26097224 before the Spanish Ombudsman."
-  url: "https://www.eldiario.es/canariasahora/opinion/adopcion-memoria-derechos-urgencia-duenas-propia-historia_132_13523193.html"
-  action_es: "Leer el artículo en elDiario.es"
-  action_en: "Read the article on elDiario.es (in Spanish)"
-
 - id: diario-valladolid-2026-01-20
   section: press-2026
   date: 2026-01-20
@@ -597,3 +581,19 @@
   url: "https://sosbebesrobados.es/blog/2026/08/09/el-ministerio-de-politica-territorial-y-memoria-democratica-reconoce-solo-a-olmo-gomez-alda-como-hijo-robado-y-victima-desde-la-aprobacion-de-la-ley-de-memoria-democratica/"
   action_es: "Leer artículo en SOS Bebés Robados"
   action_en: "Read article on SOS Bebés Robados"
+
+- id: eldiario-iratxe-serrano-2026-09-19
+  section: press-2026
+  date: 2026-09-19
+  type: prensa
+  territory: canarias
+  medium: eldiario.es
+  meta_es: "eldiario.es · Canarias Ahora · Opinión · 19/09/2026 · Iratxe Serrano"
+  meta_en: "eldiario.es · Canarias Ahora · Opinion · 19 September 2026 · Iratxe Serrano"
+  title_es: "Adopción, memoria y derechos: la urgencia de ser dueñas de nuestra propia historia"
+  title_en: "Adoption, memory and rights: the urgency of taking ownership of our own history"
+  subtitle_es: "Iratxe Serrano aborda el caso de Olmo Gómez Aldaz, la autonomía de las personas adoptadas y la queja n.º 26097224 ante el Defensor del Pueblo."
+  subtitle_en: "Iratxe Serrano discusses Olmo Gómez Aldaz’s case, the autonomy of adopted people and complaint no. 26097224 before the Spanish Ombudsman."
+  url: "https://www.eldiario.es/canariasahora/opinion/adopcion-memoria-derechos-urgencia-duenas-propia-historia_132_13523193.html"
+  action_es: "Leer el artículo en elDiario.es"
+  action_en: "Read the article on elDiario.es (in Spanish)"
