@@ -280,11 +280,6 @@ nav a.active:hover{
   background:#000;
 }
 
-.pdf-document-cta .cta{
-  display:block;
-  width:360px;
-  max-width:100%;
-}
 
 .cta-full{
   display:block;
