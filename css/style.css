@@ -280,6 +280,11 @@ nav a.active:hover{
   background:#000;
 }
 
+.pdf-document-cta .cta{
+  width:280px;
+  max-width:100%;
+}
+
 
 .cta-full{
   display:block;
