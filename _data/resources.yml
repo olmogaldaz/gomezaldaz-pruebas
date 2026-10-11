@@ -69,6 +69,15 @@ html:
   - es: {url: "/es/prensa/notas-de-prensa/ley-memoria-democratica-bebes-robados/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/press/press-releases/democratic-memory-law-stolen-babies/", modified: "2026-08-06T01:48:08+02:00"}
 
+
+  # Direcciones antiguas conservadas con aviso y enlace a la página actual.
+  - es: {url: "/es/obra/undoing-adoption/", modified: "2026-10-11"}
+    en: {url: "/en/work/undoing-adoption/", modified: "2026-10-11"}
+    sitemap: false
+  - es: {url: "/es/obra/asociacion-maria-madre/", modified: "2026-10-11"}
+    en: {url: "/en/work/maria-madre-association/", modified: "2026-10-11"}
+    sitemap: false
+
 pdf:
   - {url: "/docs/resolucion-inscripcion-maria-micaela-aldaz-ilarregui-censo-victimas-2026.pdf", modified: "2026-09-27"}
   - {url: "/docs/guia-adhesion-adoptados-bebes-robados.pdf", modified: "2026-09-27"}
