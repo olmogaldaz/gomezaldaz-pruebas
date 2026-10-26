@@ -5,8 +5,8 @@
 # images es una lista opcional con url, title y caption.
 
 html:
-  - es: {url: "/es/prensa/notas-de-prensa/queja-adoptados-bebes-robados-adhesion-fibgar/", published: "2026-10-27", modified: "2026-10-27"}
-    en: {url: "/en/press/press-releases/complaint-adoptees-stolen-babies-fibgar-endorsement/", published: "2026-10-27", modified: "2026-10-27"}
+  - es: {url: "/es/prensa/notas-de-prensa/queja-adoptados-bebes-robados-adhesion-fibgar/", published: "2026-10-26", modified: "2026-10-26"}
+    en: {url: "/en/press/press-releases/complaint-adoptees-stolen-babies-fibgar-endorsement/", published: "2026-10-26", modified: "2026-10-26"}
   - es: {url: "/es/queja-adoptados-bebes-robados/", modified: "2026-09-27"}
     en: {url: "/en/complaint-adoptees-stolen-babies/", published: "2026-09-20", modified: "2026-09-27"}
   - es: {url: "/es/queja-26097224/", modified: "2026-09-27"}
@@ -81,7 +81,7 @@ html:
     sitemap: false
 
 pdf:
-  - {url: "/docs/nota-prensa-queja-adoptados-bebes-robados-fibgar-octubre-2026.pdf", modified: "2026-10-27"}
+  - {url: "/docs/nota-prensa-queja-adoptados-bebes-robados-fibgar-octubre-2026.pdf", modified: "2026-10-26"}
   - {url: "/docs/resolucion-inscripcion-maria-micaela-aldaz-ilarregui-censo-victimas-2026.pdf", modified: "2026-09-27"}
   - {url: "/docs/guia-adhesion-adoptados-bebes-robados.pdf", modified: "2026-09-27"}
   - {url: "/docs/queja-adhesion-adoptados-bebes-robados.pdf", modified: "2026-09-27"}
