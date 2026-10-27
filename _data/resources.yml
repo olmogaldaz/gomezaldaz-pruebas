@@ -12,7 +12,7 @@ html:
   - es: {url: "/es/queja-26097224/", modified: "2026-09-27"}
     en: {url: "/en/complaint-26097224/", published: "2026-09-20", modified: "2026-09-27"}
     sitemap: false
-  - es: {url: "/", modified: "2026-09-27"}
+  - es: {url: "/", modified: "2026-10-27"}
     en: {url: "/en/", modified: "2026-09-27"}
   - es: {url: "/es/autor/", modified: "2026-08-11T02:56:00+02:00"}
     en: {url: "/en/author/", modified: "2026-08-11T02:56:00+02:00"}
