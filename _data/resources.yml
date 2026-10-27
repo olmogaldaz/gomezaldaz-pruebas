@@ -24,8 +24,8 @@ html:
     en: {url: "/en/claim/", modified: "2026-08-06T01:48:08+02:00"}
   - es: {url: "/es/sentencia/", modified: "2026-08-06T01:48:08+02:00"}
     en: {url: "/en/sentence/", modified: "2026-08-06T01:48:08+02:00"}
-  - es: {url: "/es/memoria/", modified: "2026-10-26"}
-    en: {url: "/en/memory/", modified: "2026-10-26"}
+  - es: {url: "/es/memoria/", modified: "2026-10-27"}
+    en: {url: "/en/memory/", modified: "2026-10-27"}
   - es: {url: "/es/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
     en: {url: "/en/genus-homo/", modified: "2026-08-11T02:56:00+02:00"}
   - es: {url: "/es/obra/", modified: "2026-08-06T01:48:08+02:00"}
