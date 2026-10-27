@@ -1,0 +1,24 @@
+/* Portada: una sola caja de memoria con el testimonio subordinado. */
+.card.home-memory{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+  gap:20px;
+}
+.home-memory-copy{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+.home-memory-testimony{
+  min-width:0;
+  align-self:center;
+}
+.home-memory .video{
+  overflow:hidden;
+  border-radius:8px;
+}
+@media (max-width:768px){
+  .card.home-memory{
+    grid-template-columns:minmax(0, 1fr);
+  }
+}
